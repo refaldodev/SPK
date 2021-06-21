@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Project Tugas Akhir</title>
+    <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

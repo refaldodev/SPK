@@ -1,20 +1,28 @@
      <!-- Sidebar -->
-     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
          <!-- Sidebar - Brand -->
-         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('') ?>">
              <div class="sidebar-brand-icon rotate-n-15">
                  <i class="fas fa-laugh-wink"></i>
              </div>
-             <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+             <div class="sidebar-brand-text mx-3">STMIK ANTARBANGSA </div>
          </a>
 
          <!-- Divider -->
          <hr class="sidebar-divider my-0">
 
+
          <!-- Nav Item - Dashboard -->
-         <li class="nav-item">
-             <a class="nav-link" href="index.html">
+         <li class="nav-item
+       <?php if ($seg1 == '') {
+            echo 'active';
+        } else {
+            echo '';
+        }
+        ?>
+          ">
+             <a class="nav-link " href="<?= base_url('') ?>">
                  <i class="fas fa-fw fa-tachometer-alt"></i>
                  <span>Dashboard</span></a>
          </li>
@@ -88,28 +96,48 @@
          </li> -->
 
          <!-- Nav Item - Charts -->
-         <li class="nav-item">
-             <a class="nav-link" href="<?= base_url('DataDosen')?>">
+         <li class="nav-item 
+         <?php if ($seg1 == 'DataDosen') {
+                echo 'active';
+            } else {
+                echo '';
+            }
+            ?>
+         ">
+             <a class="nav-link" href="<?= base_url('DataDosen') ?>">
                  <i class="fas fa-fw fa-chart-area"></i>
-                 <span>Data Alternatif</span></a>
+                 <span>Pembobotan ROC</span></a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="<?= base_url('DataDosen')?>">
+         <li class="nav-item 
+         <?php if ($seg1 == 'DataDosen') {
+                echo 'active';
+            } else {
+                echo '';
+            }
+            ?>
+         ">
+             <a class="nav-link" href="<?= base_url('DataDosen') ?>">
                  <i class="fas fa-fw fa-chart-area"></i>
                  <span>Data Kriteria</span></a>
          </li>
          <li class="nav-item">
-             <a class="nav-link" href="<?= base_url('DataDosen')?>">
+             <a class="nav-link" href="<?= base_url('DataDosen') ?>">
+                 <i class="fas fa-fw fa-chart-area"></i>
+                 <span>Data Alternatif</span></a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="<?= base_url('DataDosen') ?>">
+                 <i class="fas fa-fw fa-chart-area"></i>
+                 <span>Data Kriteria</span></a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="<?= base_url('DataDosen') ?>">
                  <i class="fas fa-fw fa-chart-area"></i>
                  <span>Data Dosen</span></a>
          </li>
+
          <li class="nav-item">
-             <a class="nav-link" href="<?= base_url('DataDosen')?>">
-                 <i class="fas fa-fw fa-chart-area"></i>
-                 <span>ROC</span></a>
-         </li>
-         <li class="nav-item">
-             <a class="nav-link" href="<?= base_url('DataDosen')?>">
+             <a class="nav-link" href="<?= base_url('DataDosen') ?>">
                  <i class="fas fa-fw fa-chart-area"></i>
                  <span>Data Perhitungan SMARTER</span></a>
          </li>
