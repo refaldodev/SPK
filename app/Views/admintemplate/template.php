@@ -94,11 +94,8 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Smarter
             </div>
-
-
-
             <!-- Nav Item - Charts -->
             <li class="nav-item 
             <?= $seg1 == 'pembobotanroc'  ? 'active' : '' ?> ">
@@ -112,8 +109,9 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Dosen</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('DataDosen') ?>">
+            <li class="nav-item
+            <?= $seg1 == 'dataalternatif'  ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('DataAlternatif') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Alternatif</span></a>
             </li>
