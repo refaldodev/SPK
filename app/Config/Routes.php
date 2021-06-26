@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'admin::index');
 $routes->get('/datadosen/(:segment)', 'datadosen::detail/$1');
+$routes->get('/kriteria/(:segment)', 'kriteria::subkriteria/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
