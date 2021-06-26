@@ -98,6 +98,12 @@
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item 
+            <?= $seg1 == 'kriteria'  ? 'active' : '' ?> ">
+                <a class="nav-link" href="<?= base_url('kriteria') ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Kriteria</span></a>
+            </li>
+            <li class="nav-item 
             <?= $seg1 == 'pembobotanroc'  ? 'active' : '' ?> ">
                 <a class="nav-link" href="<?= base_url('pembobotanroc') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>

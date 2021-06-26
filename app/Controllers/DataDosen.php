@@ -16,16 +16,24 @@ class DataDosen extends BaseController
     }
     public function index()
     {
-
-        $request = \Config\Services::request();
-        $seg1 = $request->uri->getSegment(1);
-        $datadosen = $this->dosenModel->findAll();
+        // $seg1 = $request->uri->getSegment(1);
+        // $datadosen = $this->dosenModel->findAll();
         $data = [
             'title' =>   'ini data dosen',
-            'dosen' => $datadosen,
-            'seg1' => $seg1
-
+            'dosen' => $this->dosenModel->getDosen(),
+            'seg1' => $this->request->uri->getSegment(1)
         ];
-        return view('data/dosen', $data);
+        return view('dosen/index', $data);
+    }
+    public function detail($slug)
+    {
+        // $seg1 = $request->uri->getSegment(1);
+        $data = [
+            'title' =>   'Detail Data Dosen',
+            'dosen' =>  $this->dosenModel->getDosen($slug),
+            'seg1' => $this->request->uri->getSegment(1)
+        ];
+        return view('dosen/detail', $data);
+        // d($data['dosen']['nama']);
     }
 }

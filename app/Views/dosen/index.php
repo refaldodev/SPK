@@ -46,7 +46,7 @@
                                 <td><?= $data['program_studi'] ?></td>
                                 <td><?= $data['lama_mengajar'] ?></td>
                                 <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
+                                    <a href="/datadosen/<?= $data['nama'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
                                     <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
                                     <a href="" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></a>
                                 </td>
