@@ -32,8 +32,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'admin::index');
+$routes->get('/datadosen/create', 'datadosen::create');
 $routes->get('/datadosen/(:segment)', 'datadosen::detail/$1');
-$routes->get('/kriteria/(:segment)', 'kriteria::subkriteria/$1');
+
+$routes->get('/kriteria/(:segment)', 'Kriteria::subkriteria/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

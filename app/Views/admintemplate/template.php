@@ -17,6 +17,9 @@
 
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- datatables -->
+    <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -404,6 +407,10 @@
 
         <!-- Custom scripts for all pages-->
         <script src="/assets/js/sb-admin-2.min.js"></script>
+        <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/assets/js/demo/datatables-demo.js"></script>
+
 
 </body>
 
