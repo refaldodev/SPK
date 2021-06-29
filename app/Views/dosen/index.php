@@ -17,7 +17,16 @@
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah Dosen</span>
+
             </a>
+            <?php if (session()->getFlashdata('pesan')) :  ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('pesan') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif;  ?>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

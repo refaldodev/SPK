@@ -64,10 +64,9 @@ class DataDosen extends BaseController
             'program_studi' => $this->request->getVar('program_studi'),
             'asal_kampus' => $this->request->getVar('asal_kampus'),
 
-
-
         ]);
         // dd($data);
+        session()->setFlashdata('pesan', 'Data berhasil di tambah.');
 
         return redirect()->to('/datadosen');
     }

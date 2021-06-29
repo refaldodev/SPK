@@ -11,6 +11,7 @@ class KriteriaModel extends Model
     // ...
     protected $table = 'kriteria';
     protected $useTimestamps = true;
+    protected $allowedFields = ['kriteria', 'peringkat', 'bobot'];
 
     public function getKriteria($slug = false)
     {

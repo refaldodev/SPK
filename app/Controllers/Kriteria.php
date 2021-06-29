@@ -34,4 +34,15 @@ class Kriteria extends BaseController
         ];
         return view('kriteria/subkriteria', $data);
     }
+    public function save()
+    {
+        $this->kriteriamodel->save([
+            'kriteria' => $this->request->getVar('kriteria'),
+            'peringkat' => $this->request->getVar('peringkat'),
+            'bobot' => $this->request->getVar('bobot')
+
+        ]);
+        session()->setFlashdata('pesan', 'Data berhasil di tambah.');
+        return redirect()->to('/kriteria');
+    }
 }
