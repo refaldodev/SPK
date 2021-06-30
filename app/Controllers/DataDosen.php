@@ -44,16 +44,62 @@ class DataDosen extends BaseController
 
     public function create()
     {
+
         $data = [
             'title' => 'Tambah data',
-            'seg1' => $this->request->uri->getSegment(1)
-
+            'seg1' => $this->request->uri->getSegment(1),
+            'validation' => \Config\Services::validation()
 
         ];
         return view('dosen/create', $data);
     }
     public function save()
     {
+        // validasi input
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required|is_unique[data_dosen.nama]',
+                'errors' =>
+                [
+                    'required' => 'Nama harus di isi',
+                    'is_unique' => 'Nama sudah terdaftar'
+                ]
+            ],
+            'jabatan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jabatan harus di isi'
+                ]
+            ],
+            'pendidikan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Pendidikan harus di isi'
+                ]
+            ],
+            'asal_kampus' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Asal Kampus harus di isi'
+                ]
+            ],
+            'program_studi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Program Studi harus di isi'
+                ]
+            ],
+            'lama_mengajar' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Lama Mengajar harus di isi'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/datadosen/create')->withInput()->with('validation', $validation);
+        }
+
         $slug =  url_title($this->request->getVar('nama'), '-', TRUE);
         $this->dosenModel->save([
             'nama' => $this->request->getVar('nama'),

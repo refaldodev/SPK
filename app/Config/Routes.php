@@ -35,6 +35,8 @@ $routes->get('/', 'admin::index');
 $routes->get('/datadosen', 'datadosen::index');
 $routes->get('/datadosen/create', 'datadosen::create');
 $routes->get('/datadosen/(:segment)', 'datadosen::detail/$1');
+$routes->get('/kriteria/create', 'kriteria::create');
+
 $routes->get('/kriteria/(:segment)', 'Kriteria::subkriteria/$1');
 /*
  * --------------------------------------------------------------------

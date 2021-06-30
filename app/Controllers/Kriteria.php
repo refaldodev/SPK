@@ -21,7 +21,9 @@ class Kriteria extends BaseController
         $data = [
             'title' =>   'ini data dosen',
             'kriteria' => $this->kriteriamodel->getKriteria(),
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'validation' => \Config\Services::validation()
+
         ];
         return view('kriteria/index', $data);
     }
@@ -34,8 +36,46 @@ class Kriteria extends BaseController
         ];
         return view('kriteria/subkriteria', $data);
     }
+    public function create()
+    {
+
+        $data = [
+            'title' => 'Tambah data Kriteria',
+            'seg1' => $this->request->uri->getSegment(1),
+            'validation' => \Config\Services::validation()
+
+        ];
+        return view('kriteria/create', $data);
+    }
     public function save()
     {
+        // validation
+        if (!$this->validate([
+            'kriteria' => [
+                'rules' => 'required|is_unique[kriteria.kriteria]',
+                'errors' => [
+                    'required' => 'Kriteria harus di isi',
+                    'is_unique' => 'Kriteria sudah terdaftar'
+                ]
+            ],
+            'peringkat' => [
+                'rules' => 'required|is_unique[kriteria.peringkat]',
+                'errors' => [
+                    'required' => 'Peringkat harus di isi',
+                    'is_unique' => 'Kriteria sudah ada'
+                ]
+            ],
+            'bobot' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Bobot harus di isi'
+                ]
+            ],
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/kriteria/create')->withInput()->with('validation', $validation);
+            // return
+        }
         $this->kriteriamodel->save([
             'kriteria' => $this->request->getVar('kriteria'),
             'peringkat' => $this->request->getVar('peringkat'),
