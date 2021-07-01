@@ -7,7 +7,8 @@ use CodeIgniter\Model;
 class MahasiswaModel extends Model
 {
     protected $table = 'mahasiswa';
-    protected $primarykey = 'nim';
+    protected $primaryKey = 'nim';
+
     protected $useTimestamps = true;
     protected $allowedFields = ['nim', 'nama', 'jurusan'];
 

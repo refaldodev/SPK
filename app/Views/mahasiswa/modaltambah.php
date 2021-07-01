@@ -91,7 +91,6 @@
                             title: 'Berhasil',
                             text: response.sukses,
                             confirmButtonColor: '#3085d6'
-
                         })
                         $('#modaltambah').modal('hide');
                         datamahasiswa();

@@ -20,6 +20,8 @@ use Psr\Log\LoggerInterface;
  * For security be sure to declare any new methods as protected or private.
  */
 
+use App\Models\MahasiswaModel;
+
 class BaseController extends Controller
 {
 	/**
@@ -57,5 +59,6 @@ class BaseController extends Controller
 
 		// get routes
 		session();
+		$this->mhs =  new MahasiswaModel;
 	}
 }

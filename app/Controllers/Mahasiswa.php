@@ -24,9 +24,8 @@ class Mahasiswa extends BaseController
     public function ambildata()
     {
         if ($this->request->isAjax()) {
-            $mhs = new MahasiswaModel;
             $data = [
-                'tampildata' => $mhs->findAll()
+                'tampildata' =>  $this->mhs->findAll()
             ];
             $msg = [
                 'data' => view('mahasiswa/datamahasiswa', $data)
@@ -103,6 +102,56 @@ class Mahasiswa extends BaseController
             echo json_encode($msg);
         } else {
             exit('maaf tidak dapat di proses');
+        }
+    }
+    public function formedit()
+    {
+        if ($this->request->isAjax()) {
+            $nim = $this->request->getVar('nim');
+            $mhs = new MahasiswaModel;
+            $row = $mhs->find($nim);
+            $data =  [
+                'nim' => $row['nim'],
+                'nama' => $row['nama'],
+                'jurusan' => $row['jurusan']
+            ];
+            $msg = [
+                'sukses' => view('mahasiswa/modaledit', $data)
+            ];
+            echo json_encode($msg);
+        }
+    }
+    public function updatedata()
+    {
+        if ($this->request->isAjax()) {
+            $validation = \Config\Services::validation();
+
+            $simpandata = [
+                'nama' => $this->request->getVar('nama'),
+                'jurusan' => $this->request->getVar('jurusan')
+            ];
+            $nim = $this->request->getVar('nim');
+            $this->mhs->update($nim, $simpandata);
+            $msg = [
+                'sukses' => 'data berhasil di ubah '
+            ];
+
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
+        }
+    }
+    public function hapus()
+    {
+        if ($this->request->isAjax()) {
+
+            $nim = $this->request->getVar('nim');
+            $this->mhs->delete($nim);
+            $msg = [
+                'sukses' => "data dengan nim $nim berhasil di hapus "
+            ];
+
+            echo json_encode($msg);
         }
     }
 }
