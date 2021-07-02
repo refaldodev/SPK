@@ -25,6 +25,14 @@
                     </button>
                 </div>
             <?php endif;  ?>
+            <?php if (session()->getFlashdata('pesanupdate')) :  ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('pesanupdate') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif;  ?>
             <div class="table-responsive">
                 <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -46,6 +54,9 @@
                                 <td><?= $data['bobot'] ?></td>
                                 <td>
                                     <a href="/kriteria/<?= $data['kriteria'] ?>" data-toggle="tooltip" data-placement="top" title="Sub Kriteria" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
+                                    <a href="/kriteria/edit/<?= $data['kriteria'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger" onclick="hapuskriteria('<?= $data['id'] ?>')"><i class="far fa-trash-alt"></i></button>
+
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -53,56 +64,7 @@
                 </table>
             </div>
 
-            <div class="modal fade <?= ($validation) ? ' show' : '' ?>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg	">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kriteria</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/kriteria/save" method="post">
-                                <?= csrf_field(); ?>
 
-                                <div class="form-group row">
-                                    <label for="kriteria" class="col-sm-2 col-form-label">Kriteria</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('kriteria')) ? 'is-invalid' : '' ?>" id="kriteria" name="kriteria">
-                                        <div id="validationServer03Feedback" class="invalid-feedback">
-                                            <?= $validation->getError('kriteria') ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="peringkat" class="col-sm-2 col-form-label">Peringkat</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control <?= ($validation->hasError('peringkat')) ? 'is-invalid' : '' ?>" id="peringkat" name="peringkat">
-
-                                        <div id="validationServer03Feedback" class="invalid-feedback">
-                                            <?= $validation->getError('peringkat') ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="Bobot" class="col-sm-2 col-form-label">Bobot</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control  <?= ($validation->hasError('bobot')) ? 'is-invalid' : '' ?> " id="Bobot" min="0" max="0.99" step=0.01 name="bobot">
-                                        <div id="validationServer03Feedback" class="invalid-feedback">
-                                            <?= $validation->getError('bobot') ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Tambah Data</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -110,4 +72,46 @@
     </div>
 </div>
 </div>
+
+<script>
+    function hapuskriteria(id) {
+        Swal.fire({
+            title: 'Hapus',
+            text: `Apakah anda yakin ingin menghapus data ini ?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'tidak'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "<?= site_url('kriteria/hapus') ?>",
+                    data: {
+                        id: id
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.sukses,
+                                confirmButtonColor: '#3085d6',
+
+                            })
+                            location = '/kriteria'
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+                    }
+                });
+
+            }
+        })
+    }
+</script>
 <?= $this->endSection('') ?>

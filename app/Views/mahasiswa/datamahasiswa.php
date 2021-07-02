@@ -66,8 +66,8 @@
             text: `Apakah anda yakin ingin menghapus data ini dengan nim ${nim}?`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
             confirmButtonText: 'Hapus',
             cancelButtonText: 'tidak'
         }).then((result) => {
@@ -85,6 +85,8 @@
                                 icon: 'success',
                                 title: 'Berhasil',
                                 text: response.sukses,
+                                confirmButtonColor: '#3085d6',
+
                             })
                             datamahasiswa();
                         }

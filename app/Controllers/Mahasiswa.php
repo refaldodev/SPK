@@ -15,7 +15,7 @@ class Mahasiswa extends BaseController
     public function index()
     {
         $tes = [
-            'title' =>   'ini data mahasiswa',
+            'title' =>   'Data Mahasiswa',
             'seg1' => $this->request->uri->getSegment(1)
         ];
         return view('mahasiswa/index', $tes);

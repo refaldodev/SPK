@@ -85,4 +85,40 @@ class Kriteria extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil di tambah.');
         return redirect()->to('/kriteria');
     }
+    public function edit($kriteria)
+    {
+        $data = [
+            'title' => 'Update data Kriteria',
+            'seg1' => $this->request->uri->getSegment(1),
+            'datakriteria' => $this->kriteriamodel->getKriteria($kriteria),
+
+        ];
+        return view('kriteria/edit', $data);
+    }
+    public function update()
+    {
+
+        $simpandata = [
+            'kriteria' => $this->request->getVar('kriteria'),
+            'peringkat' => $this->request->getVar('peringkat'),
+            'bobot' => $this->request->getVar('bobot')
+        ];
+        $id = $this->request->getVar('id');
+        $this->kriteriamodel->update($id, $simpandata);
+        session()->setFlashdata('pesanupdate', 'Data berhasil di ubah.');
+        return redirect()->to('/kriteria');
+    }
+    public function hapus()
+    {
+        if ($this->request->isAjax()) {
+
+            $id = $this->request->getVar('id');
+            $this->kriteriamodel->delete($id);
+            $msg = [
+                'sukses' => "data dengan id  berhasil di hapus "
+            ];
+
+            echo json_encode($msg);
+        }
+    }
 }

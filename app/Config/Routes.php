@@ -36,8 +36,8 @@ $routes->get('/datadosen', 'datadosen::index');
 $routes->get('/datadosen/create', 'datadosen::create');
 $routes->get('/datadosen/(:segment)', 'datadosen::detail/$1');
 $routes->get('/kriteria/create', 'kriteria::create');
-
-$routes->get('/kriteria/(:segment)', 'Kriteria::subkriteria/$1');
+$routes->get('/kriteria/(:segment)', 'kriteria::subkriteria/$1');
+$routes->get('/kriteria/edit/(:segment)', 'kriteria::edit/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
