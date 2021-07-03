@@ -51,7 +51,6 @@
                 beforeSend: function() {
                     $('.btnsimpan').attr('disable', 'disabled');
                     $('.btnsimpan').html('<i class="fa fa-spin fa-spinner"> </i>');
-
                 },
                 complete: function() {
                     $('.btnsimpan').remove('disable');

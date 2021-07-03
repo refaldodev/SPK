@@ -8,8 +8,6 @@
              <a href="/datadosen" class="m-0 font-weight-bold btn btn-primary text-white "> <i class="fas fa-undo"></i>
                  Kembali</a>
          </div>
-
-
          <div class="card-body">
              <form action="/datadosen/save" method="post">
                  <?= csrf_field(); ?>

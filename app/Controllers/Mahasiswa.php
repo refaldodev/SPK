@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\MahasiswaModel;
+use App\Models\PenilaianModel;
 
 class Mahasiswa extends BaseController
 {
@@ -152,6 +153,35 @@ class Mahasiswa extends BaseController
             ];
 
             echo json_encode($msg);
+        }
+    }
+    public function penilaiandosen()
+    {
+        $data = [
+            'title' => 'Penilaian Dosen',
+            'seg1' => $this->request->uri->getSegment(1),
+        ];
+        return view('mahasiswa/penilaiandosen', $data);
+    }
+    public function savepenilaian()
+    {
+        if ($this->request->isAjax()) {
+            $simpandata = [
+                'question1' => $this->request->getVar('question1'),
+                'question2' => $this->request->getVar('question2'),
+                'question3' => $this->request->getVar('question3'),
+                'question4' => $this->request->getVar('question4'),
+                'question5' => $this->request->getVar('question5'),
+            ];
+
+            $penilaianmodel = new PenilaianModel;
+            $penilaianmodel->insert($simpandata);
+            $msg = [
+                'sukses' => 'data berhasil di tambah '
+            ];
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
         }
     }
 }

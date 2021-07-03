@@ -19,7 +19,7 @@ class Kriteria extends BaseController
         // $seg1 = $request->uri->getSegment(1);
         // $datadosen = $this->dosenModel->findAll();
         $data = [
-            'title' =>   'ini data dosen',
+            'title' =>   'Data Kriteria',
             'kriteria' => $this->kriteriamodel->getKriteria(),
             'seg1' => $this->request->uri->getSegment(1),
             'validation' => \Config\Services::validation()
