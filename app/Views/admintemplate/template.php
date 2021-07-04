@@ -87,8 +87,10 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Alternatif</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('DataDosen') ?>">
+            <li class="nav-item 
+                <?= $seg1 == 'datakriteria' ? 'active' : ''; ?>
+            ">
+                <a class="nav-link" href="<?= base_url('datakriteria') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Kriteria</span></a>
             </li>
