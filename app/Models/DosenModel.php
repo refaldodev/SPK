@@ -7,15 +7,16 @@ use CodeIgniter\Model;
 class DosenModel extends Model
 {
     // ...
-    protected $table = 'data_dosen';
+    protected $table = 'dosen';
+    protected $primarykey = 'nidn';
     protected $useTimestamps = true;
-    protected $allowedFields = ['nama', 'slug', 'jabatan', 'lama_mengajar', 'pendidikan', 'program_studi', 'asal_kampus'];
+    protected $allowedFields = ['nidn', 'nama', 'jabatan', 'pendidikan', 'jurusan', 'asal_kampus'];
 
-    public function getDosen($slug = false)
+    public function getDataDosen($slug = false)
     {
         if ($slug == false) {
             return  $this->findAll();
         }
-        return $this->where(['slug' => $slug])->first();
+        return $this->where(['nidn' => $slug])->first();
     }
 }

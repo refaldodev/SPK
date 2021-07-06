@@ -12,33 +12,32 @@
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
                 <div class="table-responsive">
 
-                <table class="table  table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">SubKriteria</th>
-                            <th scope="col">Bobot</th>
-                            <th scope="col">Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($datakriteria as $data) :
-                        ?>
+                    <table class="table  table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="row"><?= $no++  ?></th>
-                                <td><?= $data['pilihan_kriteria'] ?></td>
-                                <td><?= $data['bobot_kriteria'] ?></td>
-                                <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                </td>
+                                <th scope="col">No</th>
+                                <th scope="col">SubKriteria</th>
+                                <th scope="col">Bobot</th>
+                                <th scope="col">Action</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($datakriteria as $data) :
+                            ?>
+                                <tr>
+                                    <th scope="row"><?= $no++  ?></th>
+                                    <td><?= $data['pilihan_kriteria'] ?></td>
+                                    <td><?= $data['bobot_kriteria'] ?></td>
+                                    <td>
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
 
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -52,30 +51,30 @@
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
                 <div class="table-responsive">
 
-                <table class="table  table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">SubKriteria</th>
-                            <th scope="col">Bobot</th>
-                            <th scope="col">Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($kriteriaabdimas as $dataabdimas) : ?>
+                    <table class="table  table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="row">1</th>
-                                <td><?= $dataabdimas['pilihan_kriteria'] ?></td>
-                                <td><?= $dataabdimas['bobot_kriteria'] ?></td>
-                                <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                                <th scope="col">No</th>
+                                <th scope="col">SubKriteria</th>
+                                <th scope="col">Bobot</th>
+                                <th scope="col">Action</th>
 
-                    </tbody>
-                </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($kriteriaabdimas as $dataabdimas) : ?>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><?= $dataabdimas['pilihan_kriteria'] ?></td>
+                                    <td><?= $dataabdimas['bobot_kriteria'] ?></td>
+                                    <td>
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
 
                 </div>
 
@@ -89,29 +88,29 @@
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
                 <div class="table-responsive">
 
-                <table class="table  table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">SubKriteria</th>
-                            <th scope="col">Bobot</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($kriteriakompetensi as $datakompetensi) : ?>
+                    <table class="table  table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="row">1</th>
-                                <td><?= $datakompetensi['pilihan_kriteria'] ?></td>
-                                <td><?= $datakompetensi['bobot_kriteria'] ?></td>
-                                <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                </td>
+                                <th scope="col">No</th>
+                                <th scope="col">SubKriteria</th>
+                                <th scope="col">Bobot</th>
+                                <th scope="col">Action</th>
                             </tr>
-                        <?php endforeach; ?>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($kriteriakompetensi as $datakompetensi) : ?>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><?= $datakompetensi['pilihan_kriteria'] ?></td>
+                                    <td><?= $datakompetensi['bobot_kriteria'] ?></td>
+                                    <td>
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
                 </div>
 
@@ -125,31 +124,31 @@
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
                 <div class="table-responsive">
 
-                <table class="table  table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">SubKriteria</th>
-                            <th scope="col">Bobot</th>
-                            <th scope="col">Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($kriteriapendidikanmodel as $datapendidikan) : ?>
+                    <table class="table  table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="row">1</th>
-                                <td><?= $datapendidikan['pilihan_kriteria'] ?></td>
-                                <td><?= $datapendidikan['bobot_kriteria'] ?></td>
-                                <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                                <th scope="col">No</th>
+                                <th scope="col">SubKriteria</th>
+                                <th scope="col">Bobot</th>
+                                <th scope="col">Action</th>
 
-                    </tbody>
-                </table>          
-                      </div >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($kriteriapendidikanmodel as $datapendidikan) : ?>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><?= $datapendidikan['pilihan_kriteria'] ?></td>
+                                    <td><?= $datapendidikan['bobot_kriteria'] ?></td>
+                                    <td>
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
+                </div>
 
 
 
@@ -163,31 +162,31 @@
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
                 <div class="table-responsive">
 
-                <table class="table  table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">SubKriteria</th>
-                            <th scope="col">Bobot</th>
-                            <th scope="col">Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($kriteriaabdimas as $dataabdimas) : ?>
+                    <table class="table  table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="row">1</th>
-                                <td><?= $dataabdimas['pilihan_kriteria'] ?></td>
-                                <td><?= $dataabdimas['bobot_kriteria'] ?></td>
-                                <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                                <th scope="col">No</th>
+                                <th scope="col">SubKriteria</th>
+                                <th scope="col">Bobot</th>
+                                <th scope="col">Action</th>
 
-                    </tbody>
-                </table>
-                </div >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($kriteriaabdimas as $dataabdimas) : ?>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><?= $dataabdimas['pilihan_kriteria'] ?></td>
+                                    <td><?= $dataabdimas['bobot_kriteria'] ?></td>
+                                    <td>
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
+                </div>
 
 
             </div>
@@ -199,33 +198,33 @@
             <div class="card-body">
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
                 <div class="table-responsive">
-                
 
-                <table class="table  table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">SubKriteria</th>
-                            <th scope="col">Bobot</th>
-                            <th scope="col">Action</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($kriterialamamengajar as $datalamamengajar) : ?>
+                    <table class="table  table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="row">1</th>
-                                <td><?= $datalamamengajar['pilihan_kriteria'] ?></td>
-                                <td><?= $datalamamengajar['bobot_kriteria'] ?></td>
-                                <td>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                                <th scope="col">No</th>
+                                <th scope="col">SubKriteria</th>
+                                <th scope="col">Bobot</th>
+                                <th scope="col">Action</th>
 
-                    </tbody>
-                </table>
-                </div >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($kriterialamamengajar as $datalamamengajar) : ?>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><?= $datalamamengajar['pilihan_kriteria'] ?></td>
+                                    <td><?= $datalamamengajar['bobot_kriteria'] ?></td>
+                                    <td>
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>

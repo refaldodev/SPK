@@ -20,7 +20,7 @@ class DataDosen extends BaseController
         // $datadosen = $this->dosenModel->findAll();
         $data = [
             'title' =>   'ini data dosen',
-            'dosen' => $this->dosenModel->getDosen(),
+            'dosen' => $this->dosenModel->getDataDosen(),
             'seg1' => $this->request->uri->getSegment(1)
         ];
         return view('dosen/index', $data);
@@ -31,7 +31,7 @@ class DataDosen extends BaseController
         // $seg1 = $request->uri->getSegment(1);
         $data = [
             'title' =>   'Detail Data Dosen',
-            'dosen' =>  $this->dosenModel->getDosen($slug),
+            'dosen' =>  $this->dosenModel->getDataDosen($slug),
             'seg1' => $this->request->uri->getSegment(1)
         ];
         // jika datadosen tidak ada ditabel
@@ -56,64 +56,86 @@ class DataDosen extends BaseController
     public function save()
     {
         // validasi input
-        if (!$this->validate([
-            'nama' => [
-                'rules' => 'required|is_unique[data_dosen.nama]',
-                'errors' =>
-                [
-                    'required' => 'Nama harus di isi',
-                    'is_unique' => 'Nama sudah terdaftar'
-                ]
-            ],
-            'jabatan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Jabatan harus di isi'
-                ]
-            ],
-            'pendidikan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Pendidikan harus di isi'
-                ]
-            ],
-            'asal_kampus' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Asal Kampus harus di isi'
-                ]
-            ],
-            'program_studi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Program Studi harus di isi'
-                ]
-            ],
-            'lama_mengajar' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Lama Mengajar harus di isi'
-                ]
-            ]
-        ])) {
+        if ($this->request->isAJAX()) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/datadosen/create')->withInput()->with('validation', $validation);
+
+            $valid = $this->validate([
+                'nidn' => [
+                    'rules' => 'required|is_unique[dosen.nidn]',
+                    'errors' =>
+                    [
+                        'required' => 'Nidn harus di isi',
+                        'is_unique' => 'Nidn sudah terdaftar'
+                    ]
+                ],
+                'nama' => [
+                    'rules' => 'required',
+                    'errors' =>
+                    [
+                        'required' => 'Nama harus di isi',
+                        'is_unique' => 'Nama sudah terdaftar'
+                    ]
+                ],
+                'jabatan' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Jabatan harus di isi'
+                    ]
+                ],
+                'pendidikan' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Pendidikan harus di isi'
+                    ]
+                ],
+                'asal_kampus' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Asal Kampus harus di isi'
+                    ]
+                ],
+                'jurusan' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'jurusan harus di isi'
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nidn' => $validation->getError('nidn'),
+                        'nama' => $validation->getError('nama'),
+                        'jabatan' => $validation->getError('jabatan'),
+                        'pendidikan' => $validation->getError('pendidikan'),
+
+                        'jurusan' => $validation->getError('jurusan'),
+                        'asal_kampus' => $validation->getError('asal_kampus'),
+                    ]
+                ];
+            } else {
+                $nama =  url_title($this->request->getVar('nama'), '-', TRUE);
+                $simpandata = [
+                    'nidn' =>  $this->request->getVar('nidn'),
+                    'nama' =>  $nama,
+                    'jabatan' => $this->request->getVar('jabatan'),
+                    'pendidikan' => $this->request->getVar('pendidikan'),
+                    'jurusan' => $this->request->getVar('jurusan'),
+                    'asal_kampus' => $this->request->getVar('asal_kampus'),
+                ];
+                $this->dosenModel->insert($simpandata);
+                $msg = [
+                    'sukses' => 'data berhasil ditambahkan'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
         }
-
-        $slug =  url_title($this->request->getVar('nama'), '-', TRUE);
-        $this->dosenModel->save([
-            'nama' => $this->request->getVar('nama'),
-            'slug' => $slug,
-            'jabatan' => $this->request->getVar('jabatan'),
-            'lama_mengajar' => $this->request->getVar('lama_mengajar'),
-            'pendidikan' => $this->request->getVar('pendidikan'),
-            'program_studi' => $this->request->getVar('program_studi'),
-            'asal_kampus' => $this->request->getVar('asal_kampus'),
-
-        ]);
         // dd($data);
-        session()->setFlashdata('pesan', 'Data berhasil di tambah.');
+        // session()->setFlashdata('pesan', 'Data berhasil di tambah.');
 
-        return redirect()->to('/datadosen');
+        // return redirect()->to('/datadosen');
     }
 }

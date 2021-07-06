@@ -19,25 +19,25 @@
                 <span class="text">Tambah Dosen</span>
 
             </a>
-            <?php if (session()->getFlashdata('pesan')) :  ?>
+            <!-- <?php if (session()->getFlashdata('pesan')) :  ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('pesan') ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            <?php endif;  ?>
+            <?php endif;  ?> -->
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Nidn</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
                             <th>Pendidikan</th>
+                            <th>Jurusan</th>
                             <th>Asal Kampus</th>
-                            <th>Program Studi</th>
-                            <th>Lama Mengajar</th>
                             <th>Action</th>
 
                         </tr>
@@ -48,14 +48,14 @@
                         <?php foreach ($dosen as $data) : ?>
                             <tr>
                                 <td><?= $no++ ?></td>
+                                <td><?= $data['nidn'] ?></td>
                                 <td><?= $data['nama'] ?></td>
                                 <td><?= $data['jabatan'] ?></td>
                                 <td><?= $data['pendidikan'] ?></td>
+                                <td><?= $data['jurusan'] ?></td>
                                 <td><?= $data['asal_kampus'] ?></td>
-                                <td><?= $data['program_studi'] ?></td>
-                                <td><?= $data['lama_mengajar'] ?></td>
                                 <td>
-                                    <a href="/datadosen/<?= $data['slug'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
+                                    <a href="/datadosen/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
                                     <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
                                     <a href="" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></a>
                                 </td>
