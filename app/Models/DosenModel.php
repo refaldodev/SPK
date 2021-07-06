@@ -8,7 +8,8 @@ class DosenModel extends Model
 {
     // ...
     protected $table = 'dosen';
-    protected $primarykey = 'nidn';
+    protected $primaryKey = 'nidn';
+
     protected $useTimestamps = true;
     protected $allowedFields = ['nidn', 'nama', 'jabatan', 'pendidikan', 'jurusan', 'asal_kampus'];
 

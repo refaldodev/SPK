@@ -146,8 +146,12 @@
 
                              if (result.value) {
                                  window.location.href = '/datadosen';
+                             } else {
+                                 window.location.href = '/datadosen';
                              }
+
                          })
+
                      }
 
                  }

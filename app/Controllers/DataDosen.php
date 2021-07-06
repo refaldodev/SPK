@@ -19,7 +19,7 @@ class DataDosen extends BaseController
         // $seg1 = $request->uri->getSegment(1);
         // $datadosen = $this->dosenModel->findAll();
         $data = [
-            'title' =>   'ini data dosen',
+            'title' =>   'Data Dosen',
             'dosen' => $this->dosenModel->getDataDosen(),
             'seg1' => $this->request->uri->getSegment(1)
         ];
@@ -61,15 +61,18 @@ class DataDosen extends BaseController
 
             $valid = $this->validate([
                 'nidn' => [
-                    'rules' => 'required|is_unique[dosen.nidn]',
+                    'rules' => 'required|is_unique[dosen.nidn]|max_length[10]|numeric',
                     'errors' =>
                     [
                         'required' => 'Nidn harus di isi',
-                        'is_unique' => 'Nidn sudah terdaftar'
+                        'is_unique' => 'Nidn sudah terdaftar',
+                        'max_length' => 'Nidn Maksimal 10 karakter',
+                        'numeric' => 'Nidn harus berupa angka'
+
                     ]
                 ],
                 'nama' => [
-                    'rules' => 'required',
+                    'rules' => 'required|is_unique[dosen.nama]',
                     'errors' =>
                     [
                         'required' => 'Nama harus di isi',
@@ -137,5 +140,51 @@ class DataDosen extends BaseController
         // session()->setFlashdata('pesan', 'Data berhasil di tambah.');
 
         // return redirect()->to('/datadosen');
+    }
+    public function edit($nidn)
+    {
+        $data = [
+            'title' =>   'Data Dosen',
+            'dosen' => $this->dosenModel->getDataDosen($nidn),
+            'seg1' => $this->request->uri->getSegment(1)
+        ];
+        return view('dosen/edit', $data);
+    }
+    public function update()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+
+            $ubahdata = [
+                'nidn' =>  $this->request->getVar('nidn'),
+                'nama' =>  $this->request->getVar('nama'),
+                'jabatan' => $this->request->getVar('jabatan'),
+                'pendidikan' => $this->request->getVar('pendidikan'),
+                'jurusan' => $this->request->getVar('jurusan'),
+                'asal_kampus' => $this->request->getVar('asal_kampus'),
+            ];
+            $nidn = $this->request->getVar('nidnhidden');
+            $this->dosenModel->update($nidn, $ubahdata);
+            $msg = [
+                'sukses' => 'data berhasil di ubah'
+            ];
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
+        }
+    }
+    public function hapus()
+    {
+        if ($this->request->isAjax()) {
+            $nidn = $this->request->getVar('nidn');
+            $this->dosenModel->delete($nidn);
+            $msg = [
+                'sukses' => "data dengan berhasil di hapus "
+
+            ];
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
+        }
     }
 }

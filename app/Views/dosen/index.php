@@ -56,8 +56,8 @@
                                 <td><?= $data['asal_kampus'] ?></td>
                                 <td>
                                     <a href="/datadosen/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                    <a href="" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></a>
+                                    <a href="/datadosen/edit/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger deletedata" onclick="hapus(<?= $data['nidn'] ?>)"><i class="far fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -73,4 +73,52 @@
 
 </div>
 <!-- End of Main Content -->
+
+<script>
+    function hapus(nidn) {
+        Swal.fire({
+            title: 'Hapus',
+            text: `Apakah anda yakin ingin menghapus data ini ?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'tidak'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "<?= site_url('datadosen/hapus') ?>",
+                    data: {
+                        nidn: nidn
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.sukses,
+                                confirmButtonColor: '#3085d6',
+                            }).then(response => {
+                                if (response.value) {
+                                    window.location.href = '/datadosen';
+
+                                } else {
+                                    window.location.href = '/datadosen';
+                                }
+                            })
+
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+                    }
+                });
+
+            }
+        })
+    }
+</script>
 <?= $this->endSection('') ?>
