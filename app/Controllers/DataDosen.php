@@ -143,6 +143,7 @@ class DataDosen extends BaseController
     }
     public function edit($nidn)
     {
+
         $data = [
             'title' =>   'Data Dosen',
             'dosen' => $this->dosenModel->getDataDosen($nidn),
@@ -155,19 +156,47 @@ class DataDosen extends BaseController
         if ($this->request->isAJAX()) {
             $validation = \Config\Services::validation();
 
-            $ubahdata = [
-                'nidn' =>  $this->request->getVar('nidn'),
-                'nama' =>  $this->request->getVar('nama'),
-                'jabatan' => $this->request->getVar('jabatan'),
-                'pendidikan' => $this->request->getVar('pendidikan'),
-                'jurusan' => $this->request->getVar('jurusan'),
-                'asal_kampus' => $this->request->getVar('asal_kampus'),
-            ];
-            $nidn = $this->request->getVar('nidnhidden');
-            $this->dosenModel->update($nidn, $ubahdata);
-            $msg = [
-                'sukses' => 'data berhasil di ubah'
-            ];
+            $valid = $this->validate([
+                'nidn' => [
+                    'rules' => 'max_length[10]|numeric',
+                    'errors' =>
+                    [
+                        'max_length' => 'Nidn Maksimal 10 karakter',
+                        'numeric' => 'Nidn harus berupa angka'
+
+                    ]
+                ],
+                'nama' => [
+                    'rules' => 'is_unique[dosen.nama]',
+                    'errors' =>
+                    [
+                        'is_unique' => 'Nama sudah terdaftar'
+                    ]
+                ]
+
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nidn' => $validation->getError('nidn'),
+                        'nama' => $validation->getError('nama'),
+                    ]
+                ];
+            } else {
+                $ubahdata = [
+                    'nidn' =>  $this->request->getVar('nidn'),
+                    'nama' =>  $this->request->getVar('nama'),
+                    'jabatan' => $this->request->getVar('jabatan'),
+                    'pendidikan' => $this->request->getVar('pendidikan'),
+                    'jurusan' => $this->request->getVar('jurusan'),
+                    'asal_kampus' => $this->request->getVar('asal_kampus'),
+                ];
+                $nidn = $this->request->getVar('nidnhidden');
+                $this->dosenModel->update($nidn, $ubahdata);
+                $msg = [
+                    'sukses' => 'data berhasil di ubah'
+                ];
+            }
             echo json_encode($msg);
         } else {
             exit('maaf tidak dapat di proses');

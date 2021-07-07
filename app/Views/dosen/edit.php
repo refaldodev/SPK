@@ -11,19 +11,21 @@
         <div class="card-body">
             <form action="/datadosen/update" method="post" class="ubahdata">
                 <?= csrf_field(); ?>
-                <input type="text" class="form-control " id="nidn" name="nidnhidden" value="<?= $dosen['nidn'] ?>" hidden>
+                <input type="text" class="form-control " name="nidnhidden" value="<?= $dosen['nidn'] ?>" hidden>
                 <div class="form-group row">
                     <label for="nidn" class="col-sm-2 col-form-label">Nidn</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control " id="nidn" name="nidn" value="<?= $dosen['nidn'] ?>">
-
+                        <div id="validationServer03Feedback" class="invalid-feedback errorNidn">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $dosen['nama'] ?>">
-
+                        <div id="validationServer03Feedback" class="invalid-feedback errorNama">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -87,20 +89,38 @@
                 },
                 dataType: "json",
                 success: function(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil',
-                        text: response.sukses,
-                        confirmButtonColor: '#3085d6'
-                    }).then(result => {
-
-                        if (result.value) {
-                            window.location.href = '/datadosen';
+                    if (response.error) {
+                        if (response.error.nidn) {
+                            $('#nidn').addClass('is-invalid');
+                            $('.errorNidn').html(response.error.nidn);
                         } else {
-                            window.location.href = '/datadosen';
+                            $('#nidn').removeClass('is-invalid');
+                            $('.errorNidn').html('');
                         }
+                        if (response.error.nama) {
+                            $('#nama').addClass('is-invalid');
+                            $('.errorNama').html(response.error.nama);
+                        } else {
+                            $('#nama').removeClass('is-invalid');
+                            $('.errorNama').html('');
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.sukses,
+                            confirmButtonColor: '#3085d6'
+                        }).then(result => {
 
-                    })
+                            if (result.value) {
+                                window.location.href = '/datadosen';
+                            } else {
+                                window.location.href = '/datadosen';
+                            }
+
+                        })
+
+                    }
 
 
 
