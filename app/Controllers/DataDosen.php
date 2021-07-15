@@ -21,7 +21,8 @@ class DataDosen extends BaseController
         $data = [
             'title' =>   'Data Dosen',
             'dosen' => $this->dosenModel->getDataDosen(),
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2)
         ];
         return view('dosen/index', $data);
     }
@@ -71,6 +72,13 @@ class DataDosen extends BaseController
 
                     ]
                 ],
+                'prodi' => [
+                    'rules' => 'required',
+                    'errors' =>
+                    [
+                        'required' => 'Nidn harus di isi',
+                    ]
+                ],
                 'nama' => [
                     'rules' => 'required|is_unique[dosen.nama]',
                     'errors' =>
@@ -118,10 +126,11 @@ class DataDosen extends BaseController
                     ]
                 ];
             } else {
-                $nama =  url_title($this->request->getVar('nama'), '-', TRUE);
+                // $nama =  url_title($this->request->getVar('nama'), '-', TRUE);
                 $simpandata = [
                     'nidn' =>  $this->request->getVar('nidn'),
-                    'nama' =>  $nama,
+                    'nama' =>  $this->request->getVar('nama'),
+                    'prodi' =>  $this->request->getVar('prodi'),
                     'jabatan' => $this->request->getVar('jabatan'),
                     'pendidikan' => $this->request->getVar('pendidikan'),
                     'jurusan' => $this->request->getVar('jurusan'),
@@ -167,10 +176,10 @@ class DataDosen extends BaseController
                     ]
                 ],
                 'nama' => [
-                    'rules' => 'is_unique[dosen.nama]',
+                    'rules' => 'required',
                     'errors' =>
                     [
-                        'is_unique' => 'Nama sudah terdaftar'
+                        'required' => 'Nama harus di isi'
                     ]
                 ]
 
@@ -186,6 +195,7 @@ class DataDosen extends BaseController
                 $ubahdata = [
                     'nidn' =>  $this->request->getVar('nidn'),
                     'nama' =>  $this->request->getVar('nama'),
+                    'prodi' =>  $this->request->getVar('prodi'),
                     'jabatan' => $this->request->getVar('jabatan'),
                     'pendidikan' => $this->request->getVar('pendidikan'),
                     'jurusan' => $this->request->getVar('jurusan'),
@@ -215,5 +225,23 @@ class DataDosen extends BaseController
         } else {
             exit('maaf tidak dapat di proses');
         }
+    }
+    public function penilaianDosen()
+    {
+        $data = [
+            'title' =>   'Penilaian Dosen',
+            'dosen' => $this->dosenModel->getDataDosen(),
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2)
+        ];
+        return view('dosen/penilaiandosen', $data);
+    }
+    public function tambahnilai()
+    {
+        $data = [
+            'title' =>   'Tambah Penilaian Dosen',
+            'seg1' => $this->request->uri->getSegment(1)
+        ];
+        return view('dosen/tambahnilai', $data);
     }
 }

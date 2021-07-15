@@ -22,11 +22,7 @@ use Psr\Log\LoggerInterface;
 
 use App\Models\MahasiswaModel;
 use App\Models\DataKriteriaModel;
-use App\Models\KriteriaAbdimasModel;
-use App\Models\KriteriaKompetensiModel;
-use App\Models\KriteriaPendidikanModel;
-use App\Models\KriteriaJabatanModel;
-use App\Models\KriteriaLamaMengajarModel;
+use App\Models\SubKriteriaModel;
 
 
 
@@ -69,11 +65,6 @@ class BaseController extends Controller
 		session();
 		$this->mhs =  new MahasiswaModel;
 		$this->datakriteria = new DataKriteriaModel;
-		$this->kriteriabdimasamodel = new KriteriaAbdimasModel;
-		$this->kriteriakompetensimodel = new KriteriaKompetensiModel;
-		$this->kriteriapendidikanmodel = new KriteriaPendidikanModel;
-		$this->kriteriajabatanmodel = new KriteriaJabatanModel;
-		$this->kriterialamamengajar  = new KriteriaLamaMengajarModel;
-
+		$this->subkriteriamodel = new SubKriteriaModel;
 	}
 }

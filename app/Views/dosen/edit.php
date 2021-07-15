@@ -29,6 +29,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
+                    <div class="col-sm-10">
+                        <select class="form-control prodi" id="prodi" name="prodi">
+                            <option value="Sistem Informasi" <?= $dosen['prodi'] === 'Sistem Informasi' ? 'Selected' : '' ?>>Sistem Informasi</option>
+                            <option value="Teknik Informatika" <?= $dosen['prodi'] === 'Teknik Informatika' ? 'Selected' : '' ?>>Teknik Informatika</option>
+                        </select>
+                        <div id="validationServer03Feedback" class="invalid-feedback errorProdi">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= $dosen['jabatan'] ?>">

@@ -22,7 +22,9 @@ class Kriteria extends BaseController
             'title' =>   'Data Kriteria',
             'kriteria' => $this->kriteriamodel->getKriteria(),
             'seg1' => $this->request->uri->getSegment(1),
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'seg2' => $this->request->uri->getSegment(2)
+
 
         ];
         return view('kriteria/index', $data);
@@ -32,7 +34,9 @@ class Kriteria extends BaseController
         $data = [
             'title' =>   'ini data kriteria detail',
             'subkriteria' => $this->kriteriamodel->getKriteria($slug),
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2)
+
         ];
         return view('kriteria/subkriteria', $data);
     }
@@ -42,7 +46,9 @@ class Kriteria extends BaseController
         $data = [
             'title' => 'Tambah data Kriteria',
             'seg1' => $this->request->uri->getSegment(1),
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'seg2' => $this->request->uri->getSegment(2)
+
 
         ];
         return view('kriteria/create', $data);
@@ -91,6 +97,8 @@ class Kriteria extends BaseController
             'title' => 'Update data Kriteria',
             'seg1' => $this->request->uri->getSegment(1),
             'datakriteria' => $this->kriteriamodel->getKriteria($kriteria),
+            'seg2' => $this->request->uri->getSegment(2)
+
 
         ];
         return view('kriteria/edit', $data);

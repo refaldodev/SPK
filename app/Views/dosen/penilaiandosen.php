@@ -55,9 +55,7 @@
                                 <td><?= $data['jurusan'] ?></td>
                                 <td><?= $data['asal_kampus'] ?></td>
                                 <td>
-                                    <a href="/datadosen/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
-                                    <a href="/datadosen/edit/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                    <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger deletedata" onclick="hapus(<?= $data['nidn'] ?>)"><i class="far fa-trash-alt "></i></button>
+                                    <a href="/datadosen/edit/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i>Isi Penilaian</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

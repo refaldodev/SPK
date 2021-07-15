@@ -28,6 +28,18 @@
                      </div>
                  </div>
                  <div class="form-group row">
+                     <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
+                     <div class="col-sm-10">
+                         <select class="form-control prodi" id="prodi" name="prodi">
+                             <option value="null">-- Pilih ---</option>
+                             <option value="Sistem Informasi">Sistem Informasi</option>
+                             <option value="Teknik Informatika">Teknik Informatika</option>
+                         </select>
+                         <div id="validationServer03Feedback" class="invalid-feedback errorProdi">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="form-group row">
                      <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                      <div class="col-sm-10">
                          <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= old('jabatan') ?>">
@@ -101,6 +113,13 @@
                              $('#nidn').removeClass('is-invalid');
                              $('.errorNidn').html('');
                          }
+                         if (response.error.prodi) {
+                             $('#prodi').addClass('is-invalid');
+                             $('.errorProdi').html(response.error.prodi);
+                         } else {
+                             $('#prodi').removeClass('is-invalid');
+                             $('.errorProdi').html('');
+                         }
                          if (response.error.nama) {
                              $('#nama').addClass('is-invalid');
                              $('.errorNama').html(response.error.nama);
@@ -149,7 +168,6 @@
                              } else {
                                  window.location.href = '/datadosen';
                              }
-
                          })
 
                      }

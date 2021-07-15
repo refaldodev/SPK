@@ -11,7 +11,7 @@ class DosenModel extends Model
     protected $primaryKey = 'nidn';
 
     protected $useTimestamps = true;
-    protected $allowedFields = ['nidn', 'nama', 'jabatan', 'pendidikan', 'jurusan', 'asal_kampus'];
+    protected $allowedFields = ['nidn', 'nama', 'prodi', 'jabatan', 'pendidikan', 'jurusan', 'asal_kampus'];
 
     public function getDataDosen($slug = false)
     {

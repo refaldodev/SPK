@@ -31,7 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('') ?>">
@@ -69,24 +69,43 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kriteria</span></a>
             </li>
+            <li class="nav-item
+            <?= $seg1 == 'subkriteria'  ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('subkriteria') ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Sub Kriteria</span></a>
+            </li>
             <li class="nav-item 
             <?= $seg1 == 'pembobotanroc'  ? 'active' : '' ?> ">
                 <a class="nav-link" href="<?= base_url('pembobotanroc') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Pembobotan ROC</span></a>
             </li>
-            <li class="nav-item 
-            <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= base_url('datadosen') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Dosen</span></a>
+
+            <li class="nav-item   <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Dosen</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item 
+                        <?php if ($seg1 === 'datadosen') : ?>
+                        <?= $seg2 == ''  ? 'active' : '' ?>
+                        <?php endif; ?>
+                        " href="<?= base_url('datadosen') ?>">
+                            Data Dosen</a>
+                        <a class="collapse-item 
+                        <?php if ($seg1 === 'datadosen') : ?>
+                        <?= $seg2 == 'penilaiandosen'  ? 'active' : '' ?>
+                        <?php endif; ?>
+                        " href="<?= base_url('datadosen/penilaiandosen') ?>">
+                            Penilaian Dosen</a>
+                    </div>
+                </div>
             </li>
-            <li class="nav-item
-            <?= $seg1 == 'dataalternatif'  ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= base_url('DataAlternatif') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Alternatif</span></a>
-            </li>
+
+
             <li class="nav-item 
                 <?= $seg1 == 'datakriteria' ? 'active' : ''; ?>
             ">
