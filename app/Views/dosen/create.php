@@ -31,7 +31,7 @@
                      <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
                      <div class="col-sm-10">
                          <select class="form-control prodi" id="prodi" name="prodi">
-                             <option value="null">-- Pilih ---</option>
+                             <option value="null" selected="true" disabled="disabled">-- Pilih ---</option>
                              <option value="Sistem Informasi">Sistem Informasi</option>
                              <option value="Teknik Informatika">Teknik Informatika</option>
                          </select>

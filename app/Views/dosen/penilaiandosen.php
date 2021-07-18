@@ -39,23 +39,26 @@
                             <th>Jurusan</th>
                             <th>Asal Kampus</th>
                             <th>Action</th>
-
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php $no = 1; ?>
-                        <?php foreach ($dosen as $data) : ?>
+                        <?php foreach ($nilaidosen as $nilai) :  ?>
                             <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $data['nidn'] ?></td>
-                                <td><?= $data['nama'] ?></td>
-                                <td><?= $data['jabatan'] ?></td>
-                                <td><?= $data['pendidikan'] ?></td>
-                                <td><?= $data['jurusan'] ?></td>
-                                <td><?= $data['asal_kampus'] ?></td>
+                                <td><?= $nilai['nidn'] ?></td>
+                                <td><?= $nilai['nama'] ?></td>
+                                <td><?= $nilai['jabatan'] ?></td>
+                                <td><?= $nilai['pendidikan'] ?></td>
+                                <td><?= $nilai['jurusan'] ?></td>
+                                <td><?= $nilai['asal_kampus'] ?></td>
                                 <td>
-                                    <a href="/datadosen/edit/<?= $data['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i>Isi Penilaian</a>
+                                    <?php if ($nilai['id_nilai']) { ?>
+                                        <a href="/datadosen/tambahnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success"><i class="fas fa-check-circle"></i> Sudah dinilai</a>
+                                    <?php } else { ?>
+                                        <a href="/datadosen/tambahnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -63,6 +66,7 @@
 
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
@@ -76,50 +80,6 @@
 <!-- End of Main Content -->
 
 <script>
-    function hapus(nidn) {
-        Swal.fire({
-            title: 'Hapus',
-            text: `Apakah anda yakin ingin menghapus data ini ?`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Hapus',
-            cancelButtonText: 'tidak'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    type: "post",
-                    url: "<?= site_url('datadosen/hapus') ?>",
-                    data: {
-                        nidn: nidn
-                    },
-                    dataType: "json",
-                    success: function(response) {
-                        if (response.sukses) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: response.sukses,
-                                confirmButtonColor: '#3085d6',
-                            }).then(response => {
-                                if (response.value) {
-                                    window.location.href = '/datadosen';
 
-                                } else {
-                                    window.location.href = '/datadosen';
-                                }
-                            })
-
-                        }
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
-                    }
-                });
-
-            }
-        })
-    }
 </script>
 <?= $this->endSection('') ?>

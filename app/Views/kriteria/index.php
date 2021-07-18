@@ -37,7 +37,7 @@
                 <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
+                            <th>Kode</th>
                             <th>Kriteria</th>
                             <th>Peringkat</th>
                             <th>Bobot</th>
@@ -48,7 +48,7 @@
                         <?php $no = 1; ?>
                         <?php foreach ($kriteria as $data) : ?>
                             <tr>
-                                <td><?= $no++ ?></td>
+                                <td>C<?= $no++ ?></td>
                                 <td><?= $data['kriteria'] ?></td>
                                 <td><?= $data['peringkat'] ?></td>
                                 <td><?= $data['bobot'] ?></td>

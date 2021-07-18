@@ -23,6 +23,8 @@ use Psr\Log\LoggerInterface;
 use App\Models\MahasiswaModel;
 use App\Models\DataKriteriaModel;
 use App\Models\SubKriteriaModel;
+use App\Models\NilaiModel;
+
 
 
 
@@ -66,5 +68,6 @@ class BaseController extends Controller
 		$this->mhs =  new MahasiswaModel;
 		$this->datakriteria = new DataKriteriaModel;
 		$this->subkriteriamodel = new SubKriteriaModel;
+		$this->nilaimodel = new NilaiModel;
 	}
 }

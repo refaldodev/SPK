@@ -49,7 +49,9 @@ class DataDosen extends BaseController
         $data = [
             'title' => 'Tambah data',
             'seg1' => $this->request->uri->getSegment(1),
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'seg2' => $this->request->uri->getSegment(2)
+
 
         ];
         return view('dosen/create', $data);
@@ -145,10 +147,6 @@ class DataDosen extends BaseController
         } else {
             exit('maaf tidak dapat di proses');
         }
-        // dd($data);
-        // session()->setFlashdata('pesan', 'Data berhasil di tambah.');
-
-        // return redirect()->to('/datadosen');
     }
     public function edit($nidn)
     {
@@ -156,7 +154,9 @@ class DataDosen extends BaseController
         $data = [
             'title' =>   'Data Dosen',
             'dosen' => $this->dosenModel->getDataDosen($nidn),
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+
         ];
         return view('dosen/edit', $data);
     }
@@ -230,18 +230,127 @@ class DataDosen extends BaseController
     {
         $data = [
             'title' =>   'Penilaian Dosen',
-            'dosen' => $this->dosenModel->getDataDosen(),
             'seg1' => $this->request->uri->getSegment(1),
-            'seg2' => $this->request->uri->getSegment(2)
+            'seg2' => $this->request->uri->getSegment(2),
+            'nilaidosen' => $this->dosenModel->getNilaiDosen(),
+
         ];
         return view('dosen/penilaiandosen', $data);
     }
-    public function tambahnilai()
+    public function tambahnilai($id_dosen)
     {
         $data = [
             'title' =>   'Tambah Penilaian Dosen',
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+            'dosen' => $this->dosenModel->getDataDosen($id_dosen)
+
         ];
         return view('dosen/tambahnilai', $data);
+    }
+    public function savepenilaian()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'C1' => [
+                    'rules' => 'required',
+                    'label' => 'Penelitian Bermutu',
+                    'errors' =>
+                    [
+                        'required' => '{field} harus di isi',
+                    ]
+                ],
+                'C2' => [
+                    'rules' => 'required|numeric',
+                    'label' => 'Pengabdian Masyarakat',
+                    'errors' =>
+                    [
+                        'required' => '{field} harus di isi',
+                        'numeric' => '{field} harus berupa angka'
+                    ]
+                ],
+                'C3' => [
+                    'rules' => 'required|numeric',
+                    'label' => 'Kompetensi',
+                    'errors' =>
+                    [
+                        'required' => 'Nama harus di isi',
+                        'numeric' => '{field} harus berupa angka'
+                    ]
+                ],
+                'C4' => [
+                    'rules' => 'required',
+                    'label' => 'Pendidikan',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+                'C5' => [
+                    'rules' => 'required',
+                    'label' => 'Lama Mengajar',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+                'C6' => [
+                    'rules' => 'required',
+                    'label' => 'Lama Mengajar',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+                'periode' => [
+                    'rules' => 'required',
+                    'label' => 'Periode',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'C1' => $validation->getError('C1'),
+                        'C2' => $validation->getError('C2'),
+                        'C3' => $validation->getError('C3'),
+                        'C4' => $validation->getError('C4'),
+                        'C5' => $validation->getError('C5'),
+                        'C6' => $validation->getError('C6'),
+                    ]
+                ];
+            } else {
+                $c2 = '';
+                if ($this->request->getVar('C2') >= 80) {
+                    $c2 = 0.61;
+                } else if ($this->request->getVar('C2') >= 61 && $this->request->getVar('C2') <= 79) {
+                    $c2 = 0.28;
+                } else {
+                    $c2 = 0.11;
+                }
+                $simpandata = [
+                    'id_dosen' => $this->request->getVar('id_dosen'),
+
+                    'C1' => $this->request->getVar('C1'),
+                    'C2' => $c2,
+                    'C3' => $this->request->getVar('C3'),
+                    'C4' => $this->request->getVar('C4'),
+                    'C5' => $this->request->getVar('C5'),
+                    'C6' => $this->request->getVar('C6'),
+                    'periode' => $this->request->getVar('periode'),
+
+                ];
+
+                $this->nilaimodel->insert($simpandata);
+                $msg = [
+                    'sukses' => 'data berhasil ditambah',
+                    'berhasil' => 'Sudah di nilai'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            exit('data tidak ditemukan');
+        }
     }
 }

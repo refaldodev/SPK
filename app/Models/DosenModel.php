@@ -20,4 +20,10 @@ class DosenModel extends Model
         }
         return $this->where(['nidn' => $slug])->first();
     }
+    public function getNilaiDosen()
+    {
+        return $this->db->table('dosen')
+            ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
+            ->get()->getResultArray();
+    }
 }
