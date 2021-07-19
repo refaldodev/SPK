@@ -11,20 +11,19 @@
         </div>
         <div class="card-body">
             <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
-            <a href="/datadosen/create" class="btn btn-primary btn-icon-split mb-3">
+            <a href="/users/create" class="btn btn-primary btn-icon-split mb-3">
                 <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Artikel</button> <br> <br> -->
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah Users</span>
-
             </a>
-
-            <div class="table-responsive">
+            <div class="table-responsive ">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Nidn</th>
                             <th>Nama</th>
                             <th>Level</th>
                             <th>Action</th>
@@ -32,10 +31,29 @@
                     </thead>
                     <tbody>
                         <?php $no = 1; ?>
-                        <tr>
-                            <td>
-                            </td>
-                        </tr>
+                        <?php foreach ($users as $user) : ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $user['nidn'] ?></td>
+
+                                <td><?= $user['nama'] ?></td>
+                                <td>
+                                    <?php if ($user['level'] == 1) {
+                                        echo 'Admin';
+                                    } else if ($user['level'] == 2) {
+                                        echo  'Mahasiswa';
+                                    } else if ($user['level'] == 3) {
+                                        echo  'Dosen';
+                                    }
+                                    ?>
+                                </td>
+                                <td>
+                                    <a href="/users/edit/<?= $user['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger deletedata" onclick="hapus(<?= $user['nidn'] ?>)"><i class="far fa-trash-alt "></i></button>
+
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -54,7 +72,7 @@
     function hapus(nidn) {
         Swal.fire({
             title: 'Hapus',
-            text: `Apakah anda yakin ingin menghapus data ini ?`,
+            text: `Apakah anda yakin ingin menghapus data dengan nidn ${nidn} ?`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -65,7 +83,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: "<?= site_url('datadosen/hapus') ?>",
+                    url: "<?= site_url('users/hapus') ?>",
                     data: {
                         nidn: nidn
                     },
@@ -79,10 +97,10 @@
                                 confirmButtonColor: '#3085d6',
                             }).then(response => {
                                 if (response.value) {
-                                    window.location.href = '/datadosen';
+                                    window.location.href = '/users';
 
                                 } else {
-                                    window.location.href = '/datadosen';
+                                    window.location.href = '/users';
                                 }
                             })
 

@@ -24,7 +24,7 @@ use App\Models\MahasiswaModel;
 use App\Models\DataKriteriaModel;
 use App\Models\SubKriteriaModel;
 use App\Models\NilaiModel;
-
+use App\Models\UsersModel;
 
 
 
@@ -69,5 +69,6 @@ class BaseController extends Controller
 		$this->datakriteria = new DataKriteriaModel;
 		$this->subkriteriamodel = new SubKriteriaModel;
 		$this->nilaimodel = new NilaiModel;
+		$this->usersmodel = new UsersModel;
 	}
 }
