@@ -105,16 +105,79 @@ class Users extends BaseController
     }
     public function edit($nidn)
     {
-        $data =
-            [
-                'title' => 'Edit User',
-                'users' => $this->usersmodel->getDataUsers($nidn),
-                'seg1' => $this->request->uri->getSegment(1),
-                'seg2' => $this->request->uri->getSegment(2)
-            ];
-        return view('users/edit', $data);
+        $query = $this->usersmodel->getDataUsers($nidn);
+        if ($query > 0) {
+            $data =
+                [
+                    'title' => 'Edit User',
+                    'users' => $this->usersmodel->getDataUsers($nidn),
+                    'seg1' => $this->request->uri->getSegment(1),
+                    'seg2' => $this->request->uri->getSegment(2)
+                ];
+            return view('users/edit', $data);
+        } else {
+            echo "<script>alert('data tidak ditemukan');";
+            echo "window.location='" . site_url('users') . "'; 
+            </script>";
+        }
     }
 
+    public function update()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid['password']  = $validation->setRule('password', 'password', 'min_length[5]');
+
+            $valid = $this->validate([
+                'nidn' => [
+                    'rules' => 'required|max_length[10]|numeric',
+                    'errors' =>
+                    [
+                        'required' => 'Nidn harus di isi',
+                        'max_length' => 'Nidn Maksimal 10 karakter',
+                        'numeric' => 'Nidn harus berupa angka'
+
+                    ]
+                ],
+
+                'nama' => [
+                    'rules' => 'required',
+                    'errors' =>
+                    [
+                        'required' => 'Nama harus di isi',
+                        'is_unique' => 'Nama sudah terdaftar'
+                    ]
+                ],
+
+
+
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nidn' => $validation->getError('nidn'),
+                        'nama' => $validation->getError('nama'),
+                        'password' => $validation->getError('password'),
+                    ]
+                ];
+            } else {
+                $ubahdata['nidn'] = $this->request->getVar('nidn');
+                $ubahdata['nama'] = $this->request->getVar('nama');
+                if (!empty($this->request->getVar('password'))) {
+                    $ubahdata['password'] = sha1($this->request->getVar('password'));
+                }
+                $ubahdata['level'] = $this->request->getVar('level');
+                $nidn = $this->request->getVar('nidnhidden');
+                $this->usersmodel->update($nidn, $ubahdata);
+                $msg = [
+                    'sukses' => 'data berhasil di ubah'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
+        }
+    }
 
     public function hapus()
     {

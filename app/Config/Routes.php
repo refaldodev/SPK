@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Admin');
+$routes->setDefaultController('auth');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,7 +31,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'admin::index');
+$routes->get('/', 'auth::index');
+
+$routes->get('/dashboard', 'dashboard::index');
+
 $routes->get('/datadosen', 'datadosen::index');
 $routes->get('/datadosen/create', 'datadosen::create');
 $routes->get('/datadosen/penilaiandosen', 'datadosen::penilaiandosen');

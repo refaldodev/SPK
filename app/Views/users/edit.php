@@ -13,8 +13,9 @@
 
         <div class="card-body">
 
-            <form action="/users/save" method="post" class="simpandata">
+            <form action="/users/update" method="post" class="simpandata">
                 <?= csrf_field(); ?>
+                <input type="text" class="form-control " id="nidn" name="nidnhidden" value="<?= $users['nidn'] ?>" hidden>
 
                 <div class="form-group row">
                     <label for="Nidn" class="col-sm-2 col-form-label">Nidn</label>
@@ -42,14 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control  " id="password2" name="password2">
-                        <div id="validationServer03Feedback " class="invalid-feedback errorPassword2">
-                        </div>
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label for="prodi" class="col-sm-2 col-form-label">Level</label>
                     <div class="col-sm-10">
@@ -108,19 +102,13 @@
                             $('#nama').removeClass('is-invalid');
                             $('.errorNama').html('');
                         }
-                        if (response.error.password) {
+
+                        if (response.error.password2) {
                             $('#password').addClass('is-invalid');
                             $('.errorPassword').html(response.error.password);
                         } else {
                             $('#password').removeClass('is-invalid');
                             $('.errorPassword').html('');
-                        }
-                        if (response.error.password2) {
-                            $('#password2').addClass('is-invalid');
-                            $('.errorPassword2').html(response.error.password2);
-                        } else {
-                            $('#password2').removeClass('is-invalid');
-                            $('.errorPassword2').html('');
                         }
 
                         if (response.error.level) {
