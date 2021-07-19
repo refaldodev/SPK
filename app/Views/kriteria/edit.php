@@ -34,7 +34,7 @@
                 <div class=" form-group row">
                     <label for="Bobot" class="col-sm-2 col-form-label">Bobot</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control " id="Bobot" min="0" max="0.99" step=0.01 name="bobot" value="<?= $datakriteria['bobot'] ?>">
+                        <input type="number" class="form-control " id="Bobot" min="0" max="0.999" step=0.001 name="bobot" value="<?= $datakriteria['bobot'] ?>">
 
                     </div>
                 </div>

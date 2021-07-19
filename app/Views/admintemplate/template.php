@@ -66,27 +66,24 @@
          
          <?= $seg1 == 'users'  ? 'active' : '' ?> ">
                 <a class="nav-link" href="<?= base_url('users') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-user"></i>
                     <span>Users</span></a>
             </li>
             <!-- Nav Item - Charts -->
             <li class="nav-item 
             <?= $seg1 == 'kriteria'  ? 'active' : '' ?> ">
                 <a class="nav-link" href="<?= base_url('kriteria') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Kriteria</span></a>
+                    <i class="fas fa-database"></i> <span>Kriteria</span></a>
             </li>
             <li class="nav-item
             <?= $seg1 == 'subkriteria'  ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= base_url('subkriteria') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Sub Kriteria</span></a>
+                    <i class="fas fa-database"></i> <span>Sub Kriteria</span></a>
             </li>
 
             <li class=" nav-item <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Dosen</span>
+                    <i class="fas fa-user-tie"></i> <span>Dosen</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -106,18 +103,9 @@
                 </div>
             </li>
 
-
-            <li class="nav-item 
-                <?= $seg1 == 'datakriteria' ? 'active' : ''; ?>
-            ">
-                <a class="nav-link" href="<?= base_url('datakriteria') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Kriteria</span></a>
-            </li>
             <li class="nav-item  <?= $seg1 == 'mahasiswa'  ? 'active' : '' ?>">
                 <a class="nav-link " href="<?= base_url('mahasiswa') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Mahasiswa</span></a>
+                    <i class="fas fa-user-graduate"></i> <span>Data Mahasiswa</span></a>
             </li>
 
             <li class="nav-item">
@@ -188,7 +176,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('nama')  ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('nama')  ?> dan level <?= session()->get('level')  ?> </span>
                                 <img class="img-profile rounded-circle" src="/assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
