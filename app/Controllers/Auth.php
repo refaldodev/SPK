@@ -35,7 +35,7 @@ class Auth extends BaseController
                      </script>";
             } else {
                 session()->setFlashdata('gagal',  'Username atau password salah!!');
-                return redirect()->to('auth');
+                return redirect()->back()->withInput();
             }
         }
     }

@@ -49,7 +49,7 @@
                                         <?php } ?>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="nidn" placeholder="Enter Nidn / Nim..." name="nidn" required>
+                                            <input type="text" class="form-control form-control-user" id="nidn" placeholder="Enter Nidn / Nim..." name="nidn" required value="<?= old('nidn') ?>">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" required>
