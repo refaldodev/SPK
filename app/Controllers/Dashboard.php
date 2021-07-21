@@ -6,8 +6,10 @@ use App\Models\DosenModel;
 
 class Dashboard extends BaseController
 {
+
     public function index()
     {
+
         $data =
             [
                 'title' => 'Data User',

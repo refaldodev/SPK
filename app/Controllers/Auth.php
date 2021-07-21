@@ -6,6 +6,10 @@ use App\Models\DosenModel;
 
 class Auth extends BaseController
 {
+    public function __construct()
+    {
+        $this->db =  \Config\Database::connect();
+    }
     public function index()
     {
         $data =
@@ -18,25 +22,83 @@ class Auth extends BaseController
     public function check_login()
     {
 
-        if ($this->request->getPost('login') !== null) {
+        if ($this->request->isAJAX()) {
             $nidn = $this->request->getVar('nidn');
-            $password =  $this->request->getVar('password');
-            $query = $this->authmodel->check_login($nidn, $password);
+            $password = sha1($this->request->getVar('password'));
+            $validation = \Config\Services::validation();
 
-            if ($query > 0) {
+            $valid = $this->validate([
+                'nidn' => [
+                    'rules' => 'required|numeric',
+                    'errors' =>
+                    [
+                        'required' => 'Nidn harus di isi',
+                        'numeric' => 'Nidn harus berupa angka'
 
-                session()->set('nidn',  $query['nidn']);
-                session()->set('nama',  $query['nama']);
-                session()->set('level',  $query['level']);
+                    ]
+                ],
+                'password' => [
+                    'rules' => 'required',
+                    'errors' =>
+                    [
+                        'required' => 'Password harus di isi',
 
-                echo "<script>
-                    alert('Login berhasil');
-                    window.location='" . site_url('/dashboard') . "';
-                     </script>";
+                    ]
+                ],
+
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nidn' => $validation->getError('nidn'),
+                        'password' => $validation->getError('password')
+                    ]
+
+                ];
             } else {
-                session()->setFlashdata('gagal',  'Username atau password salah!!');
-                return redirect()->back()->withInput();
+                // cek user di database;
+                $query = $this->db->query("SELECT * FROM users WHERE nidn ='$nidn'");
+                $result = $query->getResult();
+                if (count($result) > 0) {
+                    // lanjutkan
+                    $row = $query->getRow();
+                    $querypassword = $this->db->query("SELECT * FROM users WHERE nidn ='$nidn' && password ='$password' ");
+                    $result = $querypassword->getResult();
+
+                    // $password_user = $row->password
+                    if (count($result) > 0) {
+                        // buat session
+                        $simpansession = [
+                            'login' => true,
+                            'nidn' => $nidn,
+                            'namauser' => $row->nama,
+                            'level' => $row->level
+
+                        ];
+                        $this->session->set($simpansession);
+                        $msg = [
+                            'sukses' => [
+                                'link' => '/dashboard'
+                            ]
+                        ];
+                    } else {
+                        $msg = [
+                            'error' => [
+                                'password' => 'maaf password salah'
+                            ]
+                        ];
+                    }
+                } else {
+                    $msg = [
+                        'error' => [
+                            'nidn' => 'maaf nidn tidak ditemukan'
+                        ]
+                    ];
+                }
             }
+            echo json_encode($msg);
+        } else {
+            exit('data tidak ditemukan');
         }
     }
     public function logout()

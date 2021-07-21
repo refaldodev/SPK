@@ -12,4 +12,11 @@ class AuthModel extends Model
             ->where(array('nidn' =>  $nidn, 'password' => sha1($password)))
             ->get()->getRowArray();
     }
+    public function getNidn($nidn = false)
+    {
+        if ($nidn === false) {
+            return $this->findAll();
+        }
+        return $this->where(['nidn' => $nidn])->first();
+    }
 }

@@ -41,18 +41,17 @@
                                         <img src="/assets/img/logo.png" alt="logo" width="100%">
                                     </div>
                                     <form action="/auth/check_login" method="post" class="login">
-                                        <?php if (!empty(session()->getFlashdata('gagal'))) { ?>
-                                            <div class="alert alert-warning">
-                                                <?= session()->getFlashData('gagal') ?>
 
-                                            </div>
-                                        <?php } ?>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="nidn" placeholder="Enter Nidn / Nim..." name="nidn" required value="<?= old('nidn') ?>">
+                                            <input type="text" class="form-control form-control-user" id="nidn" placeholder="Enter Nidn / Nim..." name="nidn" value="<?= old('nidn') ?>" autofocus>
+                                            <div id="validationServer03Feedback" class="invalid-feedback errorNidn">
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" required>
+                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
+                                            <div id="validationServer03Feedback" class="invalid-feedback errorPassword">
+                                            </div>
                                         </div>
 
                                         <button type="submit" class="btn btn-outline-danger btn-user btn-block btnsimpan" name="login">
@@ -86,6 +85,52 @@
 
 
 
+    <script>
+        $(document).ready(function() {
+            $('.login').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    beforeSend: function() {
+                        $('.btnsimpan').attr('disable', 'disabled');
+                        $('.btnsimpan').html('<i class="fa fa-spin fa-spinner"> </i>');
+                    },
+                    complete: function() {
+                        $('.btnsimpan').remove('disable');
+                        $('.btnsimpan').html('Tambah');
+
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.error) {
+                            if (response.error.nidn) {
+                                $('#nidn').addClass('is-invalid');
+                                $('.errorNidn').html(response.error.nidn);
+                            } else {
+                                $('#nidn').removeClass('is-invalid');
+                                $('.errorNidn').html('');
+                            }
+                            if (response.error.password) {
+                                $('#password').addClass('is-invalid');
+                                $('.errorPassword').html(response.error.password);
+                            } else {
+                                $('#password').removeClass('is-invalid');
+                                $('.errorPassword').html('');
+                            }
+
+                        }
+                        if (response.sukses) {
+                            window.location = response.sukses.link;
+                        }
+
+                    }
+                });
+            })
+
+        })
+    </script>
 </body>
 
 </html>

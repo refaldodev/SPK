@@ -33,18 +33,18 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'auth::index');
 
-$routes->get('/dashboard', 'dashboard::index');
+$routes->get('/dashboard', 'dashboard::index', ['filter' => 'ceklogin']);
 
-$routes->get('/datadosen', 'datadosen::index');
-$routes->get('/datadosen/create', 'datadosen::create');
-$routes->get('/datadosen/penilaiandosen', 'datadosen::penilaiandosen');
-$routes->get('/datadosen/tambahnilai', 'datadosen::tambahnilai');
+$routes->get('/datadosen', 'datadosen::index', ['filter' => 'ceklogin']);
+$routes->get('/datadosen/create', 'datadosen::create', ['filter' => 'ceklogin']);
+$routes->get('/datadosen/penilaiandosen', 'datadosen::penilaiandosen', ['filter' => 'ceklogin']);
+$routes->get('/datadosen/tambahnilai', 'datadosen::tambahnilai', ['filter' => 'ceklogin']);
 
-$routes->get('/datadosen/(:segment)', 'datadosen::detail/$1');
+$routes->get('/datadosen/(:segment)', 'datadosen::detail/$1', ['filter' => 'ceklogin']);
 $routes->get('/kriteria/create', 'kriteria::create');
-$routes->get('/kriteria/(:segment)', 'kriteria::subkriteria/$1');
-$routes->get('/kriteria/edit/(:segment)', 'kriteria::edit/$1');
-$routes->get('/users', 'users::index');
+$routes->get('/kriteria/(:segment)', 'kriteria::subkriteria/$1', ['filter' => 'ceklogin']);
+$routes->get('/kriteria/edit/(:segment)', 'kriteria::edit/$1', ['filter' => 'ceklogin']);
+$routes->get('/users', 'users::index', ['filter' => 'ceklogin']);
 
 /*
  * --------------------------------------------------------------------

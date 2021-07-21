@@ -44,7 +44,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['form', 'url'];
+	protected $helpers = ['form', 'url', 'fungsi'];
 
 	/**
 	 * Constructor.
@@ -64,7 +64,7 @@ class BaseController extends Controller
 		// E.g.: $this->session = \Config\Services::session();
 
 		// get routes
-		session();
+		$this->session = \Config\Services::session();
 		$this->mhs =  new MahasiswaModel;
 		$this->datakriteria = new DataKriteriaModel;
 		$this->subkriteriamodel = new SubKriteriaModel;
