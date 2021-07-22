@@ -14,6 +14,7 @@
     <!-- Custom fonts for this template-->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
@@ -122,7 +123,20 @@
 
                         }
                         if (response.sukses) {
-                            window.location = response.sukses.link;
+                            Swal.fire({
+                                icon: 'success',
+                                position: 'top',
+                                title: 'Berhasil',
+                                text: response.sukses.teks,
+                                confirmButtonColor: '#3085d6'
+                            }).then(result => {
+
+                                if (result.value) {
+                                    window.location = response.sukses.link;
+                                } else {
+                                    window.location = response.sukses.link;
+                                }
+                            })
                         }
 
                     }

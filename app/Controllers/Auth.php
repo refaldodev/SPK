@@ -78,7 +78,8 @@ class Auth extends BaseController
                         $this->session->set($simpansession);
                         $msg = [
                             'sukses' => [
-                                'link' => '/dashboard'
+                                'link' => '/dashboard',
+                                'teks' => 'Anda Berhasil Login'
                             ]
                         ];
                     } else {

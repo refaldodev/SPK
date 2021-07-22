@@ -8,25 +8,35 @@ class Users extends BaseController
 {
     public function index()
     {
-        $data =
-            [
-                'title' => 'Data User',
-                'users' => $this->usersmodel->getDataUsers(),
-                'seg1' => $this->request->uri->getSegment(1),
-                'seg2' => $this->request->uri->getSegment(2)
-            ];
-        return view('users/index', $data);
+        if (session()->get('level') ==  1) {
+
+            $data =
+                [
+                    'title' => 'Data User',
+                    'users' => $this->usersmodel->getDataUsers(),
+                    'seg1' => $this->request->uri->getSegment(1),
+                    'seg2' => $this->request->uri->getSegment(2)
+                ];
+            return view('users/index', $data);
+        } else {
+            return redirect()->to('dashboard');
+        }
     }
     public function create()
     {
-        $data =
-            [
-                'title' => 'Tambah User',
-                'users' => $this->usersmodel->getDataUsers(),
-                'seg1' => $this->request->uri->getSegment(1),
-                'seg2' => $this->request->uri->getSegment(2)
-            ];
-        return view('users/create', $data);
+        if (session()->get('level') ==  1) {
+
+            $data =
+                [
+                    'title' => 'Tambah User',
+                    'users' => $this->usersmodel->getDataUsers(),
+                    'seg1' => $this->request->uri->getSegment(1),
+                    'seg2' => $this->request->uri->getSegment(2)
+                ];
+            return view('users/create', $data);
+        } else {
+            return redirect()->to('dashboard');
+        }
     }
     public function save()
     {
@@ -105,20 +115,25 @@ class Users extends BaseController
     }
     public function edit($nidn)
     {
-        $query = $this->usersmodel->getDataUsers($nidn);
-        if ($query > 0) {
-            $data =
-                [
-                    'title' => 'Edit User',
-                    'users' => $this->usersmodel->getDataUsers($nidn),
-                    'seg1' => $this->request->uri->getSegment(1),
-                    'seg2' => $this->request->uri->getSegment(2)
-                ];
-            return view('users/edit', $data);
-        } else {
-            echo "<script>alert('data tidak ditemukan');";
-            echo "window.location='" . site_url('users') . "'; 
+        if (session()->get('level') ==  1) {
+
+            $query = $this->usersmodel->getDataUsers($nidn);
+            if ($query > 0) {
+                $data =
+                    [
+                        'title' => 'Edit User',
+                        'users' => $this->usersmodel->getDataUsers($nidn),
+                        'seg1' => $this->request->uri->getSegment(1),
+                        'seg2' => $this->request->uri->getSegment(2)
+                    ];
+                return view('users/edit', $data);
+            } else {
+                echo "<script>alert('data tidak ditemukan');";
+                echo "window.location='" . site_url('users') . "'; 
             </script>";
+            }
+        } else {
+            return redirect()->to('dashboard');
         }
     }
 

@@ -33,7 +33,9 @@ class DataDosen extends BaseController
         $data = [
             'title' =>   'Detail Data Dosen',
             'dosen' =>  $this->dosenModel->getDataDosen($slug),
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2)
+
         ];
         // jika datadosen tidak ada ditabel
         if (empty($data['dosen'])) {
@@ -329,12 +331,24 @@ class DataDosen extends BaseController
                 } else {
                     $c2 = 0.11;
                 }
+                $c3 = '';
+                if ($this->request->getVar('C3') >= 81) {
+                    $c3 = 0.456;
+                } else if ($this->request->getVar('C3') >= 61 && $this->request->getVar('C3') <= 80) {
+                    $c3 = 0.256;
+                } else if ($this->request->getVar('C3') >= 41 && $this->request->getVar('C3') <= 60) {
+                    $c3 = 0.156;
+                } else if ($this->request->getVar('C3') >= 21 && $this->request->getVar('C3') <= 40) {
+                    $c3 = 0.09;
+                } else {
+                    $c3 = 0.04;
+                }
                 $simpandata = [
                     'id_dosen' => $this->request->getVar('id_dosen'),
 
                     'C1' => $this->request->getVar('C1'),
                     'C2' => $c2,
-                    'C3' => $this->request->getVar('C3'),
+                    'C3' => $c3,
                     'C4' => $this->request->getVar('C4'),
                     'C5' => $this->request->getVar('C5'),
                     'C6' => $this->request->getVar('C6'),

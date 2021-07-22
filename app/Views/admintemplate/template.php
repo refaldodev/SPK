@@ -62,13 +62,15 @@
             <div class="sidebar-heading">
                 Smarter
             </div>
-            <li class="nav-item 
+            <?php if (session()->get('level') ==  1) : ?>
+                <li class="nav-item 
          
          <?= $seg1 == 'users'  ? 'active' : '' ?> ">
-                <a class="nav-link" href="<?= base_url('users') ?>">
-                    <i class="fas fa-user"></i>
-                    <span>Users</span></a>
-            </li>
+                    <a class="nav-link" href="<?= base_url('users') ?>">
+                        <i class="fas fa-user"></i>
+                        <span>Users</span></a>
+                </li>
+            <?php endif; ?>
             <!-- Nav Item - Charts -->
             <li class="nav-item 
             <?= $seg1 == 'kriteria'  ? 'active' : '' ?> ">
@@ -93,12 +95,15 @@
                         <?php endif; ?>
                         " href="<?= base_url('datadosen') ?>">
                             Data Dosen</a>
-                        <a class="collapse-item 
+                        <?php if (session()->get('level') ==  1) : ?>
+
+                            <a class="collapse-item 
                         <?php if ($seg1 === 'datadosen') : ?>
                         <?= $seg2 === 'penilaiandosen'  ? 'active' : '' ?>
                         <?php endif; ?>
                         " href="<?= base_url('datadosen/penilaiandosen') ?>">
-                            Penilaian Dosen</a>
+                                Penilaian Dosen</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </li>
@@ -108,8 +113,8 @@
                     <i class="fas fa-user-graduate"></i> <span>Data Mahasiswa</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('DataDosen') ?>">
+            <li class="nav-item <?= $seg1 == 'perhitungan'  ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('perhitungan') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Perhitungan SMARTER</span></a>
             </li>

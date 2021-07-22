@@ -20,6 +20,7 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
 		'ceklogin' => \App\Filters\Ceklogin::class,
+		'cekadmin' => \App\Filters\Cekadmin::class,
 
 	];
 
