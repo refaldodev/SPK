@@ -14,9 +14,25 @@ class Perhitungan extends BaseController
         $NilaiMaxC1 =  $this->nilaimodel->getDataNilaMaxC1();
         $NilaiMinC2 =  $this->nilaimodel->getDataNilaMinC2();
         $NilaiMaxC2 =  $this->nilaimodel->getDataNilaMaxC2();
+        $NilaiMinC3 =  $this->nilaimodel->getDataNilaMinC3();
+        $NilaiMaxC3 =  $this->nilaimodel->getDataNilaMaxC3();
+        $NilaiMinC4 =  $this->nilaimodel->getDataNilaMinC4();
+        $NilaiMaxC4 =  $this->nilaimodel->getDataNilaMaxC4();
+        $NilaiMinC5 =  $this->nilaimodel->getDataNilaMinC5();
+        $NilaiMaxC5 =  $this->nilaimodel->getDataNilaMaxC5();
+        $NilaiMinC6 =  $this->nilaimodel->getDataNilaMinC6();
+        $NilaiMaxC6 =  $this->nilaimodel->getDataNilaMaxC6();
+        $NilaiKriteriaC1 = $this->nilaimodel->getKriteriaC1();
+        $NilaiKriteriaC2 = $this->nilaimodel->getKriteriaC2();
+        $NilaiKriteriaC3 = $this->nilaimodel->getKriteriaC3();
+        $NilaiKriteriaC4 = $this->nilaimodel->getKriteriaC4();
+        $NilaiKriteriaC5 = $this->nilaimodel->getKriteriaC5();
+        $NilaiKriteriaC6 = $this->nilaimodel->getKriteriaC6();
+
         $min = '';
         $max = '';
-        function toDouble($type, $var)
+        $kriteria = '';
+        function toDouble($type = '', $var)
         {
             if ($type == 'min') {
                 foreach ($var as $value) {
@@ -28,12 +44,33 @@ class Perhitungan extends BaseController
                     $max = $value;
                 }
                 return $max;
+            } else {
+                foreach ($var as $value) {
+                    $kriteria = $value;
+                }
+                return $kriteria;
             }
         }
         $Minc1 = toDouble('min', $NilaiMinC1);
         $MaxC1 = toDouble('max', $NilaiMaxC1);
-        $Minc2 = toDouble('min', $NilaiMinC2);
+        $MinC2 = toDouble('min', $NilaiMinC2);
         $MaxC2 = toDouble('max', $NilaiMaxC2);
+        $MinC3 = toDouble('min', $NilaiMinC3);
+        $MaxC3 = toDouble('max', $NilaiMaxC3);
+        $MinC4 = toDouble('min', $NilaiMinC4);
+        $MaxC4 = toDouble('max', $NilaiMaxC4);
+        $MinC5 = toDouble('min', $NilaiMinC5);
+        $MaxC5 = toDouble('max', $NilaiMaxC5);
+        $MinC6 = toDouble('min', $NilaiMinC6);
+        $MaxC6 = toDouble('max', $NilaiMaxC6);
+        $MaxC6 = toDouble('max', $NilaiMaxC6);
+        $kriteriaC1 = toDouble('', $NilaiKriteriaC1);
+        $kriteriaC2 = toDouble('', $NilaiKriteriaC2);
+        $kriteriaC3 = toDouble('', $NilaiKriteriaC3);
+        $kriteriaC4 = toDouble('', $NilaiKriteriaC4);
+        $kriteriaC5 = toDouble('', $NilaiKriteriaC5);
+        $kriteriaC6 = toDouble('', $NilaiKriteriaC6);
+
         $data = [
             'title' => 'Data Perhitungan Smarter',
             'nilaidosen' => $this->nilaimodel->getDataNilaiDosen(),
@@ -42,8 +79,21 @@ class Perhitungan extends BaseController
             'C1Max' => $MaxC1,
             'C1Min' => $Minc1,
             'C2Max' => $MaxC2,
-            'C2Min' => $Minc2,
-
+            'C2Min' => $MinC2,
+            'C3Max' => $MaxC3,
+            'C3Min' => $MinC3,
+            'C4Max' => $MaxC4,
+            'C4Min' => $MinC4,
+            'C5Max' => $MaxC5,
+            'C5Min' => $MinC5,
+            'C6Max' => $MaxC6,
+            'C6Min' => $MinC6,
+            'kriteriaC1' => $kriteriaC1,
+            'kriteriaC2' => $kriteriaC2,
+            'kriteriaC3' => $kriteriaC3,
+            'kriteriaC4' => $kriteriaC4,
+            'kriteriaC5' => $kriteriaC5,
+            'kriteriaC6' => $kriteriaC6,
         ];
 
         return view('perhitungan/index', $data);
