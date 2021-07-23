@@ -13,6 +13,8 @@ class DataDosen extends BaseController
         // cara konek db
         // $db = \Config\Database::connect();
         $this->dosenModel = new DosenModel();
+
+        $this->db =  \Config\Database::connect();
     }
     public function index()
     {
@@ -241,17 +243,34 @@ class DataDosen extends BaseController
     }
     public function tambahnilai($id_dosen)
     {
+
+
         $data = [
             'title' =>   'Tambah Penilaian Dosen',
             'seg1' => $this->request->uri->getSegment(1),
             'seg2' => $this->request->uri->getSegment(2),
-            'dosen' => $this->dosenModel->getDataDosen($id_dosen)
-
+            'dosen' => $this->dosenModel->getDataDosen($id_dosen),
+            'subkriteria1' => $this->subkriteriamodel->getSubKriteria1(),
         ];
+        // foreach ($data['subkriteria1'] as $row) {
+        //     var_dump($row['bobot']);
+        // }
+
         return view('dosen/tambahnilai', $data);
     }
     public function savepenilaian()
     {
+        $subkriteria2 =  $this->subkriteriamodel->getSubKriteria2();
+        $subbobotabdimas1 = $subkriteria2[0]['bobot'];
+        $subbobotabdimas2 = $subkriteria2[1]['bobot'];
+        $subbobotabdimas3 = $subkriteria2[2]['bobot'];
+        $subkriteria3 =  $this->subkriteriamodel->getSubKriteria3();
+        $subbobotKompetensi1 = $subkriteria3[0]['bobot'];
+        $subbobotKompetensi2 = $subkriteria3[1]['bobot'];
+        $subbobotKompetensi3 = $subkriteria3[2]['bobot'];
+        $subbobotKompetensi4 = $subkriteria3[3]['bobot'];
+        $subbobotKompetensi5 = $subkriteria3[4]['bobot'];
+
         if ($this->request->isAJAX()) {
             $validation = \Config\Services::validation();
             $valid = $this->validate([
@@ -325,23 +344,23 @@ class DataDosen extends BaseController
             } else {
                 $c2 = '';
                 if ($this->request->getVar('C2') >= 80) {
-                    $c2 = 0.61;
+                    $c2 =    $subbobotabdimas1;
                 } else if ($this->request->getVar('C2') >= 61 && $this->request->getVar('C2') <= 79) {
-                    $c2 = 0.28;
+                    $c2 =    $subbobotabdimas2;
                 } else {
-                    $c2 = 0.11;
+                    $c2 =   $subbobotabdimas3;
                 }
                 $c3 = '';
                 if ($this->request->getVar('C3') >= 81) {
-                    $c3 = 0.456;
+                    $c3 = $subbobotKompetensi1;
                 } else if ($this->request->getVar('C3') >= 61 && $this->request->getVar('C3') <= 80) {
-                    $c3 = 0.256;
+                    $c3 = $subbobotKompetensi2;
                 } else if ($this->request->getVar('C3') >= 41 && $this->request->getVar('C3') <= 60) {
-                    $c3 = 0.156;
+                    $c3 = $subbobotKompetensi3;
                 } else if ($this->request->getVar('C3') >= 21 && $this->request->getVar('C3') <= 40) {
-                    $c3 = 0.09;
+                    $c3 = $subbobotKompetensi4;
                 } else {
-                    $c3 = 0.04;
+                    $c3 = $subbobotKompetensi5;
                 }
                 $simpandata = [
                     'id_dosen' => $this->request->getVar('id_dosen'),
@@ -366,5 +385,22 @@ class DataDosen extends BaseController
         } else {
             exit('data tidak ditemukan');
         }
+    }
+    public function editnilai($id_dosen)
+    {
+
+
+        $data = [
+            'title' =>   'Edit Penilaian Dosen',
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+            'nilai' => $this->dosenModel->getDataNilaiDosen($id_dosen),
+            'subkriteria1' => $this->subkriteriamodel->getSubKriteria1(),
+
+        ];
+        // foreach ($data['subkriteria1'] as $row) {
+        //     var_dump($row['bobot']);
+        // }
+        return view('dosen/editnilai', $data);
     }
 }

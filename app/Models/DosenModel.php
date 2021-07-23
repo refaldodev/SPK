@@ -26,4 +26,11 @@ class DosenModel extends Model
             ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
             ->get()->getResultArray();
     }
+    public function   getDataNilaiDosen($nidn)
+    {
+        return $this->db->table('dosen')
+            ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
+            ->where(['nidn' => $nidn])
+            ->get()->getRowArray();
+    }
 }

@@ -10,15 +10,15 @@
                 Kembali</a>
         </div>
         <div class="card-body">
-            <form action="/datadosen/savepenilaian" method="post" class="simpandata">
+            <form action="/datadosen/editpenilaian" method="post" class="simpandata">
                 <?= csrf_field(); ?>
 
-                <input type="text" class="form-control" id="id_dosen" name="id_dosen" value="<?= $dosen['nidn'] ?>" hidden>
+                <input type="text" class="form-control" id="id_dosen" name="id_dosen" value="<?= $nilai['nidn'] ?>" hidden>
 
                 <div class="form-group row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama Dosen</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $dosen['nama'] ?>" readonly>
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $nilai['nama'] ?>" readonly>
                         <div id="validationServer03Feedback" class="invalid-feedback errorNama">
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="form-group row">
                     <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat </label>
                     <div class="col-sm-10">
-                        <input type="number" step="0" min="0" max="100" class="form-control" id="C2" name="C2">
+                        <input type="number" step="0" min="0" max="100" class="form-control" id="C2" name="C2" value="<?= $nilai['C2'] ?>">
                         <div id="validationServer03Feedback" class="invalid-feedback errorC2">
 
                         </div>
@@ -50,7 +50,7 @@
                 <div class="form-group row">
                     <label for="C3" class="col-sm-2 col-form-label">Kompetensi </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="C3" name="C3">
+                        <input type="text" class="form-control" id="C3" name="C3" value="<?= $nilai['C3'] ?>">
                         <div id="validationServer03Feedback" class="invalid-feedback errorC3">
 
                         </div>
@@ -60,8 +60,8 @@
                     <label for="C4" class="col-sm-2 col-form-label">Pendidikan </label>
                     <div class="col-sm-10">
                         <select class="form-control C4" id="C4" name="C4">
-                            <option value="0.75" <?= $dosen['pendidikan'] === 'Strata 2' ? 'Selected' : '' ?>>Strata 2</option>
-                            <option value="0.25" <?= $dosen['pendidikan'] === 'Strata 3' ? 'Selected' : 'null' ?>>Strata 3</option>
+                            <option value="0.75" <?= $nilai['pendidikan'] === 'Strata 2' ? 'Selected' : '' ?>>Strata 2</option>
+                            <option value="0.25" <?= $nilai['pendidikan'] === 'Strata 3' ? 'Selected' : 'null' ?>>Strata 3</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC4">
                         </div>
@@ -72,10 +72,10 @@
                     <div class="col-sm-10">
                         <select class="form-control C5" id="C5" name="C5">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="0.52" <?= $dosen['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
-                            <option value="0.27" <?= $dosen['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
-                            <option value="0.14" <?= $dosen['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
-                            <option value="0.04" <?= $dosen['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
+                            <option value="0.52" <?= $nilai['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
+                            <option value="0.27" <?= $nilai['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
+                            <option value="0.14" <?= $nilai['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
+                            <option value="0.04" <?= $nilai['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC5">
                         </div>
@@ -99,7 +99,7 @@
                 <div class="form-group row">
                     <label for="periode" class="col-sm-2 col-form-label">Periode </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="periode" name="periode" placeholder="e.g Semester Ganjil Periode 2021-2022">
+                        <input type="text" class="form-control" id="periode" name="periode" placeholder="e.g Semester Ganjil Periode 2021-2022" value="<?= $nilai['periode'] ?>">
                         <div id="validationServer03Feedback" class="invalid-feedback errorPeriode">
 
                         </div>
@@ -109,7 +109,7 @@
 
         <div class="form-group row mr-2">
             <div class="col-sm-12 text-right ">
-                <button type="submit" class="btn btn-primary btnsimpan ">Tambah Data</button>
+                <button type="submit" class="btn btn-primary btnsimpan ">Simpan Data</button>
             </div>
         </div>
         </form>
@@ -132,7 +132,7 @@
                 },
                 complete: function() {
                     $('.btnsimpan').remove('disable');
-                    $('.btnsimpan').html('Tambah');
+                    $('.btnsimpan').html('Simpan Data');
 
                 },
                 dataType: "json",

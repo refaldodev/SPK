@@ -126,7 +126,6 @@
                 <table class="table table-bordered" id="dataTableNilaiAkhir" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
                             <th>Nama</th>
                             <th>Pendidikan</th>
                             <th>Jabatan</th>
@@ -164,7 +163,6 @@
 
                             ?>
                             <tr>
-                                <td><?= $no++ ?></td>
                                 <td><?= $nilai['nama'] ?></td>
                                 <td><?= $nilai['pendidikan'] ?></td>
                                 <td><?= $nilai['jabatan'] ?></td>
@@ -201,6 +199,20 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Kesimpulan </h6>
+        </div>
+        <div class="card-body">
+            <p>
+                dari hasil perhitungan rangking diatas maka pemilihan dosen dengan kinerja terbaik yaitu dengan nilai <?= round($nilaiakhir, 3) ?>
+
+            </p>
+
+
         </div>
     </div>
 </div>

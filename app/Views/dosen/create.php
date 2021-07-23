@@ -77,7 +77,7 @@
 
          <div class="form-group row mr-2">
              <div class="col-sm-12 text-right ">
-                 <button type="submit" class="btn btn-primary btnsimpan">Tambah Data</button>
+                 <button type="submit" class="btn btn-primary btnsimpan ">Tambah Data</button>
              </div>
          </div>
          </form>

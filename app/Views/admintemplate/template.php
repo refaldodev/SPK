@@ -72,58 +72,69 @@
                 </li>
             <?php endif; ?>
             <!-- Nav Item - Charts -->
-            <li class="nav-item 
-            <?= $seg1 == 'kriteria'  ? 'active' : '' ?> ">
-                <a class="nav-link" href="<?= base_url('kriteria') ?>">
-                    <i class="fas fa-database"></i> <span>Kriteria</span></a>
-            </li>
-            <li class="nav-item
-            <?= $seg1 == 'subkriteria'  ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= base_url('subkriteria') ?>">
-                    <i class="fas fa-database"></i> <span>Sub Kriteria</span></a>
-            </li>
+            <?php if (session()->get('level') ==  1) : ?>
 
-            <li class=" nav-item <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-user-tie"></i> <span>Dosen</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item 
+                <li class="nav-item 
+            <?= $seg1 == 'kriteria'  ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('kriteria') ?>">
+                        <i class="fas fa-database"></i> <span>Kriteria</span></a>
+                </li>
+            <?php endif; ?>
+            <?php if (session()->get('level') ==  1) : ?>
+
+                <li class="nav-item
+            <?= $seg1 == 'subkriteria'  ? 'active' : '' ?>">
+                    <a class="nav-link" href="<?= base_url('subkriteria') ?>">
+                        <i class="fas fa-database"></i> <span>Sub Kriteria</span></a>
+                </li>
+            <?php endif; ?>
+            <?php if (session()->get('level') ==  1) : ?>
+
+                <li class=" nav-item <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-user-tie"></i> <span>Dosen</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item 
                         <?php if ($seg1 === 'datadosen') : ?>
                         <?= $seg2 === ''  ? 'active' : '' ?>
                         <?php endif; ?>
                         " href="<?= base_url('datadosen') ?>">
-                            Data Dosen</a>
-                        <?php if (session()->get('level') ==  1) : ?>
+                                Data Dosen</a>
+                            <?php if (session()->get('level') ==  1) : ?>
 
-                            <a class="collapse-item 
+                                <a class="collapse-item 
                         <?php if ($seg1 === 'datadosen') : ?>
                         <?= $seg2 === 'penilaiandosen'  ? 'active' : '' ?>
                         <?php endif; ?>
                         " href="<?= base_url('datadosen/penilaiandosen') ?>">
-                                Penilaian Dosen</a>
-                        <?php endif; ?>
+                                    Penilaian Dosen</a>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            <?php endif; ?>
+            <?php if (session()->get('level') ==  1) : ?>
 
-            <li class="nav-item  <?= $seg1 == 'mahasiswa'  ? 'active' : '' ?>">
-                <a class="nav-link " href="<?= base_url('mahasiswa') ?>">
-                    <i class="fas fa-user-graduate"></i> <span>Data Mahasiswa</span></a>
-            </li>
-
-            <li class="nav-item <?= $seg1 == 'perhitungan'  ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= base_url('perhitungan') ?>">
+                <li class="nav-item  <?= $seg1 == 'mahasiswa'  ? 'active' : '' ?>">
+                    <a class="nav-link " href="<?= base_url('mahasiswa') ?>">
+                        <i class="fas fa-user-graduate"></i> <span>Data Mahasiswa</span></a>
+                </li>
+            <?php endif; ?>
+            <?php if (session()->get('level') ==  1 || session()->get('level') ==  3) : ?>
+                <li class="nav-item <?= $seg1 == 'perhitungan'  ? 'active' : '' ?>">
+                    <a class="nav-link" href="<?= base_url('perhitungan') ?>">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Data Perhitungan SMARTER</span></a>
+                </li>
+            <?php endif; ?>
+            <li class="nav-item <?= $seg1 == 'nilai' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('nilai') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Perhitungan SMARTER</span></a>
+                    <span>Penilaian Dosen</span></a>
             </li>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

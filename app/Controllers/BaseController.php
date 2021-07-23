@@ -26,6 +26,7 @@ use App\Models\SubKriteriaModel;
 use App\Models\NilaiModel;
 use App\Models\UsersModel;
 use App\Models\AuthModel;
+use App\Models\PenilaianModel;
 
 
 class BaseController extends Controller
@@ -71,5 +72,7 @@ class BaseController extends Controller
 		$this->nilaimodel = new NilaiModel;
 		$this->usersmodel = new UsersModel;
 		$this->authmodel = new AuthModel;
+		$this->authmodel = new AuthModel;
+		$this->penilaianmodel = new PenilaianModel;
 	}
 }

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\MahasiswaModel;
-use App\Models\PenilaianModel;
+use App\Models\DosenModel;
 
 class Mahasiswa extends BaseController
 {
@@ -13,11 +13,21 @@ class Mahasiswa extends BaseController
     // {
     //     $this->mahasiswaModel = new MahasiswaModel();
     // }
+    public function __construct()
+    {
+        // cara konek db
+        // $db = \Config\Database::connect();
+        $this->dosenModel = new DosenModel();
+
+        $this->db =  \Config\Database::connect();
+    }
     public function index()
     {
         $tes = [
             'title' =>   'Data Mahasiswa',
-            'seg1' => $this->request->uri->getSegment(1)
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+
         ];
         return view('mahasiswa/index', $tes);
     }
@@ -155,27 +165,47 @@ class Mahasiswa extends BaseController
             echo json_encode($msg);
         }
     }
-    public function penilaiandosen()
+    public function nilai()
+    {
+        $data = [
+            'title' =>   'Penilaian Dosen',
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+            'nilaidosen' => $this->dosenModel->getNilaiDosen(),
+
+        ];
+        return view('mahasiswa/nilai', $data);
+    }
+    public function penilaiandosen($nidn)
     {
         $data = [
             'title' => 'Penilaian Dosen',
             'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+            'dosen' => $this->dosenModel->getDataDosen($nidn),
         ];
         return view('mahasiswa/penilaiandosen', $data);
     }
+
     public function savepenilaian()
     {
         if ($this->request->isAjax()) {
             $simpandata = [
+                'id_dosen' => $this->request->getVar('id_dosen'),
                 'question1' => $this->request->getVar('question1'),
                 'question2' => $this->request->getVar('question2'),
                 'question3' => $this->request->getVar('question3'),
                 'question4' => $this->request->getVar('question4'),
                 'question5' => $this->request->getVar('question5'),
+                'question6' => $this->request->getVar('question6'),
+                'question7' => $this->request->getVar('question7'),
+                'question8' => $this->request->getVar('question8'),
+                'question9' => $this->request->getVar('question9'),
+                'question10' => $this->request->getVar('question10'),
             ];
 
-            $penilaianmodel = new PenilaianModel;
-            $penilaianmodel->insert($simpandata);
+            $this->penilaianmodel->insert($simpandata);
+
             $msg = [
                 'sukses' => 'data berhasil di tambah '
             ];

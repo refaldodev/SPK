@@ -20,4 +20,25 @@ class SubKriteriaModel extends Model
             return $this->where(['id_subkriteria' => $slug])->first();
         }
     }
+    public function getSubKriteria1()
+    {
+        return $this->db->table('subkriteria')
+            ->select('bobot')
+            ->where(['id_kriteria' => 1])
+            ->get()->getResultArray();
+    }
+    public function getSubKriteria2()
+    {
+        return $this->db->table('subkriteria')
+            ->select('bobot')
+            ->where(['id_kriteria' => 2])
+            ->get()->getResultArray();
+    }
+    public function getSubKriteria3()
+    {
+        return $this->db->table('subkriteria')
+            ->select('bobot')
+            ->where(['id_kriteria' => 3])
+            ->get()->getResultArray();
+    }
 }

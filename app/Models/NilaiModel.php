@@ -24,6 +24,7 @@ class NilaiModel extends Model
             ->join('dosen', 'dosen.nidn=nilai.id_dosen')
             ->get()->getResultArray();
     }
+
     public function getDataNilaMaxC1()
     {
         return $this->db->table('nilai')

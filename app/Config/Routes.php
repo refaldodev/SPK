@@ -50,6 +50,10 @@ $routes->get('/subkriteria', 'subkriteria::index', ['filter' => 'ceklogin']);
 $routes->get('/subkriteria/edit/(:segment)', 'subkriteria::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/subkriteria/edit', 'subkriteria::edit', ['filter' => 'ceklogin']);
 $routes->get('/users', 'users::index', ['filter' => 'ceklogin']);
+$routes->get('/mahasiswa', 'mahasiswa::index', ['filter' => 'ceklogin']);
+$routes->get('/mahasiswa/penilaiandosen', 'mahasiswa::penilaiandosen', ['filter' => 'ceklogin']);
+$routes->get('/nilai', 'mahasiswa::nilai', ['filter' => 'ceklogin']);
+
 
 /*
  * --------------------------------------------------------------------

@@ -53,7 +53,6 @@
                                 <td><?= $data['peringkat'] ?></td>
                                 <td><?= $data['bobot'] ?></td>
                                 <td>
-                                    <a href="/kriteria/<?= $data['kriteria'] ?>" data-toggle="tooltip" data-placement="top" title="Sub Kriteria" class="btn btn-outline-info"><i class="fa fa-search-plus"></i></a>
                                     <a href="/kriteria/edit/<?= $data['kriteria'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
                                     <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-outline-danger" onclick="hapuskriteria('<?= $data['id'] ?>')"><i class="far fa-trash-alt"></i></button>
 

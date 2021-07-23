@@ -54,11 +54,9 @@
                                 <td><?= $nilai['jurusan'] ?></td>
                                 <td><?= $nilai['asal_kampus'] ?></td>
                                 <td>
-                                    <?php if ($nilai['id_nilai']) { ?>
-                                        <a href="/datadosen/editnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success"><i class="fas fa-check-circle"></i> Sudah dinilai</a>
-                                    <?php } else { ?>
-                                        <a href="/datadosen/tambahnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
-                                    <?php } ?>
+
+                                    <a href="/mahasiswa/penilaiandosen/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+
                                 </td>
                             </tr>
                         <?php endforeach; ?>
