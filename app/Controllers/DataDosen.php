@@ -251,6 +251,8 @@ class DataDosen extends BaseController
             'seg2' => $this->request->uri->getSegment(2),
             'dosen' => $this->dosenModel->getDataDosen($id_dosen),
             'subkriteria1' => $this->subkriteriamodel->getSubKriteria1(),
+            'subkriteria2' => $this->subkriteriamodel->getSubKriteria2(),
+
         ];
         // foreach ($data['subkriteria1'] as $row) {
         //     var_dump($row['bobot']);
@@ -342,14 +344,7 @@ class DataDosen extends BaseController
                     ]
                 ];
             } else {
-                $c2 = '';
-                if ($this->request->getVar('C2') >= 80) {
-                    $c2 =    $subbobotabdimas1;
-                } else if ($this->request->getVar('C2') >= 61 && $this->request->getVar('C2') <= 79) {
-                    $c2 =    $subbobotabdimas2;
-                } else {
-                    $c2 =   $subbobotabdimas3;
-                }
+
                 $c3 = '';
                 if ($this->request->getVar('C3') >= 81) {
                     $c3 = $subbobotKompetensi1;
@@ -366,7 +361,7 @@ class DataDosen extends BaseController
                     'id_dosen' => $this->request->getVar('id_dosen'),
 
                     'C1' => $this->request->getVar('C1'),
-                    'C2' => $c2,
+                    'C2' =>  $this->request->getVar('C2'),
                     'C3' => $c3,
                     'C4' => $this->request->getVar('C4'),
                     'C5' => $this->request->getVar('C5'),
@@ -396,6 +391,7 @@ class DataDosen extends BaseController
             'seg2' => $this->request->uri->getSegment(2),
             'nilai' => $this->dosenModel->getDataNilaiDosen($id_dosen),
             'subkriteria1' => $this->subkriteriamodel->getSubKriteria1(),
+            'subkriteria2' => $this->subkriteriamodel->getSubKriteria2(),
 
         ];
         // foreach ($data['subkriteria1'] as $row) {

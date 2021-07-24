@@ -18,8 +18,14 @@ class NilaiModel extends Model
         }
         return $this->where(['id_nilai' => $slug])->first();
     }
-    public function getDataNilaiDosen()
+    public function getDataNilaiDosen($periode = false)
     {
+        if ($periode) {
+            return $this->db->table('nilai')
+                ->join('dosen', 'dosen.nidn=nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getResultArray();
+        }
         return $this->db->table('nilai')
             ->join('dosen', 'dosen.nidn=nilai.id_dosen')
             ->get()->getResultArray();

@@ -12,12 +12,16 @@ class Auth extends BaseController
     }
     public function index()
     {
-        $data =
-            [
-                'title' => 'Login',
+        if (session('login')) {
+            return redirect()->to('dashboard');
+        } else {
+            $data =
+                [
+                    'title' => 'Login',
 
-            ];
-        return view('auth/login', $data);
+                ];
+            return view('auth/login', $data);
+        }
     }
     public function check_login()
     {

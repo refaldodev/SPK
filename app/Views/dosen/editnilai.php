@@ -39,9 +39,15 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat </label>
+                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat <?= $subkriteria2[0]['bobot'] ?>
+                    </label>
                     <div class="col-sm-10">
-                        <input type="number" step="0" min="0" max="100" class="form-control" id="C2" name="C2" value="<?= $nilai['C2'] ?>">
+                        <select class="form-control C2" id="C2" name="C2">
+                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                            <option value="<?= $subkriteria2[0]['bobot'] ?>"><?= $subkriteria2[0]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[1]['bobot'] ?>"><?= $subkriteria2[1]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[2]['bobot'] ?>"><?= $subkriteria2[2]['subkriteria'] ?></option>
+                        </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC2">
 
                         </div>

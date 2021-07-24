@@ -39,9 +39,15 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat </label>
+                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat <?= $subkriteria2[0]['bobot'] ?>
+                    </label>
                     <div class="col-sm-10">
-                        <input type="number" step="0" min="0" max="100" class="form-control" id="C2" name="C2">
+                        <select class="form-control C2" id="C2" name="C2">
+                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                            <option value="<?= $subkriteria2[0]['bobot'] ?>"><?= $subkriteria2[0]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[1]['bobot'] ?>"><?= $subkriteria2[1]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[2]['bobot'] ?>"><?= $subkriteria2[2]['subkriteria'] ?></option>
+                        </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC2">
 
                         </div>
@@ -60,8 +66,8 @@
                     <label for="C4" class="col-sm-2 col-form-label">Pendidikan </label>
                     <div class="col-sm-10">
                         <select class="form-control C4" id="C4" name="C4">
-                            <option value="0.75" <?= $dosen['pendidikan'] === 'Strata 2' ? 'Selected' : '' ?>>Strata 2</option>
-                            <option value="0.25" <?= $dosen['pendidikan'] === 'Strata 3' ? 'Selected' : 'null' ?>>Strata 3</option>
+                            <option value="0.25" <?= $dosen['pendidikan'] === 'Strata 2' ? 'Selected' : '' ?>>Strata 2</option>
+                            <option value="0.75" <?= $dosen['pendidikan'] === 'Strata 3' ? 'Selected' : 'null' ?>>Strata 3</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC4">
                         </div>

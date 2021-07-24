@@ -91,7 +91,7 @@
         </div>
         <div class="card shadow mb-4 col-12 col-sm-12  col-lg-5">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">Kriteria Abdimas</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Kriteria Kompetensi</h6>
             </div>
             <div class="card-body">
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
@@ -138,7 +138,7 @@
         </div>
         <div class="card shadow mb-4 col-12 col-sm-12  col-lg-5">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">Kriteria Abdimas</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Kriteria Pendidikan</h6>
             </div>
             <div class="card-body">
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
@@ -185,7 +185,7 @@
         </div>
         <div class="card shadow mb-4 col-12 col-sm-12  col-lg-5">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">Kriteria Abdimas</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Kriteria Jabatan</h6>
             </div>
             <div class="card-body">
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
@@ -232,7 +232,7 @@
         </div>
         <div class="card shadow mb-4 col-12 col-sm-12  col-lg-5">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">Kriteria Abdimas</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Kriteria Lama Mengajar</h6>
             </div>
             <div class="card-body">
                 <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->

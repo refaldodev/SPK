@@ -30,7 +30,7 @@ class SubKriteriaModel extends Model
     public function getSubKriteria2()
     {
         return $this->db->table('subkriteria')
-            ->select('bobot')
+            ->select('*')
             ->where(['id_kriteria' => 2])
             ->get()->getResultArray();
     }

@@ -142,25 +142,22 @@
                     </thead>
 
                     <tbody>
-
                         <?php $no = 1; ?>
                         <?php foreach ($nilaidosen as $nilai) :  ?>
-                            <?php
-                            $cekc1 =  $nilai['C1'] - $C1Min;
-                            $cekc2 =  $nilai['C2'] - $C2Min;
-                            $cekc3 =  $nilai['C3'] - $C3Min;
-                            $cekc4 =  $nilai['C4'] - $C4Min;
-                            $cekc5 =  $nilai['C5'] - $C5Min;
-                            $cekc6 =  $nilai['C6'] - $C6Min;
-                            $jumlahC1 = $cekc1 != 0  ? round(($nilai['C1'] - $C1Min) / ($C1Max - $C1Min) * (100 / 100) * $kriteriaC1, 3) : 0;
-                            $jumlahC2 = $cekc2 != 0  ? round(($nilai['C2'] - $C2Min) / ($C2Max - $C2Min) * (100 / 100) * $kriteriaC2, 3) : 0;
-                            $jumlahC3 = $cekc3 != 0  ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100) * $kriteriaC3, 3) : 0;
-                            $jumlahC4 = $cekc4 != 0  ? round(($nilai['C4'] - $C4Min) / ($C4Max - $C4Min) * (100 / 100) * $kriteriaC4, 3) : 0;
-                            $jumlahC5 = $cekc5 != 0  ? round(($nilai['C5'] - $C5Min) / ($C5Max - $C5Min) * (100 / 100) * $kriteriaC5, 3) : 0;
-                            $jumlahC6 = $cekc6 != 0  ? round(($nilai['C6'] - $C6Min) / ($C6Max - $C6Min) * (100 / 100) * $kriteriaC6, 3) : 0;
+
+                            <?php $cekc1 = $nilai['C1'] - $C1Min;
+                            $cekc2 = $nilai['C2'] - $C2Min;
+                            $cekc3 = $nilai['C3'] - $C3Min;
+                            $cekc4 = $nilai['C4'] - $C4Min;
+                            $cekc5 = $nilai['C5'] - $C5Min;
+                            $cekc6 = $nilai['C6'] - $C6Min;
+                            $jumlahC1 = $cekc1 != 0 ? round(($nilai['C1'] - $C1Min) / ($C1Max - $C1Min) * (100 / 100) * $kriteriaC1, 3) : 0;
+                            $jumlahC2 = $cekc2 != 0 ? round(($nilai['C2'] - $C2Min) / ($C2Max - $C2Min) * (100 / 100) * $kriteriaC2, 3) : 0;
+                            $jumlahC3 = $cekc3 != 0 ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100) * $kriteriaC3, 3) : 0;
+                            $jumlahC4 = $cekc4 != 0 ? round(($nilai['C4'] - $C4Min) / ($C4Max - $C4Min) * (100 / 100) * $kriteriaC4, 3) : 0;
+                            $jumlahC5 = $cekc5 != 0 ? round(($nilai['C5'] - $C5Min) / ($C5Max - $C5Min) * (100 / 100) * $kriteriaC5, 3) : 0;
+                            $jumlahC6 = $cekc6 != 0 ? round(($nilai['C6'] - $C6Min) / ($C6Max - $C6Min) * (100 / 100) * $kriteriaC6, 3) : 0;
                             $nilaiakhir = $jumlahC1 + $jumlahC2 + $jumlahC3 + $jumlahC4 + $jumlahC5 + $jumlahC6;
-
-
                             ?>
                             <tr>
                                 <td><?= $nilai['nama'] ?></td>
@@ -208,10 +205,13 @@
         </div>
         <div class="card-body">
             <p>
-                dari hasil perhitungan rangking diatas maka pemilihan dosen dengan kinerja terbaik yaitu dengan nilai <?= round($nilaiakhir, 3) ?>
+
+                dari hasil perhitungan rangking diatas maka pemilihan dosen dengan kinerja terbaik yaitu dengan nilai <span class="nilaiterbesar"></span>
+
 
             </p>
 
+            <button id="buttonih" class="btn btn-danger">klik Lihat Hasil</button>
 
         </div>
     </div>
@@ -226,5 +226,57 @@
         $('#dataTableUtility').DataTable();
         $('#dataTableNilaiAkhir').DataTable();
     });
+    let tabel = document.getElementById('dataTableNilaiAkhir');
+    let btn = document.querySelector('#buttonih');
+    $.getJSON('/perhitungan/datajson', function(result) {
+
+        const c1 = result.map(data => {
+            return parseFloat(data.C1)
+        })
+        const c2 = result.map(data => {
+            return data.C2
+        })
+        const c3 = result.map(data => {
+            return data.C3
+        })
+        const c4 = result.map(data => {
+            return data.C4
+        })
+        const c5 = result.map(data => {
+            return data.C5
+        })
+        const c6 = result.map(data => {
+            return data.C6
+        })
+        const maxc1 = Math.max.apply(null, c1);
+        const minc1 = Math.min.apply(null, c1);
+        const maxc2 = Math.max.apply(null, c2);
+        const minc2 = Math.min.apply(null, c2);
+        const maxc3 = Math.max.apply(null, c3);
+        const minc3 = Math.min.apply(null, c3);
+        const maxc4 = Math.max.apply(null, c4);
+        const minc4 = Math.min.apply(null, c4);
+        const maxc5 = Math.max.apply(null, c5);
+        const minc5 = Math.min.apply(null, c5);
+        const maxc6 = Math.max.apply(null, c6);
+        const minc6 = Math.min.apply(null, c6);
+        let hasilfix = [];
+        result.forEach(element => {
+            let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
+            let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
+            let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
+            let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
+            let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
+            let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
+            hasilfix.push(hasil)
+
+
+        });
+        let resultfix = Math.max.apply(Math, hasilfix);
+        let span = document.querySelector('.nilaiterbesar');
+        span.innerHTML = resultfix;
+
+    })
 </script>
 <?= $this->endSection('') ?>

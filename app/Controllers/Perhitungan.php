@@ -98,4 +98,84 @@ class Perhitungan extends BaseController
 
         return view('perhitungan/index', $data);
     }
+    public function hitung()
+    {
+        $data = $this->nilaimodel->getDataNilaiDosen();
+        $NilaiMinC1 =  $this->nilaimodel->getDataNilaMinC1();
+        $NilaiMaxC1 =  $this->nilaimodel->getDataNilaMaxC1();
+        $NilaiMinC2 =  $this->nilaimodel->getDataNilaMinC2();
+        $NilaiMaxC2 =  $this->nilaimodel->getDataNilaMaxC2();
+        $NilaiMinC3 =  $this->nilaimodel->getDataNilaMinC3();
+        $NilaiMaxC3 =  $this->nilaimodel->getDataNilaMaxC3();
+        $NilaiMinC4 =  $this->nilaimodel->getDataNilaMinC4();
+        $NilaiMaxC4 =  $this->nilaimodel->getDataNilaMaxC4();
+        $NilaiMinC5 =  $this->nilaimodel->getDataNilaMinC5();
+        $NilaiMaxC5 =  $this->nilaimodel->getDataNilaMaxC5();
+        $NilaiMinC6 =  $this->nilaimodel->getDataNilaMinC6();
+        $NilaiMaxC6 =  $this->nilaimodel->getDataNilaMaxC6();
+
+        $min = '';
+        $max = '';
+        $kriteria = '';
+        function toDoubleHitung($type = '', $var)
+        {
+            if ($type == 'min') {
+                foreach ($var as $value) {
+                    $min = $value;
+                }
+                return $min;
+            } else if ($type == 'max') {
+                foreach ($var as $value) {
+                    $max = $value;
+                }
+                return $max;
+            } else {
+                foreach ($var as $value) {
+                    $kriteria = $value;
+                }
+                return $kriteria;
+            }
+        }
+        $MinC1 = toDoubleHitung('min', $NilaiMinC1);
+        $MaxC1 = toDoubleHitung('max', $NilaiMaxC1);
+        $MinC2 = toDoubleHitung('min', $NilaiMinC2);
+        $MaxC2 = toDoubleHitung('max', $NilaiMaxC2);
+        $MinC3 = toDoubleHitung('min', $NilaiMinC3);
+        $MaxC3 = toDoubleHitung('max', $NilaiMaxC3);
+        $MinC4 = toDoubleHitung('min', $NilaiMinC4);
+        $MaxC4 = toDoubleHitung('max', $NilaiMaxC4);
+        $MinC5 = toDoubleHitung('min', $NilaiMinC5);
+        $MaxC5 = toDoubleHitung('max', $NilaiMaxC5);
+        $MinC6 = toDoubleHitung('min', $NilaiMinC6);
+        $MaxC6 = toDoubleHitung('max', $NilaiMaxC6);
+        $MaxC6 = toDoubleHitung('max', $NilaiMaxC6);
+        var_dump(floatval($MinC1));
+        foreach ($data as $result) {
+            $cek1 = ($result['C1'] - $MinC1) / ($MaxC1 - $MinC1) * (100 / 100);
+        }
+    }
+    public function latihan()
+    {
+        $data = [
+            'title' => 'Data Perhitungan Smarter',
+            'seg1' => $this->request->uri->getSegment(1),
+            'seg2' => $this->request->uri->getSegment(2),
+            'nilaidosen' => $this->nilaimodel->getDataNilaiDosen(),
+        ];
+
+
+        return view('perhitungan/latihan', $data);
+    }
+    public function datajson()
+    {
+
+        $filter = $this->request->getVar('filter');
+
+        $dosen =  $this->nilaimodel->getDataNilaiDosen($filter);
+        $tes = json_encode($dosen);
+        return $tes;
+    }
+    public function utility()
+    {
+    }
 }
