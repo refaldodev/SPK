@@ -20,17 +20,27 @@ class DosenModel extends Model
         }
         return $this->where(['nidn' => $slug])->first();
     }
-    public function getNilaiDosen()
+    public function getNilaiDosen($periode = false)
     {
-        return $this->db->table('dosen')
-            ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
-            ->get()->getResultArray();
+        if ($periode != false) {
+
+            return $this->db->table('dosen')
+                ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
+                ->where(['periode' => $periode])
+                ->get()->getResultArray();
+        } else {
+            return $this->db->table('dosen')
+                ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
+
+                ->get()->getResultArray();
+        }
     }
     public function   getDataNilaiDosen($nidn)
     {
         return $this->db->table('dosen')
             ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
             ->where(['nidn' => $nidn])
+
             ->get()->getRowArray();
     }
 }

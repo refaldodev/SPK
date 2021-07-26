@@ -384,7 +384,6 @@ class DataDosen extends BaseController
     public function editnilai($id_dosen)
     {
 
-
         $data = [
             'title' =>   'Edit Penilaian Dosen',
             'seg1' => $this->request->uri->getSegment(1),
@@ -396,7 +395,118 @@ class DataDosen extends BaseController
         ];
         // foreach ($data['subkriteria1'] as $row) {
         //     var_dump($row['bobot']);
-        // }
+        //  
         return view('dosen/editnilai', $data);
+    }
+    public function editpenilaian()
+    {
+
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'C1' => [
+                    'rules' => 'required',
+                    'label' => 'Penelitian Bermutu',
+                    'errors' =>
+                    [
+                        'required' => '{field} harus di isi',
+                    ]
+                ],
+                'C2' => [
+                    'rules' => 'required|numeric',
+                    'label' => 'Pengabdian Masyarakat',
+                    'errors' =>
+                    [
+                        'required' => '{field} harus di isi',
+                        'numeric' => '{field} harus berupa angka'
+                    ]
+                ],
+                'C3' => [
+                    'rules' => 'required|numeric',
+                    'label' => 'Kompetensi',
+                    'errors' =>
+                    [
+                        'required' => 'Nama harus di isi',
+                        'numeric' => '{field} harus berupa angka'
+                    ]
+                ],
+                'C4' => [
+                    'rules' => 'required',
+                    'label' => 'Pendidikan',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+                'C5' => [
+                    'rules' => 'required',
+                    'label' => 'Lama Mengajar',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+                'C6' => [
+                    'rules' => 'required',
+                    'label' => 'Lama Mengajar',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+                'periode' => [
+                    'rules' => 'required',
+                    'label' => 'Periode',
+                    'errors' => [
+                        'required' => '{field} harus di isi'
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'C1' => $validation->getError('C1'),
+                        'C2' => $validation->getError('C2'),
+                        'C3' => $validation->getError('C3'),
+                        'C4' => $validation->getError('C4'),
+                        'C5' => $validation->getError('C5'),
+                        'C6' => $validation->getError('C6'),
+                    ]
+                ];
+            } else {
+
+                $c3 = '';
+                if ($this->request->getVar('C3') >= 81) {
+                    $c3 = 0.46;
+                } else if ($this->request->getVar('C3') >= 61 && $this->request->getVar('C3') <= 80) {
+                    $c3 = 0.26;
+                } else if ($this->request->getVar('C3') >= 41 && $this->request->getVar('C3') <= 60) {
+                    $c3 = 0.16;
+                } else if ($this->request->getVar('C3') >= 21 && $this->request->getVar('C3') <= 40) {
+                    $c3 = 0.09;
+                } else {
+                    $c3 = 0.04;
+                }
+                $simpandata = [
+
+                    'C1' => $this->request->getVar('C1'),
+                    'C2' =>  $this->request->getVar('C2'),
+                    'C3' => $c3,
+                    'C4' => $this->request->getVar('C4'),
+                    'C5' => $this->request->getVar('C5'),
+                    'C6' => $this->request->getVar('C6'),
+                    'periode' => $this->request->getVar('periode'),
+
+                ];
+                $id_nilai = $this->request->getVar('id_nilai');
+
+                $this->nilaimodel->update($id_nilai, $simpandata);
+                $msg = [
+                    'sukses' => 'data berhasil di update',
+                    'berhasil' => 'Sudah di nilai'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            exit('data tidak ditemukan');
+        }
     }
 }

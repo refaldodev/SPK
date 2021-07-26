@@ -10,10 +10,10 @@
                 Kembali</a>
         </div>
         <div class="card-body">
-            <form action="/datadosen/editpenilaian" method="post" class="simpandata">
+            <form action="/datadosen/editpenilaian" method="post" class="updatedata">
                 <?= csrf_field(); ?>
 
-                <input type="text" class="form-control" id="id_dosen" name="id_dosen" value="<?= $nilai['nidn'] ?>" hidden>
+                <input type="text" class="form-control" id="id_dosen" name="id_nilai" value="<?= $nilai['id_nilai'] ?>" hidden>
 
                 <div class="form-group row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama Dosen</label>
@@ -28,10 +28,10 @@
                     <div class="col-sm-10">
                         <select class="form-control C1" id="C1" name="C1">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="<?= $subkriteria1[0]['bobot'] ?>">Jurnal Internasional Terakreditasi</option>
-                            <option value="<?= $subkriteria1[1]['bobot'] ?>">Jurnal Internasional</option>
-                            <option value="<?= $subkriteria1[2]['bobot'] ?>">Jurnal Nasional Terakreditasi</option>
-                            <option value="<?= $subkriteria1[3]['bobot'] ?>">Jurnal Nasional</option>
+                            <option value="<?= $subkriteria1[0]['bobot'] ?>" <?= $nilai['C1'] == '0.52' ? 'Selected' : '' ?>>Jurnal Internasional Terakreditasi</option>
+                            <option value="<?= $subkriteria1[1]['bobot'] ?>" <?= $nilai['C1'] == '0.27' ? 'Selected' : '' ?>>Jurnal Internasional</option>
+                            <option value="<?= $subkriteria1[2]['bobot'] ?>" <?= $nilai['C1'] == '0.14' ? 'Selected' : '' ?>>Jurnal Nasional Terakreditasi</option>
+                            <option value="<?= $subkriteria1[3]['bobot'] ?> " <?= $nilai['C1'] == '0.04' ? 'Selected' : '' ?>>Jurnal Nasional</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC1">
 
@@ -39,14 +39,14 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat <?= $subkriteria2[0]['bobot'] ?>
+                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat
                     </label>
                     <div class="col-sm-10">
                         <select class="form-control C2" id="C2" name="C2">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="<?= $subkriteria2[0]['bobot'] ?>"><?= $subkriteria2[0]['subkriteria'] ?></option>
-                            <option value="<?= $subkriteria2[1]['bobot'] ?>"><?= $subkriteria2[1]['subkriteria'] ?></option>
-                            <option value="<?= $subkriteria2[2]['bobot'] ?>"><?= $subkriteria2[2]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[0]['bobot'] ?>" <?= $nilai['C2'] == '0.61'  ? 'Selected' : ' ' ?>><?= $subkriteria2[0]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[1]['bobot'] ?>" <?= $nilai['C2'] == '0.28'  ? 'Selected' : ' ' ?>><?= $subkriteria2[1]['subkriteria'] ?></option>
+                            <option value="<?= $subkriteria2[2]['bobot'] ?>" <?= $nilai['C2'] == '0.11'  ? 'Selected' : ' ' ?>><?= $subkriteria2[2]['subkriteria'] ?></option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC2">
 
@@ -92,9 +92,9 @@
                     <div class="col-sm-10">
                         <select class="form-control C6" id="C6" name="C6">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="0.61">Lebih dari 10 Tahun</option>
-                            <option value="0.28">Lebih dari 5 Tahun dan Kurang Dari 10 Tahun</option>
-                            <option value="0.11"> Kurang Dari 5 Tahun</option>
+                            <option value="0.61" <?= $nilai['C6'] == '0.61' ? 'Selected' : '' ?>>Lebih dari 10 Tahun</option>
+                            <option value="0.28" <?= $nilai['C6'] == '0.28' ? 'Selected' : '' ?>>Lebih dari 5 Tahun dan Kurang Dari 10 Tahun</option>
+                            <option value="0.11" <?= $nilai['C6'] == '0.11' ? 'Selected' : '' ?>> Kurang Dari 5 Tahun</option>
 
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC6">
@@ -126,7 +126,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.simpandata').submit(function(e) {
+        $('.updatedata').submit(function(e) {
             e.preventDefault();
             $.ajax({
                 type: "post",
@@ -143,71 +143,20 @@
                 },
                 dataType: "json",
                 success: function(response) {
-                    if (response.error) {
-                        if (response.error.C1) {
-                            $('#C1').addClass('is-invalid');
-                            $('.errorC1').html(response.error.C1);
-                        } else {
-                            $('#C1').removeClass('is-invalid');
-                            $('.errorC1').html('');
-                        }
-                        if (response.error.C2) {
-                            $('#C2').addClass('is-invalid');
-                            $('.errorC2').html(response.error.C2);
-                        } else {
-                            $('#C2').removeClass('is-invalid');
-                            $('.errorC2').html('');
-                        }
-                        if (response.error.C3) {
-                            $('#C3').addClass('is-invalid');
-                            $('.errorC3').html(response.error.C3);
-                        } else {
-                            $('#C3').removeClass('is-invalid');
-                            $('.errorC3').html('');
-                        }
-                        if (response.error.C4) {
-                            $('#C4').addClass('is-invalid');
-                            $('.errorC4').html(response.error.C4);
-                        } else {
-                            $('#C4').removeClass('is-invalid');
-                            $('.errorC4').html('');
-                        }
-                        if (response.error.C5) {
-                            $('#C5').addClass('is-invalid');
-                            $('.errorC5').html(response.error.C5);
-                        } else {
-                            $('#C5').removeClass('is-invalid');
-                            $('.errorC5').html('');
-                        }
-                        if (response.error.C6) {
-                            $('#C6').addClass('is-invalid');
-                            $('.errorC6').html(response.error.C6);
-                        } else {
-                            $('#C6').removeClass('is-invalid');
-                            $('.errorC6').html('');
-                        }
-                        if (response.error.periode) {
-                            $('#periode').addClass('is-invalid');
-                            $('.errorPeriode').html(response.error.periode);
-                        } else {
-                            $('#periode').removeClass('is-invalid');
-                            $('.errorPeriode').html('');
-                        }
-                    } else {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: response.sukses,
-                            confirmButtonColor: '#3085d6'
-                        }).then(result => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: response.sukses,
+                        confirmButtonColor: '#3085d6'
+                    }).then(result => {
 
-                            if (result.value) {
-                                window.location.href = '/datadosen/penilaiandosen';
-                            } else {
-                                window.location.href = '/datadosen/penilaiandosen';
-                            }
-                        })
-                    }
+                        if (result.value) {
+                            window.location.href = '/datadosen/penilaiandosen';
+                        } else {
+                            window.location.href = '/datadosen/penilaiandosen';
+                        }
+                    })
+
 
                 },
                 error: function(xhr, ajaxOptions, thrownError) {

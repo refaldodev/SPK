@@ -3,7 +3,34 @@
 <?= $this->section('content') ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Filter</h6>
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                <div class="form-group row">
+                    <label for="C1" class="col-sm-2 col-form-label">Penelitian Bermutu </label>
+                    <div class="col-sm-10">
+                        <select class="form-control periode" id="periode" name="periode">
+                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                            <option value="Semester Ganjil Periode 2019-2020">Semester Ganjil</option>
+                            <option value="Semester Genap Periode 2019-2020">Semester Genap</option>
 
+                        </select>
+                        <div id="validationServer03Feedback" class="invalid-feedback errorperiode">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mr-2">
+                    <div class="col-sm-12 text-right ">
+                        <button type="submit" class="btn btn-primary btnsimpan " name="filter">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -205,14 +232,8 @@
         </div>
         <div class="card-body">
             <p>
-
                 dari hasil perhitungan rangking diatas maka pemilihan dosen dengan kinerja terbaik yaitu dengan nilai <span class="nilaiterbesar"></span>
-
-
             </p>
-
-            <button id="buttonih" class="btn btn-danger">klik Lihat Hasil</button>
-
         </div>
     </div>
 </div>
@@ -224,12 +245,15 @@
 <script>
     $(document).ready(function() {
         $('#dataTableUtility').DataTable();
-        $('#dataTableNilaiAkhir').DataTable();
+        $('#dataTableNilaiAkhir').DataTable({
+            "order": [
+                [9, "desc"]
+            ]
+        });
     });
     let tabel = document.getElementById('dataTableNilaiAkhir');
     let btn = document.querySelector('#buttonih');
     $.getJSON('/perhitungan/datajson', function(result) {
-
         const c1 = result.map(data => {
             return parseFloat(data.C1)
         })
@@ -270,13 +294,36 @@
             let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
             let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
             hasilfix.push(hasil)
-
-
         });
+        let perhitunganC1 = [];
+        let perhitunganC2 = [];
+        let perhitunganC3 = [];
+        let perhitunganC4 = [];
+        let perhitunganC5 = [];
+        let perhitunganC6 = [];
+        result.forEach(element => {
+            let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
+            let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
+            let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
+            let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
+            let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
+            let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
+            perhitunganC1.push(resultC1)
+            perhitunganC2.push(resultC2)
+            perhitunganC3.push(resultC3)
+            perhitunganC4.push(resultC4)
+            perhitunganC5.push(resultC5)
+            perhitunganC6.push(resultC6)
+        });
+
         let resultfix = Math.max.apply(Math, hasilfix);
         let span = document.querySelector('.nilaiterbesar');
         span.innerHTML = resultfix;
 
-    })
+
+
+
+    });
 </script>
 <?= $this->endSection('') ?>

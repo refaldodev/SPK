@@ -31,89 +31,196 @@ class NilaiModel extends Model
             ->get()->getResultArray();
     }
 
-    public function getDataNilaMaxC1()
+    public function getDataNilaMaxC1($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MAX(C1)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+            return $this->db->table('nilai')
+                ->select('MAX(C1)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MAX(C1)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMinC1()
+    public function getDataNilaMinC1($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MIN(C1)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+            return $this->db->table('nilai')
+                ->select('MIN(C1)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MIN(C1)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMaxC2()
+    public function getDataNilaMaxC2($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MAX(C2)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MAX(C2)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MAX(C2)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMinC2()
+    public function getDataNilaMinC2($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MIN(C2)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MIN(C2)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MIN(C2)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMaxC3()
+    public function getDataNilaMaxC3($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MAX(C3)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MAX(C3)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MAX(C3)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMinC3()
+    public function getDataNilaMinC3($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MIN(C3)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MIN(C3)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MIN(C3)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMaxC4()
+    public function getDataNilaMaxC4($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MAX(C4)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MAX(C4)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MAX(C4)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMinC4()
+    public function getDataNilaMinC4($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MIN(C4)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MIN(C4)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MIN(C4)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMaxC5()
+    public function getDataNilaMaxC5($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MAX(C5)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MAX(C5)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MAX(C5)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMinC5()
+    public function getDataNilaMinC5($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MIN(C5)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MIN(C5)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MIN(C5)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMaxC6()
+    public function getDataNilaMaxC6($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MAX(C6)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MAX(C6)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MAX(C6)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
-    public function getDataNilaMinC6()
+    public function getDataNilaMinC6($periode = false)
     {
-        return $this->db->table('nilai')
-            ->select('MIN(C6)')
-            ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-            ->get()->getRowArray();
+        if ($periode) {
+
+            return $this->db->table('nilai')
+                ->select('MIN(C6)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->where(['periode' => $periode])
+
+                ->get()->getRowArray();
+        } else {
+            return $this->db->table('nilai')
+                ->select('MIN(C6)')
+                ->join('dosen', 'dosen.nidn = nilai.id_dosen')
+                ->get()->getRowArray();
+        }
     }
     public function getKriteriaC1()
     {

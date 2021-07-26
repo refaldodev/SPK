@@ -52,6 +52,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
+
                                             <div id="validationServer03Feedback" class="invalid-feedback errorPassword">
                                             </div>
                                         </div>
@@ -140,6 +141,9 @@
                             })
                         }
 
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
                     }
                 });
             })
