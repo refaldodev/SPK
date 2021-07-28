@@ -27,6 +27,8 @@ use App\Models\NilaiModel;
 use App\Models\UsersModel;
 use App\Models\AuthModel;
 use App\Models\PenilaianModel;
+use App\Models\PeriodeModel;
+
 
 
 class BaseController extends Controller
@@ -74,5 +76,6 @@ class BaseController extends Controller
 		$this->authmodel = new AuthModel;
 		$this->authmodel = new AuthModel;
 		$this->penilaianmodel = new PenilaianModel;
+		$this->periodemodel = new PeriodeModel;
 	}
 }

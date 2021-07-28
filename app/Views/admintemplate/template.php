@@ -90,6 +90,14 @@
             <?php endif; ?>
             <?php if (session()->get('level') ==  1) : ?>
 
+                <li class="nav-item
+            <?= $seg1 == 'periode'  ? 'active' : '' ?>">
+                    <a class="nav-link" href="<?= base_url('periode') ?>">
+                        <i class="fas fa-database"></i> <span>Periode</span></a>
+                </li>
+            <?php endif; ?>
+            <?php if (session()->get('level') ==  1) : ?>
+
                 <li class=" nav-item <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-user-tie"></i> <span>Dosen</span>
