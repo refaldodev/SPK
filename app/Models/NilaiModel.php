@@ -10,7 +10,7 @@ class NilaiModel extends Model
     protected $primaryKey = 'id_nilai';
 
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_dosen', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'periode'];
+    protected $allowedFields = ['id_dosen', 'id_periode', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6'];
     public function getDataNilai($slug = false)
     {
         if ($slug == false) {
@@ -23,11 +23,13 @@ class NilaiModel extends Model
         if ($periode) {
             return $this->db->table('nilai')
                 ->join('dosen', 'dosen.nidn=nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getResultArray();
         }
         return $this->db->table('nilai')
             ->join('dosen', 'dosen.nidn=nilai.id_dosen')
+            ->join('periode', 'periode.id=nilai.id_periode')
             ->get()->getResultArray();
     }
 
@@ -37,7 +39,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MAX(C1)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -52,7 +55,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MIN(C1)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -68,7 +72,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MAX(C2)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -84,7 +89,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MIN(C2)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -100,7 +106,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MAX(C3)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -116,7 +123,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MIN(C3)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -132,7 +140,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MAX(C4)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -148,7 +157,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MIN(C4)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -164,7 +174,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MAX(C5)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -180,7 +191,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MIN(C5)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -196,7 +208,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MAX(C6)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('nilai')
@@ -212,7 +225,8 @@ class NilaiModel extends Model
             return $this->db->table('nilai')
                 ->select('MIN(C6)')
                 ->join('dosen', 'dosen.nidn = nilai.id_dosen')
-                ->where(['periode' => $periode])
+                ->join('periode', 'periode.id=nilai.id_periode')
+                ->where(['periode.id' => $periode])
 
                 ->get()->getRowArray();
         } else {

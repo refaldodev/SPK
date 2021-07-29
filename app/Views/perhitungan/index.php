@@ -8,15 +8,15 @@
             <h6 class="m-0 font-weight-bold text-primary">Filter</h6>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="" method="GET">
                 <div class="form-group row">
                     <label for="C1" class="col-4 col-form-label">Filter Berdasarkan Semester dan Periode </label>
                     <div class="col-8">
                         <select class="form-control periode" id="periode" name="periode">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="Semester Ganjil Periode 2019-2020">Semester Ganjil</option>
-                            <option value="Semester Genap Periode 2019-2020">Semester Genap</option>
-
+                            <?php foreach ($periode as $row) : ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['periode'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorperiode">
 
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group row mr-2">
                     <div class="col-sm-12 text-right ">
-                        <button type="submit" class="btn btn-primary btnsimpan " name="filter">Filter</button>
+                        <button type="submit" class="btn btn-primary btnsimpan ">Filter</button>
                     </div>
                 </div>
             </form>
@@ -246,10 +246,15 @@
                     $jumlahC4 = $cekc4 != 0 ? round(($nilai['C4'] - $C4Min) / ($C4Max - $C4Min) * (100 / 100) * $kriteriaC4, 3) : 0;
                     $jumlahC5 = $cekc5 != 0 ? round(($nilai['C5'] - $C5Min) / ($C5Max - $C5Min) * (100 / 100) * $kriteriaC5, 3) : 0;
                     $jumlahC6 = $cekc6 != 0 ? round(($nilai['C6'] - $C6Min) / ($C6Max - $C6Min) * (100 / 100) * $kriteriaC6, 3) : 0;
-                    $nilaiakhir = $jumlahC1 + $jumlahC2 + $jumlahC3 + $jumlahC4 + $jumlahC5 + $jumlahC6;
+                    if ($cekc1 != 0) {
+
+                        $nilaiakhir = $jumlahC1 + $jumlahC2 + $jumlahC3 + $jumlahC4 + $jumlahC5 + $jumlahC6;
+                    } else {
+                        $nilaiakhir = 0;
+                    }
                     ?>
                 <?php endforeach; ?>
-                dari hasil perhitungan rangking diatas maka pemilihan dosen dengan kinerja terbaik yaitu dengan nilai <span class="nilaiterbesar"><?= $nilaiakhir ?></span>
+                dari hasil perhitungan rangking diatas maka pemilihan dosen dengan kinerja terbaik yaitu dengan nilai <span class="nilaiterbesar"></span>
             </p>
         </div>
     </div>

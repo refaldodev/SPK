@@ -10,7 +10,8 @@ class Perhitungan extends BaseController
 
     public function index()
     {
-        if (isset($_POST['filter'])) {
+        // var_dump($_GET['filter']);
+        if (isset($_GET['periode'])) {
             $periode = $this->request->getVar('periode');
             $NilaiMinC1 =  $this->nilaimodel->getDataNilaMinC1($periode);
             $NilaiMaxC1 =  $this->nilaimodel->getDataNilaMaxC1($periode);
@@ -96,6 +97,7 @@ class Perhitungan extends BaseController
                 'kriteriaC4' => $kriteriaC4,
                 'kriteriaC5' => $kriteriaC5,
                 'kriteriaC6' => $kriteriaC6,
+                'periode' => $this->periodemodel->getDataPeriode(),
             ];
             return view('perhitungan/index', $data);
         } else {
@@ -184,6 +186,8 @@ class Perhitungan extends BaseController
                 'kriteriaC4' => $kriteriaC4,
                 'kriteriaC5' => $kriteriaC5,
                 'kriteriaC6' => $kriteriaC6,
+                'periode' => $this->periodemodel->getDataPeriode(),
+
             ];
         }
         return view('perhitungan/index', $data);

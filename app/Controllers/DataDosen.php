@@ -237,6 +237,8 @@ class DataDosen extends BaseController
             'seg1' => $this->request->uri->getSegment(1),
             'seg2' => $this->request->uri->getSegment(2),
             'nilaidosen' => $this->dosenModel->getNilaiDosen(),
+            'periode' => $this->periodemodel->getDataPeriode(),
+
 
         ];
         return view('dosen/penilaiandosen', $data);
@@ -252,6 +254,8 @@ class DataDosen extends BaseController
             'dosen' => $this->dosenModel->getDataDosen($id_dosen),
             'subkriteria1' => $this->subkriteriamodel->getSubKriteria1(),
             'subkriteria2' => $this->subkriteriamodel->getSubKriteria2(),
+            'periode' => $this->periodemodel->getDataPeriode(),
+
 
         ];
         // foreach ($data['subkriteria1'] as $row) {
@@ -359,14 +363,13 @@ class DataDosen extends BaseController
                 }
                 $simpandata = [
                     'id_dosen' => $this->request->getVar('id_dosen'),
-
+                    'id_periode' => $this->request->getVar('periode'),
                     'C1' => $this->request->getVar('C1'),
                     'C2' =>  $this->request->getVar('C2'),
                     'C3' => $c3,
                     'C4' => $this->request->getVar('C4'),
                     'C5' => $this->request->getVar('C5'),
                     'C6' => $this->request->getVar('C6'),
-                    'periode' => $this->request->getVar('periode'),
 
                 ];
 

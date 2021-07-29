@@ -3,11 +3,38 @@
 <?= $this->section('content') ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Filter</h6>
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                <div class="form-group row">
+                    <label for="C1" class="col-4 col-form-label">Filter Berdasarkan Semester dan Periode </label>
+                    <div class="col-8">
+                        <select class="form-control periode" id="periode" name="periode">
+                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                            <?php foreach ($periode as $row) : ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['periode'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <div id="validationServer03Feedback" class="invalid-feedback errorperiode">
 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mr-2">
+                    <div class="col-sm-12 text-right ">
+                        <button type="submit" class="btn btn-primary btnsimpan " name="filter">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Dosen</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Penilaian Dosen</h6>
         </div>
         <div class="card-body">
             <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->

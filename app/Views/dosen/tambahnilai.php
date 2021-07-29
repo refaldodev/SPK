@@ -105,7 +105,13 @@
                 <div class="form-group row">
                     <label for="periode" class="col-sm-2 col-form-label">Periode </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="periode" name="periode" placeholder="e.g Semester Ganjil Periode 2021-2022">
+                        <select class="form-control periode" id="periode" name="periode">
+                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                            <?php foreach ($periode as $row) : ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['periode'] ?></option>
+                            <?php endforeach; ?>
+
+                        </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorPeriode">
 
                         </div>

@@ -31,7 +31,6 @@ class DosenModel extends Model
         } else {
             return $this->db->table('dosen')
                 ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
-
                 ->get()->getResultArray();
         }
     }
