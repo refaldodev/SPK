@@ -14,7 +14,7 @@
                  <div class="form-group row">
                      <label for="nidn" class="col-sm-2 col-form-label">Nidn</label>
                      <div class="col-sm-10">
-                         <input type="text" class="form-control <?= ($validation->hasError('nidn')) ? 'is-invalid' : '' ?>" id="nidn" name="nidn" value="<?= old('nidn') ?>">
+                         <input type="text" class="form-control" id="nidn" name="nidn" value="<?= old('nidn') ?>">
                          <div id="validationServer03Feedback" class="invalid-feedback errorNidn">
                          </div>
                      </div>
@@ -131,8 +131,8 @@
                              $('#jabatan').addClass('is-invalid');
                              $('.errorJabatan').html(response.error.jabatan);
                          } else {
-                             $('#nidn').removeClass('is-invalid');
-                             $('.errorNidn').html('');
+                             $('#jabatan').removeClass('is-invalid');
+                             $('.errorJabatan').html('');
                          }
                          if (response.error.pendidikan) {
                              $('#pendidikan').addClass('is-invalid');

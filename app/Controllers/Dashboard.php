@@ -12,7 +12,7 @@ class Dashboard extends BaseController
 
         $data =
             [
-                'title' => 'Data User',
+                'title' => 'Dashboard',
                 'seg1' => $this->request->uri->getSegment(1),
                 'seg2' => $this->request->uri->getSegment(2)
             ];

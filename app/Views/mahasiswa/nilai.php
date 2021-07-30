@@ -55,8 +55,11 @@
                                 <td><?= $nilai['asal_kampus'] ?></td>
                                 <td>
 
-                                    <a href="/mahasiswa/penilaiandosen/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                    <a href="/mahasiswa/penilaiandosen/<?= $nilai['id_nilai'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
 
+                                </td>
+                                <td>
+                                    <?= $nilai['id_nilai'] ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

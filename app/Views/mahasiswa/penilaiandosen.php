@@ -13,29 +13,29 @@
 
             <form action="/mahasiswa/savepenilaian" method="post" class="btntambahpenilaian">
                 <?= csrf_field() ?>
-                <input type="text" value="<?= $dosen['nidn'] ?>" name="id_dosen">
+                <input type="text" value="<?= $nilaidosen['id_nilai'] ?>" name="id_nilai" hidden>
+                <input type="text" value="<?= $nilaidosen['id_dosen'] ?>" name="id_dosen" hidden>
+                <input type="text" value="<?= session()->get('nidn')  ?>" name="nidn" hidden>
+
                 <div class="alert alert-success" role="alert">
                     Kesiapan Mengajar</div>
                 <div class="form-group row col-12">
                     <label for="staticEmail" class="col-sm-6 col-form-label">1. Dosen datang tepat waktu sesuai jadwal</label>
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question1" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question1" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question1" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question1" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -48,23 +48,20 @@
                     <label for="staticEmail" class="col-sm-6 col-form-label">2. Dosen menjelaskan tentang Rencana Pembelajaran Semester (RPS)</label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question2" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question2" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question2" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question2" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -77,23 +74,20 @@
                     <label for="staticEmail" class="col-sm-6 col-form-label">3. Dosen Menjelaskan Materi sesuai Rencana Pembelajaran Semester (RPS)</label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question3" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question3" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question3" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question3" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -106,23 +100,20 @@
                     <label for="staticEmail" class="col-sm-6 col-form-label">4. Dosen menjelaskan materi dengan mudah dimengerti</label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question4" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question4" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question4" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
-                        <input class="form-check-input" type="radio" name="question4" id="inlineRadio1" value="10">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
+                        <input class="form-check-input" type="radio" name="question4" id="inlineRadio1" value="2">
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -135,23 +126,21 @@
                     <label for="staticEmail" class="col-sm-6 col-form-label">5. Dosen memotivasi mahasiswa untuk belajar dan memicu partisipasi di kelas</label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question5" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question5" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
+
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question5" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question5" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -165,23 +154,20 @@
                     </label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question6" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question6" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question6" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question6" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -194,23 +180,20 @@
                     <label for="staticEmail" class="col-sm-6 col-form-label">7. Dosen memiliki kemampuan memberikan contoh / kasus sesuai dengan materi ajar
                     </label>
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question7" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question7" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question7" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question7" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -224,23 +207,20 @@
                     </label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question8" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question8" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question8" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question8" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -254,23 +234,20 @@
                     </label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question9" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question9" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question9" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question9" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
@@ -280,27 +257,24 @@
                     </div>
                 </div>
                 <div class="form-group row col-12">
-                    <label for="staticEmail" class="col-sm-6 col-form-label">2. Dosen menjalin komunikasi dengan mahasiswa
+                    <label for="staticEmail" class="col-sm-6 col-form-label">10. Dosen menjalin komunikasi dengan mahasiswa
                     </label>
 
                     <div class="form-check form-check-inline  ">
+                        <label class="form-check-label" for="inlineRadio1">Sangat Baik &nbsp </label>
                         <input class="form-check-input" type="radio" name="question10" id="inlineRadio1" value="5">
-                        <label class="form-check-label" for="inlineRadio1">Sangat Baik </label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question10" id="inlineRadio1" value="4">
-                        <label class="form-check-label" for="inlineRadio1">Baik</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question10" id="inlineRadio1" value="3">
-                        <label class="form-check-label" for="inlineRadio1">Cukup</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">
                         <input class="form-check-input" type="radio" name="question10" id="inlineRadio1" value="2">
-                        <label class="form-check-label" for="inlineRadio1">Kurang</label>
 
                     </div>
                     <div class="form-check form-check-inline  ">

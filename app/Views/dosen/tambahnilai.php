@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat <?= $subkriteria2[0]['bobot'] ?>
+                    <label for="C2" class="col-sm-2 col-form-label">Pengabdian Masyarakat
                     </label>
                     <div class="col-sm-10">
                         <select class="form-control C2" id="C2" name="C2">
@@ -53,15 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="C3" class="col-sm-2 col-form-label">Kompetensi </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="C3" name="C3">
-                        <div id="validationServer03Feedback" class="invalid-feedback errorC3">
 
-                        </div>
-                    </div>
-                </div>
                 <div class="form-group row">
                     <label for="C4" class="col-sm-2 col-form-label">Pendidikan </label>
                     <div class="col-sm-10">
@@ -164,13 +156,7 @@
                             $('#C2').removeClass('is-invalid');
                             $('.errorC2').html('');
                         }
-                        if (response.error.C3) {
-                            $('#C3').addClass('is-invalid');
-                            $('.errorC3').html(response.error.C3);
-                        } else {
-                            $('#C3').removeClass('is-invalid');
-                            $('.errorC3').html('');
-                        }
+
                         if (response.error.C4) {
                             $('#C4').addClass('is-invalid');
                             $('.errorC4').html(response.error.C4);

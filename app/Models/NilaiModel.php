@@ -278,4 +278,16 @@ class NilaiModel extends Model
             ->where(['peringkat' => 6])
             ->get()->getRowArray();
     }
+    public function insertData()
+    {
+        $data['nilaiakhir'] = $this->penilaianmodel->getPenilaian(1744390003);
+        $total = 0;
+        foreach ($data['nilaiakhir'] as $row) {
+            $update = $row['question1'] + $row['question2'] + $row['question3'] + $row['question4'] + $row['question5'] + $row['question6'] + $row['question7'] + $row['question8'] +  $row['question9'] + $row['question10'];
+            $total += $update;
+            // $id =  81;
+            // $this->penilaianmodel->update($id, $update);
+        }
+        echo $total;
+    }
 }

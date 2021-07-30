@@ -8,7 +8,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Filter</h6>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="" method="GET">
                 <div class="form-group row">
                     <label for="C1" class="col-4 col-form-label">Filter Berdasarkan Semester dan Periode </label>
                     <div class="col-8">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group row mr-2">
                     <div class="col-sm-12 text-right ">
-                        <button type="submit" class="btn btn-primary btnsimpan " name="filter">Filter</button>
+                        <button type="submit" class="btn btn-primary btnsimpan ">Filter</button>
                     </div>
                 </div>
             </form>
@@ -81,19 +81,24 @@
                                 <td><?= $nilai['jurusan'] ?></td>
                                 <td><?= $nilai['asal_kampus'] ?></td>
                                 <td>
-                                    <?php if ($nilai['id_nilai']) { ?>
-                                        <a href="/datadosen/editnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success"><i class="fas fa-check-circle"></i> Sudah dinilai</a>
+                                    <?php if (isset($_GET['periode'])) { ?>
+                                        <?php if ($nilai['id_periode'] == $_GET['periode']) { ?>
+                                            <a href="/datadosen/editnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success"><i class="fas fa-check-circle"></i> Sudah dinilai</a>
+                                        <?php } else { ?>
+                                            <a href="/datadosen/tambahnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                        <?php } ?>
                                     <?php } else { ?>
-                                        <a href="/datadosen/tambahnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                        <?php if ($nilai['id_periode']) { ?>
+                                            <a href="/datadosen/editnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success"><i class="fas fa-check-circle"></i> Sudah dinilai</a>
+                                        <?php } else { ?>
+                                            <a href="/datadosen/tambahnilai/<?= $nilai['nidn'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                        <?php } ?>
                                     <?php } ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-
-
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>

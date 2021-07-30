@@ -171,18 +171,18 @@ class Mahasiswa extends BaseController
             'title' =>   'Penilaian Dosen',
             'seg1' => $this->request->uri->getSegment(1),
             'seg2' => $this->request->uri->getSegment(2),
-            'nilaidosen' => $this->dosenModel->getNilaiDosen(),
+            'nilaidosen' => $this->penilaianmodel->getNilai(),
 
         ];
         return view('mahasiswa/nilai', $data);
     }
-    public function penilaiandosen($nidn)
+    public function penilaiandosen($id)
     {
         $data = [
             'title' => 'Penilaian Dosen',
             'seg1' => $this->request->uri->getSegment(1),
             'seg2' => $this->request->uri->getSegment(2),
-            'dosen' => $this->dosenModel->getDataDosen($nidn),
+            'nilaidosen' => $this->penilaianmodel->getNilai($id),
         ];
         return view('mahasiswa/penilaiandosen', $data);
     }
@@ -190,8 +190,14 @@ class Mahasiswa extends BaseController
     public function savepenilaian()
     {
         if ($this->request->isAjax()) {
+
+            // $masuk = [
+            //     'C3' => $this->request->getVar('question1') + $this->request->getVar('question2') + $this->request->getVar('question3') + $this->request->getVar('question4') + $this->request->getVar('question5') + $this->request->getVar('question6') + $this->request->getVar('question7') + $this->request->getVar('question8') + $this->request->getVar('question9') + $this->request->getVar('question10'),
+            // ];
             $simpandata = [
-                'id_dosen' => $this->request->getVar('id_dosen'),
+                'id_penilaian' =>   $this->request->getVar('id_nilai'),
+                'id_mahasiswa' =>  $this->request->getVar('nidn'),
+                'id_dosen' =>  $this->request->getVar('id_dosen'),
                 'question1' => $this->request->getVar('question1'),
                 'question2' => $this->request->getVar('question2'),
                 'question3' => $this->request->getVar('question3'),
@@ -203,6 +209,8 @@ class Mahasiswa extends BaseController
                 'question9' => $this->request->getVar('question9'),
                 'question10' => $this->request->getVar('question10'),
             ];
+            // $this->nilaimodel->update($id, $masuk);
+
 
             $this->penilaianmodel->insert($simpandata);
 
@@ -210,8 +218,42 @@ class Mahasiswa extends BaseController
                 'sukses' => 'data berhasil di tambah '
             ];
             echo json_encode($msg);
+
+            $id =   $this->request->getVar('id_nilai');
+            $id_dosen =   $this->request->getVar('id_dosen');
+            $data['nilaiakhir'] = $this->penilaianmodel->getPenilaian($id_dosen);
+            $total = 0;
+            foreach ($data['nilaiakhir'] as $row) {
+
+
+
+                $update = $row['question1'] + $row['question2'] + $row['question3'] + $row['question4'] + $row['question5'] + $row['question6'] + $row['question7'] + $row['question8'] +  $row['question9'] + $row['question10'];
+
+                $total += $update;
+
+                // $id =  81;
+            }
+            $hasil = [
+                'C3' => $total
+            ];
+            $this->nilaimodel->update($id, $hasil);
         } else {
             exit('maaf tidak dapat di proses');
         }
+    }
+    public function insertData()
+    {
+        $data['nilaiakhir'] = $this->penilaianmodel->getPenilaian(1744390003);
+        $total = 0;
+        foreach ($data['nilaiakhir'] as $row) {
+
+
+            $update = $row['question1'] + $row['question2'] + $row['question3'] + $row['question4'] + $row['question5'] + $row['question6'] + $row['question7'] + $row['question8'] +  $row['question9'] + $row['question10'];
+            $total += $update;
+
+            // $id =  81;
+            // $this->penilaianmodel->update($id, $update);
+        }
+        echo $total;
     }
 }

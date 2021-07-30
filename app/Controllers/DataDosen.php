@@ -232,6 +232,7 @@ class DataDosen extends BaseController
     }
     public function penilaianDosen()
     {
+
         $data = [
             'title' =>   'Penilaian Dosen',
             'seg1' => $this->request->uri->getSegment(1),
@@ -239,8 +240,9 @@ class DataDosen extends BaseController
             'nilaidosen' => $this->dosenModel->getNilaiDosen(),
             'periode' => $this->periodemodel->getDataPeriode(),
 
-
         ];
+
+
         return view('dosen/penilaiandosen', $data);
     }
     public function tambahnilai($id_dosen)
@@ -297,15 +299,7 @@ class DataDosen extends BaseController
                         'numeric' => '{field} harus berupa angka'
                     ]
                 ],
-                'C3' => [
-                    'rules' => 'required|numeric',
-                    'label' => 'Kompetensi',
-                    'errors' =>
-                    [
-                        'required' => 'Nama harus di isi',
-                        'numeric' => '{field} harus berupa angka'
-                    ]
-                ],
+
                 'C4' => [
                     'rules' => 'required',
                     'label' => 'Pendidikan',
@@ -349,24 +343,12 @@ class DataDosen extends BaseController
                 ];
             } else {
 
-                $c3 = '';
-                if ($this->request->getVar('C3') >= 81) {
-                    $c3 = $subbobotKompetensi1;
-                } else if ($this->request->getVar('C3') >= 61 && $this->request->getVar('C3') <= 80) {
-                    $c3 = $subbobotKompetensi2;
-                } else if ($this->request->getVar('C3') >= 41 && $this->request->getVar('C3') <= 60) {
-                    $c3 = $subbobotKompetensi3;
-                } else if ($this->request->getVar('C3') >= 21 && $this->request->getVar('C3') <= 40) {
-                    $c3 = $subbobotKompetensi4;
-                } else {
-                    $c3 = $subbobotKompetensi5;
-                }
+
                 $simpandata = [
                     'id_dosen' => $this->request->getVar('id_dosen'),
                     'id_periode' => $this->request->getVar('periode'),
                     'C1' => $this->request->getVar('C1'),
                     'C2' =>  $this->request->getVar('C2'),
-                    'C3' => $c3,
                     'C4' => $this->request->getVar('C4'),
                     'C5' => $this->request->getVar('C5'),
                     'C6' => $this->request->getVar('C6'),
@@ -394,6 +376,7 @@ class DataDosen extends BaseController
             'nilai' => $this->dosenModel->getDataNilaiDosen($id_dosen),
             'subkriteria1' => $this->subkriteriamodel->getSubKriteria1(),
             'subkriteria2' => $this->subkriteriamodel->getSubKriteria2(),
+            'periode' => $this->periodemodel->getDataPeriode(),
 
         ];
         // foreach ($data['subkriteria1'] as $row) {
@@ -490,16 +473,17 @@ class DataDosen extends BaseController
                 }
                 $simpandata = [
 
+                    'id_periode' => $this->request->getVar('periode'),
                     'C1' => $this->request->getVar('C1'),
                     'C2' =>  $this->request->getVar('C2'),
                     'C3' => $c3,
                     'C4' => $this->request->getVar('C4'),
                     'C5' => $this->request->getVar('C5'),
                     'C6' => $this->request->getVar('C6'),
-                    'periode' => $this->request->getVar('periode'),
 
                 ];
                 $id_nilai = $this->request->getVar('id_nilai');
+
 
                 $this->nilaimodel->update($id_nilai, $simpandata);
                 $msg = [

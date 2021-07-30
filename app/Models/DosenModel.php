@@ -30,6 +30,8 @@ class DosenModel extends Model
                 ->get()->getResultArray();
         } else {
             return $this->db->table('dosen')
+                ->distinct()
+                ->groupBy(['dosen.nama'])
                 ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
                 ->get()->getResultArray();
         }
@@ -41,5 +43,12 @@ class DosenModel extends Model
             ->where(['nidn' => $nidn])
 
             ->get()->getRowArray();
+    }
+    public function getPeriode($getperiode)
+    {
+        return $this->db->table('dosen')
+            ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
+            ->where(['nilai.id_periode' => $getperiode])
+            ->get()->getResultArray();
     }
 }
