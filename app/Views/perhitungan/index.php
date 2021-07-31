@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="card shadow mb-4">
+    <!-- <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Filter</h6>
         </div>
@@ -30,7 +30,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
