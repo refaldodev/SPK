@@ -21,46 +21,62 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $dosen['nama'] ?>">
-                        <div id="validationServer03Feedback" class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
+                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $dosen['nama']  ?>">
+                         <div id="validationServer03Feedback" class="invalid-feedback errorNama">
+                         </div>
+                     </div>
+                 </div>
                 <div class="form-group row">
-                    <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
+                     <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
+                     <div class="col-sm-10">
+                         <select class="form-control prodi" id="prodi" name="prodi">
+                             <option value="Sistem Informasi" <?= $dosen['prodi'] == 'Sistem Informasi' ? 'Selected' : null ?>>Sistem Informasi</option>
+                             <option value="Teknik Informatika" <?= $dosen['prodi'] == 'Teknik Informatika' ? 'Selected' : null ?>>Teknik Informatika</option>
+                         </select>
+                         <div id="validationServer03Feedback" class="invalid-feedback errorProdi">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                    <label for="Jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                     <div class="col-sm-10">
-                        <select class="form-control prodi" id="prodi" name="prodi">
-                            <option value="Sistem Informasi" <?= $dosen['prodi'] === 'Sistem Informasi' ? 'Selected' : '' ?>>Sistem Informasi</option>
-                            <option value="Teknik Informatika" <?= $dosen['prodi'] === 'Teknik Informatika' ? 'Selected' : '' ?>>Teknik Informatika</option>
+                        <select class="form-control jabatan" id="jabatan" name="jabatan">
+                            <option value="Guru Besar" <?= $dosen['jabatan'] == 'Guru Besar' ? 'Selected' : null ?> >Guru Besar</option>
+                            <option value="Lektor"  <?= $dosen['jabatan'] == 'Lektor' ? 'Selected' : null ?>>Lektor</option>
+                            <option value="Asisten Ahli" <?= $dosen['jabatan'] == 'Asisten Ahli' ? 'Selected' : null ?>>Asisten Ahli</option>
+                            <option value="Tenaga Pengajar" <?= $dosen['jabatan'] == 'Tenaga Pengajar' ? 'Selected' : null ?>>Tenaga Pengajar</option>
                         </select>
-                        <div id="validationServer03Feedback" class="invalid-feedback errorProdi">
+                        <div id="validationServer03Feedback" class="invalid-feedback errorJabatan">
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
+                    <label for="Pendidikan" class="col-sm-2 col-form-label">Pendidikan </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= $dosen['jabatan'] ?>">
+                        <select class="form-control pendidikan" id="pendidikan" name="pendidikan">
 
+                            <option value="Strata 2" <?= $dosen['pendidikan'] == 'Strata 2' ? 'Selected' : null ?>>Strata 2</option>
+                            <option value="Strata 3" <?= $dosen['pendidikan'] == 'Strata 3' ? 'Selected' : null ?>>Strata 3</option>
+                        </select>
+                        <div id="validationServer03Feedback" class="invalid-feedback errorPendidikan">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="pendidikan" class="col-sm-2 col-form-label">Pendidikan</label>
+                    <label for="Jurusan" class="col-sm-2 col-form-label">Jurusan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pendidikan" name="pendidikan" value="<?= $dosen['pendidikan'] ?>">
-
+                        <select class="form-control jurusan" id="jurusan" name="jurusan">
+                            <option value="Sistem Informasi" <?= $dosen['jurusan'] == 'Sistem Informasi' ? 'Selected' : null ?>>Sistem Informasi</option>
+                            <option value="Teknik Informatika" <?= $dosen['jurusan'] == 'Teknik Informatika' ? 'Selected' : null ?>>Teknik Informatika</option>
+                       
+                        </select>
+                        <div id="validationServer03Feedback" class="invalid-feedback errorJurusan">
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-group row">
-                    <label for="jurusan" class="col-sm-2 col-form-label">Jurusan</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control " id="jurusan" name="jurusan" value="<?= $dosen['jurusan'] ?>">
-
-                    </div>
-                </div>
+               
                 <div class="form-group row">
                     <label for="asal_kampus" class="col-sm-2 col-form-label">Asal Kampus</label>
                     <div class="col-sm-10">
@@ -137,7 +153,7 @@
 
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
                 }
             });
         })

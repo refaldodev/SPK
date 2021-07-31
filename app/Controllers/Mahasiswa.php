@@ -597,17 +597,17 @@ $nilaiakhir1 = ($totalq11 + $totalq21 + $totalq31 + $totalq41 + $totalq51 + $tot
 
  $value = ( ( $nilaiakhir5 * 5) + ( $nilaiakhir4 * 4) +( $nilaiakhir3 * 3) + ( $nilaiakhir2 * 2) + ( $nilaiakhir1 * 1)) / (100) ;
  $result = 0;
-    if($value >= 5.1){
-        $result += 0.46;
-    }else if($value < 5.1 && $value >= 4.1 ){
-        $result += 0.26;
-    }else if($value < 4.1 && $value >= 3.1 ){
-        $result += 0.16	;
-    }else if($value < 3.1 && $value >= 2.1 ){
-        $result += 0.09	;
-    }else{
-        $result += 0.04	;
-    }
+ if($value > 4.1){
+    $result += 0.46;
+}else if($value < 4.1 && $value >= 3.1 ){
+    $result += 0.26;
+}else if($value < 3.1 && $value >= 2.1 ){
+    $result += 0.16	;
+}else if($value < 2.1 && $value >= 1.1 ){
+    $result += 0.09	;
+}else{
+    $result += 0.04	;
+}
             $hasil = [
                 'C3' => $result
             ];
@@ -992,19 +992,21 @@ $nilaiakhir3 = ($totalq13 + $totalq23 + $totalq33 + $totalq43 + $totalq53 + $tot
 $nilaiakhir2 = ($totalq12 + $totalq22 + $totalq32 + $totalq42 + $totalq52 + $totalq62 + $totalq72 + $totalq82  + $totalq92 + $totalq102);
 $nilaiakhir1 = ($totalq11 + $totalq21 + $totalq31 + $totalq41 + $totalq51 + $totalq61 + $totalq71 + $totalq81  + $totalq91 + $totalq101);
 
- $value = ( ( $nilaiakhir5 * 5) + ( $nilaiakhir4 * 4) +( $nilaiakhir3 * 3) + ( $nilaiakhir2 * 2) + ( $nilaiakhir1 * 1)) / (100) ;
+ $value = ( (100  * 5) + ( 0* 4) +( 0 * 3) + ( 0* 2) + ( 0* 1)) / (100) ;
+ echo $value;
  $result = 0;
-    if($value >= 5.1){
+    if($value > 4.1){
         $result += 0.46;
-    }else if($value < 5.1 && $value >= 4.1 ){
-        $result += 0.26;
     }else if($value < 4.1 && $value >= 3.1 ){
-        $result += 0.16	;
+        $result += 0.26;
     }else if($value < 3.1 && $value >= 2.1 ){
+        $result += 0.16	;
+    }else if($value < 2.1 && $value >= 1.1 ){
         $result += 0.09	;
     }else{
         $result += 0.04	;
     }
+    echo '<br>';
     echo $result;
     }
 

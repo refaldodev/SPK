@@ -63,7 +63,11 @@
                                 <td><?= $nilai['jabatan'] ?></td>
                                 <td><?= $nilai['C1'] ?></td>
                                 <td><?= $nilai['C2'] ?></td>
+                            <?php if($nilai['C3'] == 0) {?>
+                                <td>Belum di nilai oleh mahasiswa	</td>
+                                <?php }else { ?>
                                 <td><?= $nilai['C3'] ?></td>
+                                <?php } ?>
                                 <td><?= $nilai['C4'] ?></td>
                                 <td><?= $nilai['C5'] ?></td>
                                 <td><?= $nilai['C6'] ?></td>
@@ -117,10 +121,16 @@
                                     <?php $cekc2 =  $nilai['C2'] - $C2Min; ?>
                                     <?= $cekc2 != 0  ? round(($nilai['C2'] - $C2Min) / ($C2Max - $C2Min) * (100 / 100), 3) : 0 ?>
                                 </td>
+                                <?php if($nilai['C3'] == 0) {?>
+                                <td>Belum di nilai oleh mahasiswa</td>
+
+                                    <?php }else{ ?>
                                 <td>
+
                                     <?php $cekc3 =  $nilai['C3'] - $C3Min; ?>
                                     <?= $cekc3 != 0  ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100), 3) : 0 ?>
                                 </td>
+                                <?php } ?>
                                 <td>
                                     <?php $cekc4 =  $nilai['C4'] - $C4Min; ?>
                                     <?= $cekc4 != 0  ? round(($nilai['C4'] - $C4Min) / ($C4Max - $C4Min) * (100 / 100), 3) : 0 ?>
@@ -198,10 +208,15 @@
                                     <?php $cekc2 =  $nilai['C2'] - $C2Min; ?>
                                     <?= $cekc2 != 0  ? round(($nilai['C2'] - $C2Min) / ($C2Max - $C2Min) * (100 / 100) * $kriteriaC2, 3) : 0 ?>
                                 </td>
+                                <?php if($nilai['C3'] == 0) {?>
+                                    <td>Belum di nilai oleh mahasiswa		</td>
+
+<?php }else{ ?>
                                 <td>
                                     <?php $cekc3 =  $nilai['C3'] - $C3Min; ?>
                                     <?= $cekc3 != 0  ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100) * $kriteriaC3, 3) : 0 ?>
                                 </td>
+                                 <?php } ?>
                                 <td>
                                     <?php $cekc4 =  $nilai['C4'] - $C4Min; ?>
                                     <?= $cekc4 != 0  ? round(($nilai['C4'] - $C4Min) / ($C4Max - $C4Min) * (100 / 100) * $kriteriaC4, 3) : 0 ?>

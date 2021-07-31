@@ -53,15 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="C3" class="col-sm-2 col-form-label">Kompetensi </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="C3" name="C3" value="<?= $nilai['C3'] ?>">
-                        <div id="validationServer03Feedback" class="invalid-feedback errorC3">
-
-                        </div>
-                    </div>
-                </div>
+             
                 <div class="form-group row">
                     <label for="C4" class="col-sm-2 col-form-label">Pendidikan </label>
                     <div class="col-sm-10">
