@@ -88,14 +88,14 @@
                         <i class="fas fa-database"></i> <span>Sub Kriteria</span></a>
                 </li>
             <?php endif; ?>
-            <?php if (session()->get('level') ==  1) : ?>
+            <!-- <?php if (session()->get('level') ==  1) : ?>
 
                 <li class="nav-item
             <?= $seg1 == 'periode'  ? 'active' : '' ?>">
                     <a class="nav-link" href="<?= base_url('periode') ?>">
                         <i class="fas fa-database"></i> <span>Periode</span></a>
                 </li>
-            <?php endif; ?>
+            <?php endif; ?> -->
             <?php if (session()->get('level') ==  1) : ?>
 
                 <li class=" nav-item <?= $seg1 == 'datadosen'  ? 'active' : '' ?>">
@@ -200,7 +200,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('namauser')  ?> dan level <?= session()->get('level')  ?> </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('namauser')  ?> dan level <?= session()->get('level')   ?> dan pass <?= session()->get('password')   ?> </span>
                                 <img class="img-profile rounded-circle" src="/assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -210,7 +210,10 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-
+                                <a class="dropdown-item" href="<?= base_url('users/gantipassword') ?>">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Ganti Password
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

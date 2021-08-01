@@ -76,7 +76,8 @@ class Auth extends BaseController
                             'login' => true,
                             'nidn' => $nidn,
                             'namauser' => $row->nama,
-                            'level' => $row->level
+                            'level' => $row->level,
+                            'password' => $row->password
 
                         ];
                         $this->session->set($simpansession);

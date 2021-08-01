@@ -19,4 +19,15 @@ class UsersModel extends Model
         }
         return $this->where(['nidn' => $nidn])->first();
     }
+    public function ubahPassword($npwd, $nidn)
+    {
+        $builder =    $this->db->table('users');
+        $builder->where(['nidn' => $nidn]);
+        $builder->update(['password' => $npwd]);
+        if ($this->db->affectedRows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

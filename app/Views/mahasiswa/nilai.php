@@ -43,6 +43,17 @@
                     </thead>
 
                     <tbody>
+                        <?php $nidnmahasiswa = 0;
+                        $nidndosen = '';
+                        ?>
+                        <?php foreach ($cek as $row) {
+
+                            $nidndosen = $row->id_dosen;
+                            // $nidnmahasiswa = $row['id_mahasiswa'];
+                            var_dump($nidndosen);
+                        }
+
+                        ?>
                         <?php $no = 1; ?>
                         <?php foreach ($nilaidosen as $nilai) :  ?>
                             <tr>
@@ -53,12 +64,14 @@
                                 <td><?= $nilai['pendidikan'] ?></td>
                                 <td><?= $nilai['jurusan'] ?></td>
                                 <td><?= $nilai['asal_kampus'] ?></td>
-                                <td>
+                                <?php if ($nidndosen == $nilai['nidn']) { ?>
+                                    <td><?= $nidndosen ?></td>
+                                <?php } else { ?>
+                                    <td>
+                                        <a href="/mahasiswa/penilaiandosen/<?= $nilai['id_nilai'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                    </td>
+                                <?php } ?>
 
-                                    <a href="/mahasiswa/penilaiandosen/<?= $nilai['id_nilai'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
-
-                                </td>
-                                
                             </tr>
                         <?php endforeach; ?>
 

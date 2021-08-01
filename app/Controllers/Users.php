@@ -6,6 +6,10 @@ use App\Models\DosenModel;
 
 class Users extends BaseController
 {
+    public function __construct()
+    {
+        $this->db =  \Config\Database::connect();
+    }
     public function index()
     {
         if (session()->get('level') ==  1) {
@@ -206,6 +210,94 @@ class Users extends BaseController
             echo json_encode($msg);
         } else {
             exit('maaf tidak dapat di proses');
+        }
+    }
+    public function gantipassword()
+    {
+        $data =
+            [
+                'title' => 'Ganti Password',
+                'users' => $this->usersmodel->getDataUsers(),
+                'seg1' => $this->request->uri->getSegment(1),
+                'seg2' => $this->request->uri->getSegment(2)
+            ];
+        return view('users/gantipassword', $data);
+    }
+    public function ubahpassword()
+    {
+
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'opwd' => [
+                    'label' => 'Old Password',
+                    'rules' => 'required',
+                    'errors' =>
+                    [
+                        'required' => '{field} harus di isi',
+
+                    ]
+                ],
+                'npwd' => [
+                    'label' => 'New Password',
+                    'rules' => 'required|min_length[5]|max_length[16]',
+                    'errors' =>
+                    [
+                        'required' => '{field} harus di isi',
+                        'is_unique' => '{field} sudah terdaftar'
+                    ]
+                ],
+
+                'cnpwd' => [
+                    'label' => 'Confirm New Password',
+
+                    'rules' => 'required|matches[npwd]',
+                    'errors' => [
+                        'required' => '{field} harus di isi',
+                        'matches' => '{field} Harus sama dengan New Password',
+                    ]
+                ],
+
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'opwd' => $validation->getError('opwd'),
+                        'npwd' => $validation->getError('npwd'),
+                        'cnpwd' => $validation->getError('cnpwd'),
+
+                    ]
+                ];
+            } else {
+                $password = session()->get('password');
+                $nidn = session()->get('nidn');
+                $opwd = sha1($this->request->getVar('opwd'));
+                $npwd = sha1($this->request->getVar('npwd'));
+                $data['password'] = $npwd;
+                $query = $this->db->query("SELECT * FROM users WHERE nidn ='$nidn'");
+                $result = $query->getResult();
+                if (count($result) > 0) {
+                    $querypass = $this->db->query("SELECT * FROM users WHERE nidn ='$nidn' && password ='$opwd'");
+                    $resultpass = $querypass->getResult();
+                    if (count($resultpass) > 0) {
+                        $this->usersmodel->update($nidn, $data);
+                        $msg = [
+                            'sukses' => 'data berhasil di ubah'
+                        ];
+                    } else {
+                        $msg = [
+                            'salah' => 'password salah'
+                        ];
+                    }
+                } else {
+                    $msg = [
+                        'gagal' => 'data gagal di ubah'
+                    ];
+                }
+            }
+            echo json_encode($msg);
+        } else {
+            exit('data tidak ada');
         }
     }
 }

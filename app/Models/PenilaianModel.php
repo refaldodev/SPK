@@ -28,9 +28,16 @@ class PenilaianModel extends Model
                 ->get()->getRowArray();
         }
     }
+    public function getPenilaian($idmahasiswa)
+    {
+        return $this->db->table('penilaian_dosen')
+            ->where(['id_mahasiswa' => $idmahasiswa])
+            ->get()
+            ->getResultObject();
+    }
     public function getPenilaian1($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question1')
                 ->where(['id_dosen' => $id])
@@ -39,19 +46,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question1')
+                ->selectCount('question1')
                 ->where(['id_dosen' => $id])
                 ->where(['question1' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai = 3 ) {
+        if ($id && $nilai = 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question1')
+                ->selectCount('question1')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question1' => 3])
@@ -59,9 +66,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai = 2 ) {
+        if ($id && $nilai = 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question1')
+                ->selectCount('question1')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question1' =>  2])
@@ -69,9 +76,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai = 1 ) {
+        if ($id && $nilai = 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question1')
+                ->selectCount('question1')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question1' => 1])
@@ -82,7 +89,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian2($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question2')
                 ->where(['id_dosen' => $id])
@@ -91,19 +98,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question2')
+                ->selectCount('question2')
                 ->where(['id_dosen' => $id])
                 ->where(['question2' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question2')
+                ->selectCount('question2')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question2' => 3])
@@ -111,9 +118,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question2')
+                ->selectCount('question2')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question2' =>  2])
@@ -121,9 +128,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question2')
+                ->selectCount('question2')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question2' => 1])
@@ -134,7 +141,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian3($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question3')
                 ->where(['id_dosen' => $id])
@@ -143,19 +150,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question3')
+                ->selectCount('question3')
                 ->where(['id_dosen' => $id])
                 ->where(['question3' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question3')
+                ->selectCount('question3')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question3' => 3])
@@ -163,9 +170,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question3')
+                ->selectCount('question3')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question3' =>  2])
@@ -173,9 +180,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question3')
+                ->selectCount('question3')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question3' => 1])
@@ -186,7 +193,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian4($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question4')
                 ->where(['id_dosen' => $id])
@@ -195,19 +202,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question4')
+                ->selectCount('question4')
                 ->where(['id_dosen' => $id])
                 ->where(['question4' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question4')
+                ->selectCount('question4')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question4' => 3])
@@ -215,9 +222,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question4')
+                ->selectCount('question4')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question4' =>  2])
@@ -225,9 +232,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question4')
+                ->selectCount('question4')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question4' => 1])
@@ -238,7 +245,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian5($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question5')
                 ->where(['id_dosen' => $id])
@@ -247,19 +254,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question5')
+                ->selectCount('question5')
                 ->where(['id_dosen' => $id])
                 ->where(['question5' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question5')
+                ->selectCount('question5')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question5' => 3])
@@ -267,9 +274,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question5')
+                ->selectCount('question5')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question5' =>  2])
@@ -277,9 +284,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question5')
+                ->selectCount('question5')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question5' => 1])
@@ -290,7 +297,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian6($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question6')
                 ->where(['id_dosen' => $id])
@@ -299,19 +306,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question6')
+                ->selectCount('question6')
                 ->where(['id_dosen' => $id])
                 ->where(['question6' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question6')
+                ->selectCount('question6')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question6' => 3])
@@ -319,9 +326,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question6')
+                ->selectCount('question6')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question6' =>  2])
@@ -329,9 +336,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question6')
+                ->selectCount('question6')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question6' => 1])
@@ -342,7 +349,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian7($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question7')
                 ->where(['id_dosen' => $id])
@@ -351,19 +358,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question7')
+                ->selectCount('question7')
                 ->where(['id_dosen' => $id])
                 ->where(['question7' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question7')
+                ->selectCount('question7')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question7' => 3])
@@ -371,9 +378,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question7')
+                ->selectCount('question7')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question7' =>  2])
@@ -381,9 +388,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question7')
+                ->selectCount('question7')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question7' => 1])
@@ -394,7 +401,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian8($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question8')
                 ->where(['id_dosen' => $id])
@@ -403,19 +410,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question8')
+                ->selectCount('question8')
                 ->where(['id_dosen' => $id])
                 ->where(['question8' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question8')
+                ->selectCount('question8')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question8' => 3])
@@ -423,9 +430,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question8')
+                ->selectCount('question8')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question8' =>  2])
@@ -433,9 +440,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question8')
+                ->selectCount('question8')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question8' => 1])
@@ -446,7 +453,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian9($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question9')
                 ->where(['id_dosen' => $id])
@@ -455,19 +462,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question9')
+                ->selectCount('question9')
                 ->where(['id_dosen' => $id])
                 ->where(['question9' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question9')
+                ->selectCount('question9')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question9' => 3])
@@ -475,9 +482,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question9')
+                ->selectCount('question9')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question9' =>  2])
@@ -485,9 +492,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question9')
+                ->selectCount('question9')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question9' => 1])
@@ -498,7 +505,7 @@ class PenilaianModel extends Model
     }
     public function getPenilaian10($id, $nilai)
     {
-        if ($id && $nilai == 5 ) {
+        if ($id && $nilai == 5) {
             return $this->db->table('penilaian_dosen')
                 ->selectCount('question10')
                 ->where(['id_dosen' => $id])
@@ -507,19 +514,19 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 4 ) {
-            
+        if ($id && $nilai == 4) {
+
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question10')
+                ->selectCount('question10')
                 ->where(['id_dosen' => $id])
                 ->where(['question10' => 4])
                 ->limit(10)
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 3 ) {
+        if ($id && $nilai == 3) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question10')
+                ->selectCount('question10')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question10' => 3])
@@ -527,9 +534,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 2 ) {
+        if ($id && $nilai == 2) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question10')
+                ->selectCount('question10')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question10' =>  2])
@@ -537,9 +544,9 @@ class PenilaianModel extends Model
                 ->get()
                 ->getResultArray();
         }
-        if ($id && $nilai == 1 ) {
+        if ($id && $nilai == 1) {
             return $this->db->table('penilaian_dosen')
-            ->selectCount('question10')
+                ->selectCount('question10')
 
                 ->where(['id_dosen' => $id])
                 ->where(['question10' => 1])
