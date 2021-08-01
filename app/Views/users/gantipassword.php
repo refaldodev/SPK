@@ -15,8 +15,6 @@
 
             <form action="/users/ubahpassword" method="post" class="simpandata">
                 <?= csrf_field(); ?>
-
-             
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Old Password</label>
                     <div class="col-sm-10">
@@ -105,9 +103,9 @@
                         }).then(result => {
 
                             if (result.value) {
-                                window.location.href = '/users';
+                                window.location.href = '/users/gantipassword';
                             } else {
-                                window.location.href = '/users';
+                                window.location.href = '/users/gantipassword';
                             }
                         })
 

@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-             
+
                 <div class="form-group row">
                     <label for="C4" class="col-sm-2 col-form-label">Pendidikan </label>
                     <div class="col-sm-10">

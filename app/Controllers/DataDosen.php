@@ -407,15 +407,7 @@ class DataDosen extends BaseController
                         'numeric' => '{field} harus berupa angka'
                     ]
                 ],
-                'C3' => [
-                    'rules' => 'required|numeric',
-                    'label' => 'Kompetensi',
-                    'errors' =>
-                    [
-                        'required' => 'Nama harus di isi',
-                        'numeric' => '{field} harus berupa angka'
-                    ]
-                ],
+
                 'C4' => [
                     'rules' => 'required',
                     'label' => 'Pendidikan',
@@ -451,7 +443,6 @@ class DataDosen extends BaseController
                     'error' => [
                         'C1' => $validation->getError('C1'),
                         'C2' => $validation->getError('C2'),
-                        'C3' => $validation->getError('C3'),
                         'C4' => $validation->getError('C4'),
                         'C5' => $validation->getError('C5'),
                         'C6' => $validation->getError('C6'),
@@ -459,7 +450,7 @@ class DataDosen extends BaseController
                 ];
             } else {
 
-                
+
                 $simpandata = [
 
                     'id_periode' => $this->request->getVar('periode'),

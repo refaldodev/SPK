@@ -128,7 +128,7 @@
                                     <td>
 
                                         <?php $cekc3 =  $nilai['C3'] - $C3Min; ?>
-                                        <?= $cekc3 != 0  && $cek3 != null ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100), 3) : 0 ?>
+                                        <?= $cekc3 != 0  ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100), 3) : 0 ?>
                                     </td>
                                 <?php } ?>
                                 <td>
@@ -173,8 +173,6 @@
                             <th>C5</th>
                             <th>C6</th>
                             <th>Nilai Akhir</th>
-
-
                         </tr>
                     </thead>
 
@@ -184,14 +182,13 @@
 
                             <?php $cekc1 = $nilai['C1'] - $C1Min;
                             $cekc2 = $nilai['C2'] - $C2Min;
-
                             $cekc3 = $nilai['C3'] - $C3Min;
                             $cekc4 = $nilai['C4'] - $C4Min;
                             $cekc5 = $nilai['C5'] - $C5Min;
                             $cekc6 = $nilai['C6'] - $C6Min;
                             $jumlahC1 = $cekc1 != 0 ? round(($nilai['C1'] - $C1Min) / ($C1Max - $C1Min) * (100 / 100) * $kriteriaC1, 3) : 0;
                             $jumlahC2 = $cekc2 != 0 ? round(($nilai['C2'] - $C2Min) / ($C2Max - $C2Min) * (100 / 100) * $kriteriaC2, 3) : 0;
-                            $jumlahC3 = $cekc3 != 0  || $cekc3 != null ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100) * $kriteriaC3, 3) : 0;
+                            $jumlahC3 = $cekc3 != 0 ? round(($nilai['C3'] - $C3Min) / ($C3Max - $C3Min) * (100 / 100) * $kriteriaC3, 3) : 0;
                             $jumlahC4 = $cekc4 != 0 ? round(($nilai['C4'] - $C4Min) / ($C4Max - $C4Min) * (100 / 100) * $kriteriaC4, 3) : 0;
                             $jumlahC5 = $cekc5 != 0 ? round(($nilai['C5'] - $C5Min) / ($C5Max - $C5Min) * (100 / 100) * $kriteriaC5, 3) : 0;
                             $jumlahC6 = $cekc6 != 0 ? round(($nilai['C6'] - $C6Min) / ($C6Max - $C6Min) * (100 / 100) * $kriteriaC6, 3) : 0;

@@ -64,13 +64,11 @@
                                 <td><?= $nilai['pendidikan'] ?></td>
                                 <td><?= $nilai['jurusan'] ?></td>
                                 <td><?= $nilai['asal_kampus'] ?></td>
-                                <?php if ($nidndosen == $nilai['nidn']) { ?>
-                                    <td><?= $nidndosen ?></td>
-                                <?php } else { ?>
-                                    <td>
-                                        <a href="/mahasiswa/penilaiandosen/<?= $nilai['id_nilai'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
-                                    </td>
-                                <?php } ?>
+
+                                <td>
+                                    <a href="/mahasiswa/penilaiandosen/<?= $nilai['id_nilai'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>
+                                </td>
+
 
                             </tr>
                         <?php endforeach; ?>
