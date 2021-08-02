@@ -21,3 +21,5 @@ class PeriodeModel extends Model
         return $this->where(['id' => $id])->first();
     }
 }
+
+// 1,2,3,6,8,9

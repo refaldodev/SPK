@@ -73,7 +73,7 @@
                             <option value="0.52" <?= $dosen['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
                             <option value="0.27" <?= $dosen['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
                             <option value="0.14" <?= $dosen['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
-                            <option value="0.04" <?= $dosen['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
+                            <option value="0.06" <?= $dosen['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC5">
                         </div>

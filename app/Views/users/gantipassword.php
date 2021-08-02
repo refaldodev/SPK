@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-              
+
         </div>
         <div class="form-group row mr-2">
             <div class="col-sm-12 text-right">
@@ -92,38 +92,38 @@
                             $('#cnpwd').removeClass('is-invalid');
                             $('.errorCnpwd').html('');
                         }
-                      
-                    } else {
-                        if(response.sukses){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: response.sukses,
-                            confirmButtonColor: '#3085d6'
-                        }).then(result => {
 
-                            if (result.value) {
-                                window.location.href = '/users/gantipassword';
-                            } else {
-                                window.location.href = '/users/gantipassword';
-                            }
-                        })
+                    } else {
+                        if (response.sukses) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.sukses,
+                                confirmButtonColor: '#3085d6'
+                            }).then(result => {
+
+                                if (result.value) {
+                                    window.location.href = '/gantipassword';
+                                } else {
+                                    window.location.href = '/gantipassword';
+                                }
+                            })
 
                         }
-                        if(response.salah){
+                        if (response.salah) {
                             Swal.fire({
-                            icon: 'error',
-                            title: 'Oopss..',
-                            text: response.salah,
-                            confirmButtonColor: '#3085d6'
-                        }).then(result => {
+                                icon: 'error',
+                                title: 'Oopss..',
+                                text: response.salah,
+                                confirmButtonColor: '#3085d6'
+                            }).then(result => {
 
-                            if (result.value) {
-                                window.location.href = '/users/gantipassword';
-                            } else {
-                                window.location.href = '/users/gantipassword';
-                            }
-                        })
+                                if (result.value) {
+                                    window.location.href = '/users/gantipassword';
+                                } else {
+                                    window.location.href = '/users/gantipassword';
+                                }
+                            })
 
                         }
                     }

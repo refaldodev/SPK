@@ -137,13 +137,21 @@
                         <span>Data Perhitungan SMARTER</span></a>
                 </li>
             <?php endif; ?>
-            <li class="nav-item <?= $seg1 == 'nilai' ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= base_url('nilai') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Penilaian Dosen</span></a>
-            </li>
-            <!-- Nav Item - Tables -->
+            <?php if (session()->get('level') ==  2) : ?>
 
+                <li class="nav-item <?= $seg1 == 'nilai' ? 'active' : '' ?>">
+                    <a class="nav-link" href="<?= base_url('nilai') ?>">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Penilaian Dosen</span></a>
+                </li>
+            <?php endif; ?>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item  <?= $seg1 == 'gantipassword'    ? 'active' : '' ?>">
+                <a class="nav-link " href="<?= base_url('gantipassword') ?>">
+                    <i class="far fa-edit"></i>
+                    <span>Ganti Password</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -200,7 +208,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('namauser')  ?> dan level <?= session()->get('level')   ?> dan pass <?= session()->get('password')   ?> </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('namauser')  ?> </span>
                                 <img class="img-profile rounded-circle" src="/assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -210,10 +218,7 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="<?= base_url('users/gantipassword') ?>">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Ganti Password
-                                </a>
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

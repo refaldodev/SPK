@@ -11,14 +11,7 @@
         </div>
         <div class="card-body">
             <!-- <a href="#" class="btn btn-default btn-md mb-3" data-toggle="modal" data-target="#modal-default"><i class=" fas fa-plus"></i> Tambah User</a> -->
-            <a href="/datadosen/create" class="btn btn-danger btn-icon-split mb-3">
-                <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Artikel</button> <br> <br> -->
-                <span class="icon text-white-50">
-                    <i class="fas fa-plus"></i>
-                </span>
-                <span class="text">Tambah Dosen</span>
 
-            </a>
             <!-- <?php if (session()->getFlashdata('pesan')) :  ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('pesan') ?>
@@ -43,17 +36,7 @@
                     </thead>
 
                     <tbody>
-                        <?php $nidnmahasiswa = 0;
-                        $nidndosen = '';
-                        ?>
-                        <?php foreach ($cek as $row) {
 
-                            $nidndosen = $row->id_dosen;
-                            // $nidnmahasiswa = $row['id_mahasiswa'];
-                            var_dump($nidndosen);
-                        }
-
-                        ?>
                         <?php $no = 1; ?>
                         <?php foreach ($nilaidosen as $nilai) :  ?>
                             <tr>

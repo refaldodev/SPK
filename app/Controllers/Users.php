@@ -154,7 +154,7 @@ class Users extends BaseController
                     [
                         'required' => 'Nidn harus di isi',
                         'max_length' => 'Nidn Maksimal 10 karakter',
-                        'numeric' => 'Nidn harus berupa angka'
+                        'numeric' => 'Nidn harus berupa angka',
 
                     ]
                 ],
@@ -282,7 +282,7 @@ class Users extends BaseController
                     if (count($resultpass) > 0) {
                         $this->usersmodel->update($nidn, $data);
                         $msg = [
-                            'sukses' => 'data berhasil di ubah'
+                            'sukses' => 'Password berhasil di ubah'
                         ];
                     } else {
                         $msg = [

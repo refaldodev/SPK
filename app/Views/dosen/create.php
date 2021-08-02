@@ -19,6 +19,7 @@
                          </div>
                      </div>
                  </div>
+
                  <div class="form-group row">
                      <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                      <div class="col-sm-10">
@@ -40,46 +41,46 @@
                      </div>
                  </div>
                  <div class="form-group row">
-                    <label for="Jabatan" class="col-sm-2 col-form-label">Jabatan</label>
-                    <div class="col-sm-10">
-                        <select class="form-control jabatan" id="jabatan" name="jabatan">
-                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="Guru Besar" >Guru Besar</option>
-                            <option value="Lektor" >Lektor</option>
-                            <option value="Asisten Ahli">Asisten Ahli</option>
-                            <option value="Tenaga Pengajar">Tenaga Pengajar</option>
-                        </select>
-                        <div id="validationServer03Feedback" class="invalid-feedback errorJabatan">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="Pendidikan" class="col-sm-2 col-form-label">Pendidikan </label>
-                    <div class="col-sm-10">
-                        <select class="form-control pendidikan" id="pendidikan" name="pendidikan">
-                        <option value="null" selected="true" disabled="disabled">-- Pilih ---</option>
+                     <label for="Jabatan" class="col-sm-2 col-form-label">Jabatan</label>
+                     <div class="col-sm-10">
+                         <select class="form-control jabatan" id="jabatan" name="jabatan">
+                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                             <option value="Guru Besar">Guru Besar</option>
+                             <option value="Lektor">Lektor</option>
+                             <option value="Asisten Ahli">Asisten Ahli</option>
+                             <option value="Tenaga Pengajar">Tenaga Pengajar</option>
+                         </select>
+                         <div id="validationServer03Feedback" class="invalid-feedback errorJabatan">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <label for="Pendidikan" class="col-sm-2 col-form-label">Pendidikan </label>
+                     <div class="col-sm-10">
+                         <select class="form-control pendidikan" id="pendidikan" name="pendidikan">
+                             <option value="null" selected="true" disabled="disabled">-- Pilih ---</option>
 
-                            <option value="Strata 2">Strata 2</option>
-                            <option value="Strata 3">Strata 3</option>
-                        </select>
-                        <div id="validationServer03Feedback" class="invalid-feedback errorPendidikan">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="Jurusan" class="col-sm-2 col-form-label">Jurusan</label>
-                    <div class="col-sm-10">
-                        <select class="form-control jurusan" id="jurusan" name="jurusan">
-                            <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="Sistem Informasi" >Sistem Informasi</option>
-                            <option value="Teknik Informatika" >Teknik Informatika</option>
-                       
-                        </select>
-                        <div id="validationServer03Feedback" class="invalid-feedback errorJurusan">
-                        </div>
-                    </div>
-                </div>
-               
+                             <option value="Strata 2">Strata 2</option>
+                             <option value="Strata 3">Strata 3</option>
+                         </select>
+                         <div id="validationServer03Feedback" class="invalid-feedback errorPendidikan">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <label for="Jurusan" class="col-sm-2 col-form-label">Jurusan</label>
+                     <div class="col-sm-10">
+                         <select class="form-control jurusan" id="jurusan" name="jurusan">
+                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
+                             <option value="Sistem Informasi">Sistem Informasi</option>
+                             <option value="Teknik Informatika">Teknik Informatika</option>
+
+                         </select>
+                         <div id="validationServer03Feedback" class="invalid-feedback errorJurusan">
+                         </div>
+                     </div>
+                 </div>
+
                  <div class="form-group row">
                      <label for="asal_kampus" class="col-sm-2 col-form-label">Asal Kampus</label>
                      <div class="col-sm-10">

@@ -43,13 +43,15 @@ $routes->get('/datadosen/penilaiandosen', 'datadosen::penilaiandosen', ['filter'
 $routes->get('/datadosen/tambahnilai', 'datadosen::tambahnilai', ['filter' => 'ceklogin']);
 $routes->get('/datadosen/(:segment)', 'datadosen::detail/$1', ['filter' => 'ceklogin']);
 $routes->get('/kriteria', 'kriteria::index', ['filter' => 'ceklogin']);
-$routes->get('/kriteria/create', 'kriteria::create');
+$routes->get('/kriteria/create', 'kriteria::create', ['filter' => 'ceklogin']);
 $routes->get('/kriteria/(:segment)', 'kriteria::subkriteria/$1', ['filter' => 'ceklogin']);
 $routes->get('/kriteria/edit/(:segment)', 'kriteria::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/subkriteria', 'subkriteria::index', ['filter' => 'ceklogin']);
 $routes->get('/subkriteria/edit/(:segment)', 'subkriteria::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/subkriteria/edit', 'subkriteria::edit', ['filter' => 'ceklogin']);
 $routes->get('/users', 'users::index', ['filter' => 'ceklogin']);
+$routes->get('/gantipassword', 'users::gantipassword', ['filter' => 'ceklogin']);
+
 $routes->get('/mahasiswa', 'mahasiswa::index', ['filter' => 'ceklogin']);
 $routes->get('/mahasiswa/penilaiandosen', 'mahasiswa::penilaiandosen', ['filter' => 'ceklogin']);
 $routes->get('/nilai', 'mahasiswa::nilai', ['filter' => 'ceklogin']);

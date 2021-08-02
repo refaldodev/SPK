@@ -36,7 +36,7 @@ class DataDosen extends BaseController
             'title' =>   'Detail Data Dosen',
             'dosen' =>  $this->dosenModel->getDataDosen($slug),
             'seg1' => $this->request->uri->getSegment(1),
-            'seg2' => $this->request->uri->getSegment(2)
+            'seg2' => $this->request->uri->getSegment(2),
 
         ];
         // jika datadosen tidak ada ditabel
@@ -54,7 +54,9 @@ class DataDosen extends BaseController
             'title' => 'Tambah data',
             'seg1' => $this->request->uri->getSegment(1),
             'validation' => \Config\Services::validation(),
-            'seg2' => $this->request->uri->getSegment(2)
+            'seg2' => $this->request->uri->getSegment(2),
+            'nidn' => $this->usersmodel->getDataUsers(),
+
 
 
         ];
@@ -357,7 +359,7 @@ class DataDosen extends BaseController
 
                 $this->nilaimodel->insert($simpandata);
                 $msg = [
-                    'sukses' => 'data berhasil ditambah',
+                    'sukses' => 'Penilaian berhasil ditambah',
                     'berhasil' => 'Sudah di nilai'
                 ];
             }
@@ -466,7 +468,7 @@ class DataDosen extends BaseController
 
                 $this->nilaimodel->update($id_nilai, $simpandata);
                 $msg = [
-                    'sukses' => 'data berhasil di update',
+                    'sukses' => 'Penilaian berhasil di update',
                     'berhasil' => 'Sudah di nilai'
                 ];
             }

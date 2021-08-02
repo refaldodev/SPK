@@ -15,7 +15,7 @@
 
             <form action="/users/update" method="post" class="simpandata">
                 <?= csrf_field(); ?>
-                <input type="text" class="form-control " id="nidn" name="nidnhidden" value="<?= $users['nidn'] ?>" hidden>
+                <input type="text" class="form-control " id="nidnhidden" name="nidnhidden" value="<?= $users['nidn'] ?>" hidden>
 
                 <div class="form-group row">
                     <label for="Nidn" class="col-sm-2 col-form-label">Nidn</label>
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group row mr-2">
             <div class="col-sm-12 text-right">
-                <button type="submit" class="btn btn-primary btnsimpan">Tambah Data</button>
+                <button type="submit" class="btn btn-primary btnsimpan">Ubah Data</button>
             </div>
         </div>
         </form>
@@ -82,7 +82,7 @@
                 },
                 complete: function() {
                     $('.btnsimpan').remove('disable');
-                    $('.btnsimpan').html('Tambah');
+                    $('.btnsimpan').html('Ubah Data');
 
                 },
                 dataType: "json",

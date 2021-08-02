@@ -35,6 +35,34 @@ class PenilaianModel extends Model
             ->get()
             ->getResultObject();
     }
+    public function getJumlahPenilai($nidn)
+    {
+        return $this->db->table('penilaian_dosen')
+            ->selectCount('id_dosen')
+            ->where(['id_dosen' => $nidn])
+            ->get()->getRowArray();
+    }
+    public function getJumlahDosen()
+    {
+        return $this->db->table('users')
+            ->selectCount('level')
+            ->where(['level' => 3])
+            ->get()->getRowArray();
+    }
+    public function getJumlahMahasiswa()
+    {
+        return $this->db->table('users')
+            ->selectCount('level')
+            ->where(['level' => 2])
+            ->get()->getRowArray();
+    }
+    public function getJumlahAdmin()
+    {
+        return $this->db->table('users')
+            ->selectCount('level')
+            ->where(['level' => 1])
+            ->get()->getRowArray();
+    }
     public function getPenilaian1($id, $nilai)
     {
         if ($id && $nilai == 5) {
