@@ -300,4 +300,72 @@ class Users extends BaseController
             exit('data tidak ada');
         }
     }
+    public function dataprofile()
+    {
+        $nidn = session()->get('nidn');
+        $query = $this->usersmodel->getDataUsers($nidn);
+        if ($query > 0) {
+            $data =
+                [
+                    'title' => 'Edit Data Profile',
+                    'users' => $this->usersmodel->getDataUsers($nidn),
+                    'seg1' => $this->request->uri->getSegment(1),
+                    'seg2' => $this->request->uri->getSegment(2)
+                ];
+            return view('users/editdataprofile', $data);
+        } else {
+            echo "<script>alert('data tidak ditemukan');";
+            echo "window.location='" . site_url('users') . "'; 
+        </script>";
+        }
+    }
+    public function updatedataprofile()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid['password']  = $validation->setRule('password', 'password', 'min_length[5]');
+
+            $valid = $this->validate([
+                'nidn' => [
+                    'rules' => 'required|max_length[10]|numeric',
+                    'errors' =>
+                    [
+                        'required' => 'Nidn harus di isi',
+                        'max_length' => 'Nidn Maksimal 10 karakter',
+                        'numeric' => 'Nidn harus berupa angka',
+
+                    ]
+                ],
+
+                'nama' => [
+                    'rules' => 'required',
+                    'errors' =>
+                    [
+                        'required' => 'Nama harus di isi',
+                        'is_unique' => 'Nama sudah terdaftar'
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nidn' => $validation->getError('nidn'),
+                        'nama' => $validation->getError('nama'),
+                    ]
+                ];
+            } else {
+                $ubahdata['nidn'] = $this->request->getVar('nidn');
+                $ubahdata['nama'] = $this->request->getVar('nama');
+
+                $nidn = $this->request->getVar('nidnhidden');
+                $this->usersmodel->update($nidn, $ubahdata);
+                $msg = [
+                    'sukses' => 'data berhasil di ubah'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            exit('maaf tidak dapat di proses');
+        }
+    }
 }

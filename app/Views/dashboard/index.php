@@ -7,7 +7,7 @@
     <!-- Page Heading -->
 
     <div class="row">
-        <div class=" mb-4 col-12">
+        <div class=" mb-2 col-12">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 Selamat datang <?php
                                 if (session()->get("level") == 1) {
@@ -159,8 +159,6 @@
                         } else {
                             $totalakhirprogres = 0;
                         }
-
-
                         ?>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
@@ -180,115 +178,254 @@
             </div>
         </div>
     </div>
-<?php endif; ?>
-
-
-<!-- Pending Requests Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-warning shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                        Pending Requests</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-comments fa-2x text-gray-300"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-<div class="row">
-
-    <div class="col-lg-6">
-
-        <!-- Default Card Example -->
-        <div class="card mb-4">
-            <div class="card-header">
-                Default Card Example
-            </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
             <div class="card-body">
-                This card uses Bootstrap's default styling with no utility classes added. Global
-                styles are the only things modifying the look and feel of this default card example.
-            </div>
-        </div>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            <a href="/perhitungan" style="text-decoration:none" class=" text-danger"> Data Perhitungan SMARTER</a>
+                        </div>
 
-        <!-- Basic Card Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
-            </div>
-            <div class="card-body">
-                The styling for this basic card example is created by using default Bootstrap
-                utility classes. By using utility classes, the style of the card component can be
-                easily modified with no need for any custom CSS!
-            </div>
-        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
+                            </div>
 
-    </div>
-
-    <div class="col-lg-6">
-
-        <!-- Dropdown Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calculator fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                Dropdown menus can be placed in the card header in order to extend the functionality
-                of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
-                icon in the card header can be clicked on in order to toggle a dropdown menu.
-            </div>
         </div>
+    </div>
+<?php endif; ?>
+<?php if (session()->get('level') ==  2) : ?>
 
-        <!-- Collapsable Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapseCardExample">
-                <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse
-                    functionality. <strong>Click on the card header</strong> to see the card body
-                    collapse and expand!
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary border-top-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            <a href="/nilai" style="text-decoration: none; " class="text-primary"> Penilaian Dosen</a>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-edit fa-2x text-gray-300"></i>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success border-top-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <a href="/dataprofile" style="text-decoration: none; " class="text-success">Data Profile</a>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-info border-top-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            <a href="/dataprofile" style="text-decoration: none; " class="text-info">Ganti Password</a>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-edit fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->get('level') ==  1) : ?>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            <a href="/datadosen/penilaiandosen" style="text-decoration: none; color:#E74A3B"> Penilaian Dosen</a>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"> <a href="/datadosen/penilaiandosen" style="text-decoration: none; color:#5A5C69"><?= $getdatadosen['nama'] ?></a></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calculator fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+</div>
+<?php if (session()->get('level') ==  1 || session()->get('level') == 3) : ?>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card  shadow h-100 py-2">
+                <div class="card-body">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+<?php endif; ?>
 
 </div>
 
-</div>
-<div class="text-center">
-    <div class="error mx-auto" data-text="404">404</div>
-    <p class="lead text-gray-800 mb-5">Page Not Found</p>
-    <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-    <a href="index.html">&larr; Back to Dashboard</a>
-</div>
 <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+<script>
+    $.getJSON('/dashboard/datajson', function(result) {
+        const c1 = result.map(data => {
+            return parseFloat(data.C1)
+        })
+        const c2 = result.map(data => {
+            return data.C2
+        })
+        const c3 = result.map(data => {
+            return data.C3
+        })
+        const c4 = result.map(data => {
+            return data.C4
+        })
+        const c5 = result.map(data => {
+            return data.C5
+        })
+        const c6 = result.map(data => {
+            return data.C6
+        })
+        let nama = [];
+        result.forEach(element => {
+            nama.push(element.nama)
+
+        });
+        const maxc1 = Math.max.apply(null, c1);
+        const minc1 = Math.min.apply(null, c1);
+        const maxc2 = Math.max.apply(null, c2);
+        const minc2 = Math.min.apply(null, c2);
+        const maxc3 = Math.max.apply(null, c3);
+        const minc3 = Math.min.apply(null, c3);
+        const maxc4 = Math.max.apply(null, c4);
+        const minc4 = Math.min.apply(null, c4);
+        const maxc5 = Math.max.apply(null, c5);
+        const minc5 = Math.min.apply(null, c5);
+        const maxc6 = Math.max.apply(null, c6);
+        const minc6 = Math.min.apply(null, c6);
+        let hasilfix = [];
+        result.forEach(element => {
+            let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
+            let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
+            let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
+            let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
+            let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
+            let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
+            hasilfix.push(hasil)
+        });
+        let perhitunganC1 = [];
+        let perhitunganC2 = [];
+        let perhitunganC3 = [];
+        let perhitunganC4 = [];
+        let perhitunganC5 = [];
+        let perhitunganC6 = [];
+        let arr = [];
+
+        result.forEach(element => {
+            let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
+            let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
+            let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
+            let cek5 = (parseFloat(element.C5) - minc5);
+
+            let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
+            let cek = (parseFloat(element.C6) - minc6);
+            let resultC6 = 0;
+            if (cek != 0) {
+
+                resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.061;
+            } else {
+                resultC6 = 0;
+            }
+
+            let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
+            perhitunganC1.push(parseFloat(resultC1))
+            perhitunganC2.push(parseFloat(resultC2))
+            perhitunganC3.push(parseFloat(resultC3))
+            perhitunganC4.push(parseFloat(resultC4))
+            perhitunganC5.push(parseFloat(resultC5))
+            perhitunganC6.push(parseFloat(resultC6))
+            let nilaiakhir = Math.round(hasil * 100) / 100;
+            arr.push(nilaiakhir)
+
+        });
+
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: nama,
+                datasets: [{
+                    label: 'Bar Perhitungan Smarter',
+                    data: arr,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
 <?= $this->endSection('') ?>

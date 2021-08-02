@@ -36,12 +36,20 @@ class DosenModel extends Model
                 ->get()->getResultArray();
         }
     }
+    public function getSudahNilaiDosen()
+    {
+
+        return $this->db->table('dosen')
+            ->selectCount('nama')
+            ->join('nilai', 'nilai.id_dosen=dosen.nidn')
+            ->get()->getRowArray();
+    }
+
     public function   getDataNilaiDosen($nidn)
     {
         return $this->db->table('dosen')
             ->join('nilai', 'nilai.id_dosen=dosen.nidn', 'left')
             ->where(['nidn' => $nidn])
-
             ->get()->getRowArray();
     }
     public function getPeriode($getperiode)

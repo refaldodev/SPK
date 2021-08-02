@@ -21,6 +21,7 @@
     <link href="/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="/assets/css/buttons.dataTables.min.css" rel="stylesheet">
 
 
 </head>
@@ -67,9 +68,11 @@
          
          <?= $seg1 == 'users'  ? 'active' : '' ?> ">
                     <a class="nav-link" href="<?= base_url('users') ?>">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user-cog"></i>
                         <span>Users</span></a>
                 </li>
+
+
             <?php endif; ?>
             <!-- Nav Item - Charts -->
             <?php if (session()->get('level') ==  1) : ?>
@@ -124,16 +127,16 @@
                 </li>
             <?php endif; ?>
             <?php if (session()->get('level') ==  1) : ?>
-
+                <!-- 
                 <li class="nav-item  <?= $seg1 == 'mahasiswa'  ? 'active' : '' ?>">
                     <a class="nav-link " href="<?= base_url('mahasiswa') ?>">
                         <i class="fas fa-user-graduate"></i> <span>Data Mahasiswa</span></a>
-                </li>
+                </li> -->
             <?php endif; ?>
             <?php if (session()->get('level') ==  1 || session()->get('level') ==  3) : ?>
                 <li class="nav-item <?= $seg1 == 'perhitungan'  ? 'active' : '' ?>">
                     <a class="nav-link" href="<?= base_url('perhitungan') ?>">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fas fa-calculator"></i>
                         <span>Data Perhitungan SMARTER</span></a>
                 </li>
             <?php endif; ?>
@@ -141,17 +144,24 @@
 
                 <li class="nav-item <?= $seg1 == 'nilai' ? 'active' : '' ?>">
                     <a class="nav-link" href="<?= base_url('nilai') ?>">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fas fa-edit"></i>
                         <span>Penilaian Dosen</span></a>
                 </li>
             <?php endif; ?>
 
             <!-- Nav Item - Tables -->
+            <li class="nav-item  <?= $seg1 == 'dataprofile'    ? 'active' : '' ?>">
+                <a class="nav-link " href="<?= base_url('dataprofile') ?>">
+                    <i class="far fa-user"></i>
+                    <span>Data Profile</span></a>
+            </li>
+
             <li class="nav-item  <?= $seg1 == 'gantipassword'    ? 'active' : '' ?>">
                 <a class="nav-link " href="<?= base_url('gantipassword') ?>">
                     <i class="far fa-edit"></i>
                     <span>Ganti Password</span></a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -294,8 +304,14 @@
         <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
         <script src="/assets/js/demo/datatables-demo.js"></script>
         <script src="/assets/js/script.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        <script src="/assets/js/buttons.print.min.js"></script>
+        <script src="/assets/js/dataTables.buttons.min.js"></script>
 
+        <script>
+
+        </script>
 </body>
 
 </html>
