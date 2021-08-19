@@ -32,6 +32,8 @@
                             <option value="<?= $subkriteria1[1]['bobot'] ?>" <?= $nilai['C1'] == '0.27' ? 'Selected' : '' ?>>Jurnal Internasional</option>
                             <option value="<?= $subkriteria1[2]['bobot'] ?>" <?= $nilai['C1'] == '0.14' ? 'Selected' : '' ?>>Jurnal Nasional Terakreditasi</option>
                             <option value="<?= $subkriteria1[3]['bobot'] ?> " <?= $nilai['C1'] == '0.06' ? 'Selected' : '' ?>>Jurnal Nasional</option>
+                            <option value="0" <?= $nilai['C1'] == '0' ? 'Selected' : '' ?>>Tidak Ada</option>
+
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC1">
 
@@ -70,10 +72,11 @@
                     <div class="col-sm-10">
                         <select class="form-control C5" id="C5" name="C5">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="0.52" <?= $nilai['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
-                            <option value="0.27" <?= $nilai['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
-                            <option value="0.14" <?= $nilai['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
-                            <option value="0.06" <?= $nilai['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
+                            <option value="0.46" <?= $nilai['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
+                            <option value="0.26" <?= $nilai['jabatan'] === 'Lektor Kepala' ? 'Selected' : '' ?>>Lektor Kepala</option>
+                            <option value="0.16" <?= $nilai['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
+                            <option value="0.09" <?= $nilai['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
+                            <option value="0.04" <?= $nilai['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC5">
                         </div>

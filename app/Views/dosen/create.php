@@ -46,6 +46,7 @@
                          <select class="form-control jabatan" id="jabatan" name="jabatan">
                              <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
                              <option value="Guru Besar">Guru Besar</option>
+                             <option value="Lektor Kepala">Lektor Kepala</option>
                              <option value="Lektor">Lektor</option>
                              <option value="Asisten Ahli">Asisten Ahli</option>
                              <option value="Tenaga Pengajar">Tenaga Pengajar</option>

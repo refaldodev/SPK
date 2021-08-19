@@ -347,12 +347,20 @@
         result.forEach(element => {
             let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
             let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
-            let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+
+            // console.log(((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158);
+            if ((element.C3 - minc3) == 0) {
+                resultC3 = 0;
+            } else {
+                let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            }
+
             let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
             let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
             let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
             let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
             hasilfix.push(hasil)
+
         });
         let perhitunganC1 = [];
         let perhitunganC2 = [];
@@ -365,7 +373,11 @@
         result.forEach(element => {
             let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
             let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
-            let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            if ((parseFloat(element.C3) - minc3) == 0) {
+                resultC3 = 0;
+            } else {
+                let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            }
             let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
             let cek5 = (parseFloat(element.C5) - minc5);
 
@@ -378,7 +390,6 @@
             } else {
                 resultC6 = 0;
             }
-
             let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
             perhitunganC1.push(parseFloat(resultC1))
             perhitunganC2.push(parseFloat(resultC2))
@@ -388,7 +399,6 @@
             perhitunganC6.push(parseFloat(resultC6))
             let nilaiakhir = Math.round(hasil * 100) / 100;
             arr.push(nilaiakhir)
-
         });
 
         var ctx = document.getElementById('myChart');

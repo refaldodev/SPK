@@ -21,30 +21,32 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                     <div class="col-sm-10">
-                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $dosen['nama']  ?>">
-                         <div id="validationServer03Feedback" class="invalid-feedback errorNama">
-                         </div>
-                     </div>
-                 </div>
+                    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $dosen['nama']  ?>">
+                        <div id="validationServer03Feedback" class="invalid-feedback errorNama">
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group row">
-                     <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
-                     <div class="col-sm-10">
-                         <select class="form-control prodi" id="prodi" name="prodi">
-                             <option value="Sistem Informasi" <?= $dosen['prodi'] == 'Sistem Informasi' ? 'Selected' : null ?>>Sistem Informasi</option>
-                             <option value="Teknik Informatika" <?= $dosen['prodi'] == 'Teknik Informatika' ? 'Selected' : null ?>>Teknik Informatika</option>
-                         </select>
-                         <div id="validationServer03Feedback" class="invalid-feedback errorProdi">
-                         </div>
-                     </div>
-                 </div>
-                 <div class="form-group row">
+                    <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
+                    <div class="col-sm-10">
+                        <select class="form-control prodi" id="prodi" name="prodi">
+                            <option value="Sistem Informasi" <?= $dosen['prodi'] == 'Sistem Informasi' ? 'Selected' : null ?>>Sistem Informasi</option>
+                            <option value="Teknik Informatika" <?= $dosen['prodi'] == 'Teknik Informatika' ? 'Selected' : null ?>>Teknik Informatika</option>
+                        </select>
+                        <div id="validationServer03Feedback" class="invalid-feedback errorProdi">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="Jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                     <div class="col-sm-10">
                         <select class="form-control jabatan" id="jabatan" name="jabatan">
-                            <option value="Guru Besar" <?= $dosen['jabatan'] == 'Guru Besar' ? 'Selected' : null ?> >Guru Besar</option>
-                            <option value="Lektor"  <?= $dosen['jabatan'] == 'Lektor' ? 'Selected' : null ?>>Lektor</option>
+                            <option value="Guru Besar" <?= $dosen['jabatan'] == 'Guru Besar' ? 'Selected' : null ?>>Guru Besar</option>
+
+                            <option value="Lektor Kepala" <?= $dosen['jabatan'] == 'Lektor Kepala' ? 'Selected' : null ?>>Lektor Kepala</option>
+                            <option value="Lektor" <?= $dosen['jabatan'] == 'Lektor' ? 'Selected' : null ?>>Lektor</option>
                             <option value="Asisten Ahli" <?= $dosen['jabatan'] == 'Asisten Ahli' ? 'Selected' : null ?>>Asisten Ahli</option>
                             <option value="Tenaga Pengajar" <?= $dosen['jabatan'] == 'Tenaga Pengajar' ? 'Selected' : null ?>>Tenaga Pengajar</option>
                         </select>
@@ -70,13 +72,13 @@
                         <select class="form-control jurusan" id="jurusan" name="jurusan">
                             <option value="Sistem Informasi" <?= $dosen['jurusan'] == 'Sistem Informasi' ? 'Selected' : null ?>>Sistem Informasi</option>
                             <option value="Teknik Informatika" <?= $dosen['jurusan'] == 'Teknik Informatika' ? 'Selected' : null ?>>Teknik Informatika</option>
-                       
+
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorJurusan">
                         </div>
                     </div>
                 </div>
-               
+
                 <div class="form-group row">
                     <label for="asal_kampus" class="col-sm-2 col-form-label">Asal Kampus</label>
                     <div class="col-sm-10">

@@ -177,6 +177,7 @@
                     </thead>
 
                     <tbody>
+
                         <?php $no = 1; ?>
                         <?php foreach ($nilaidosen as $nilai) :  ?>
 
@@ -195,6 +196,7 @@
                             $nilaiakhir = $jumlahC1 + $jumlahC2 + $jumlahC3 + $jumlahC4 + $jumlahC5 + $jumlahC6;
                             ?>
                             <tr>
+
                                 <td><?= $nilai['nama'] ?></td>
                                 <td><?= $nilai['pendidikan'] ?></td>
                                 <td><?= $nilai['jabatan'] ?></td>
@@ -227,7 +229,10 @@
                                     <?php $cekc6 =  $nilai['C6'] - $C6Min; ?>
                                     <?= $cekc6 != 0  ? round(($nilai['C6'] - $C6Min) / ($C6Max - $C6Min) * (100 / 100) * $kriteriaC6, 3) : 0 ?>
                                 </td>
-                                <td>
+                                <?php
+
+                                ?>
+                                <td style="background:yellow;">
                                     <?= round($nilaiakhir, 3) ?>
                                 </td>
                             </tr>
@@ -238,7 +243,14 @@
             </div>
         </div>
     </div>
-
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Nilai tertinggi</h6>
+        </div>
+        <div class="card-body">
+            <p>dari hasi perhitungan di atas nilai tertinggi adalah <span class="result bg-warning"></span></p>
+        </div>
+    </div>
 </div>
 <!-- /.container-fluid -->
 
@@ -265,77 +277,107 @@
     let tabel = document.getElementById('dataTableNilaiAkhir');
     let btn = document.querySelector('#buttonih');
 
-    // $.getJSON('/perhitungan/datajson', function(result) {
-    //     const c1 = result.map(data => {
-    //         return parseFloat(data.C1)
-    //     })
-    //     const c2 = result.map(data => {
-    //         return data.C2
-    //     })
-    //     const c3 = result.map(data => {
-    //         return data.C3
-    //     })
-    //     const c4 = result.map(data => {
-    //         return data.C4
-    //     })
-    //     const c5 = result.map(data => {
-    //         return data.C5
-    //     })
-    //     const c6 = result.map(data => {
-    //         return data.C6
-    //     })
-    //     const maxc1 = Math.max.apply(null, c1);
-    //     const minc1 = Math.min.apply(null, c1);
-    //     const maxc2 = Math.max.apply(null, c2);
-    //     const minc2 = Math.min.apply(null, c2);
-    //     const maxc3 = Math.max.apply(null, c3);
-    //     const minc3 = Math.min.apply(null, c3);
-    //     const maxc4 = Math.max.apply(null, c4);
-    //     const minc4 = Math.min.apply(null, c4);
-    //     const maxc5 = Math.max.apply(null, c5);
-    //     const minc5 = Math.min.apply(null, c5);
-    //     const maxc6 = Math.max.apply(null, c6);
-    //     const minc6 = Math.min.apply(null, c6);
-    //     let hasilfix = [];
-    //     result.forEach(element => {
-    //         let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
-    //         let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
-    //         let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
-    //         let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
-    //         let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
-    //         let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
-    //         let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
-    //         hasilfix.push(hasil)
-    //     });
-    //     let perhitunganC1 = [];
-    //     let perhitunganC2 = [];
-    //     let perhitunganC3 = [];
-    //     let perhitunganC4 = [];
-    //     let perhitunganC5 = [];
-    //     let perhitunganC6 = [];
-    //     result.forEach(element => {
-    //         let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
-    //         let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
-    //         let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
-    //         let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
-    //         let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
-    //         let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
-    //         let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
-    //         perhitunganC1.push(resultC1)
-    //         perhitunganC2.push(resultC2)
-    //         perhitunganC3.push(resultC3)
-    //         perhitunganC4.push(resultC4)
-    //         perhitunganC5.push(resultC5)
-    //         perhitunganC6.push(resultC6)
-    //     });
-
-    //     let resultfix = Math.max.apply(Math, hasilfix);
-    //     let span = document.querySelector('.nilaiterbesar');
-    //     span.innerHTML = resultfix;
 
 
 
+    $.getJSON('/dashboard/datajson', function(result) {
+        const c1 = result.map(data => {
+            return parseFloat(data.C1)
+        })
+        const c2 = result.map(data => {
+            return data.C2
+        })
+        const c3 = result.map(data => {
+            return data.C3
+        })
+        const c4 = result.map(data => {
+            return data.C4
+        })
+        const c5 = result.map(data => {
+            return data.C5
+        })
+        const c6 = result.map(data => {
+            return data.C6
+        })
+        let nama = [];
+        result.forEach(element => {
+            nama.push(element.nama)
 
-    // });
+        });
+        const maxc1 = Math.max.apply(null, c1);
+        const minc1 = Math.min.apply(null, c1);
+        const maxc2 = Math.max.apply(null, c2);
+        const minc2 = Math.min.apply(null, c2);
+        const maxc3 = Math.max.apply(null, c3);
+        const minc3 = Math.min.apply(null, c3);
+        const maxc4 = Math.max.apply(null, c4);
+        const minc4 = Math.min.apply(null, c4);
+        const maxc5 = Math.max.apply(null, c5);
+        const minc5 = Math.min.apply(null, c5);
+        const maxc6 = Math.max.apply(null, c6);
+        const minc6 = Math.min.apply(null, c6);
+        let hasilfix = [];
+        result.forEach(element => {
+            let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
+            let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
+
+            // console.log(((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158);
+            if ((element.C3 - minc3) == 0) {
+                resultC3 = 0;
+            } else {
+                let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            }
+
+            let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
+            let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
+            let resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.028;
+            let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
+            hasilfix.push(hasil)
+
+        });
+        let perhitunganC1 = [];
+        let perhitunganC2 = [];
+        let perhitunganC3 = [];
+        let perhitunganC4 = [];
+        let perhitunganC5 = [];
+        let perhitunganC6 = [];
+        let arr = [];
+
+        result.forEach(element => {
+            let resultC1 = ((parseFloat(element.C1) - minc1) / (maxc1 - minc1) * 100 / 100) * 0.408;
+            let resultC2 = ((parseFloat(element.C2) - minc2) / (maxc2 - minc2) * 100 / 100) * 0.24;
+            if ((parseFloat(element.C3) - minc3) == 0) {
+                resultC3 = 0;
+            } else {
+                let resultC3 = ((parseFloat(element.C3) - minc3) / (maxc3 - minc3) * 100 / 100) * 0.158;
+            }
+            let resultC4 = ((parseFloat(element.C4) - minc4) / (maxc4 - minc4) * 100 / 100) * 0.103;
+            let cek5 = (parseFloat(element.C5) - minc5);
+
+            let resultC5 = ((parseFloat(element.C5) - minc5) / (maxc5 - minc5) * 100 / 100) * 0.061;
+            let cek = (parseFloat(element.C6) - minc6);
+            let resultC6 = 0;
+            if (cek != 0) {
+
+                resultC6 = ((parseFloat(element.C6) - minc6) / (maxc6 - minc6) * 100 / 100) * 0.061;
+            } else {
+                resultC6 = 0;
+            }
+            let hasil = resultC1 + resultC2 + resultC3 + resultC4 + resultC5 + resultC6
+            perhitunganC1.push(parseFloat(resultC1))
+            perhitunganC2.push(parseFloat(resultC2))
+            perhitunganC3.push(parseFloat(resultC3))
+            perhitunganC4.push(parseFloat(resultC4))
+            perhitunganC5.push(parseFloat(resultC5))
+            perhitunganC6.push(parseFloat(resultC6))
+            let nilaiakhir = Math.round(hasil * 100) / 100;
+            arr.push(nilaiakhir)
+        });
+        var max_of_array = Math.max.apply(Math, arr);
+
+        let tes = document.querySelector('.result');
+        tes.innerHTML = max_of_array;
+        console.log(max_of_array)
+    });
 </script>
 <?= $this->endSection('') ?>

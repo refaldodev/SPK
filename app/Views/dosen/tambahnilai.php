@@ -32,6 +32,8 @@
                             <option value="<?= $subkriteria1[1]['bobot'] ?>">Jurnal Internasional</option>
                             <option value="<?= $subkriteria1[2]['bobot'] ?>">Jurnal Nasional Terakreditasi</option>
                             <option value="<?= $subkriteria1[3]['bobot'] ?>">Jurnal Nasional</option>
+                            <option value="0">Tidak Ada</option>
+
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC1">
 
@@ -70,10 +72,11 @@
                     <div class="col-sm-10">
                         <select class="form-control C5" id="C5" name="C5">
                             <option value="null" selected="true" disabled="disabled"> -- Pilih ---</option>
-                            <option value="0.52" <?= $dosen['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
-                            <option value="0.27" <?= $dosen['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
-                            <option value="0.14" <?= $dosen['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
-                            <option value="0.06" <?= $dosen['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
+                            <option value="0.46" <?= $dosen['jabatan'] === 'Guru Besar' ? 'Selected' : '' ?>>Guru Besar</option>
+                            <option value="0.26" <?= $dosen['jabatan'] === 'Lektor Kepala' ? 'Selected' : '' ?>>Lektor Kepala</option>
+                            <option value="0.16	" <?= $dosen['jabatan'] === 'Lektor' ? 'Selected' : '' ?>>Lektor</option>
+                            <option value="0.09" <?= $dosen['jabatan'] === 'Asisten Ahli' ? 'Selected' : '' ?>>Asisten Ahli</option>
+                            <option value="0.04" <?= $dosen['jabatan'] === 'Tenaga Pengajar' ? 'Selected' : '' ?>>Tenaga Pengajar</option>
                         </select>
                         <div id="validationServer03Feedback" class="invalid-feedback errorC5">
                         </div>
