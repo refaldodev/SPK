@@ -5,18 +5,18 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Artikel</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Kriteria</h6>
         </div>
         <div class="card-body">
             <!-- Button trigger modal -->
-            <a href="/kriteria/create" class="btn btn-danger btn-icon-split mb-3">
-                <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Artikel</button> <br> <br> -->
-                <span class="icon text-white-50">
+            <!-- <a href="/kriteria/create" class="btn btn-danger btn-icon-split mb-3"> -->
+            <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Artikel</button> <br> <br> -->
+            <!-- <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah Data Kriteria</span>
 
-            </a>
+            </a> -->
             <?php if (session()->getFlashdata('pesan')) :  ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('pesan') ?>
