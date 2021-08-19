@@ -27,10 +27,8 @@
                             <th>No.</th>
                             <th>Nidn</th>
                             <th>Nama</th>
-                            <th>Jabatan</th>
-                            <th>Pendidikan</th>
+
                             <th>Jurusan</th>
-                            <th>Asal Kampus</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,10 +41,7 @@
                                 <td><?= $no++ ?></td>
                                 <td><?= $nilai['nidn'] ?></td>
                                 <td><?= $nilai['nama'] ?></td>
-                                <td><?= $nilai['jabatan'] ?></td>
-                                <td><?= $nilai['pendidikan'] ?></td>
                                 <td><?= $nilai['jurusan'] ?></td>
-                                <td><?= $nilai['asal_kampus'] ?></td>
 
                                 <td>
                                     <a href="/mahasiswa/penilaiandosen/<?= $nilai['id_nilai'] ?>" data-toggle="tooltip" data-placement="top" title="Nilai" class="btn btn-primary"><i class="far fa-edit"></i> Isi Penilaian</a>

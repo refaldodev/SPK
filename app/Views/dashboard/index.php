@@ -33,7 +33,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Penilai</div>
+                                    Jumlah Penilai Mahasiswa </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahpenilai['id_dosen'] ?></div>
                             </div>
                             <div class="col-auto">
@@ -62,7 +62,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray">Belum Selesai</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                            <i class="fas fa-times fa-2x text-gray-300"></i>
                         </div>
                     <?php } ?>
                     </div>

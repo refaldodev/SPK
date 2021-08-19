@@ -19,10 +19,9 @@
                 <span class="text">Tambah Users</span>
             </a>
             <div class="table-responsive ">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTableUser" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
                             <th>Nidn</th>
                             <th>Nama</th>
                             <th>Level</th>
@@ -33,7 +32,6 @@
                         <?php $no = 1; ?>
                         <?php foreach ($users as $user) : ?>
                             <tr>
-                                <td><?= $no++ ?></td>
                                 <td><?= $user['nidn'] ?></td>
 
                                 <td><?= $user['nama'] ?></td>
@@ -114,5 +112,14 @@
             }
         })
     }
+    $(document).ready(function() {
+
+        $('#dataTableUser').DataTable({
+            "order": [
+                [2, "asc"]
+            ],
+
+        });
+    });
 </script>
 <?= $this->endSection('') ?>
